@@ -1,0 +1,45 @@
+
+# Results
+
+## Descriptives
+
+### Covariates: SES, BMIZ at Age 13, ED Cognitions at age 14
+
+Descriptive information for continuous variables are provided in Supplemental Table \@ref(tab:continuous). Descriptives for ordinal variables (Parent SES and Fear of Weight Gain) are provided in Supplemental Tables \@ref(tab:pses) and \@ref(tab:fearwt)
+
+### Exercise for Weight Loss Frequency
+
+Exercise for weight loss frequency across age and gender is presented in Figure \@ref(fig:ewl-plot), with a plot of the raw frequencies at age 24 presented in Supplement (Figure \@ref(fig:age24-raw-ewl)). Visual inspection of plots suggests a potential increase in frequency of exercise for weight loss across age, with a consistent increase over time amongst girls and an increase in frequency particularly between ages 18 and 24 years amongst boys.
+
+
+### Exercise Issues Frequency
+
+With regards to exercise issues across time, the percentage of participants reporting any exercise issues as present at each age was relatively stable, as seen in Figure \@ref(fig:ex-issues). Although there was some variation in reporting of the secondary question regarding exercise issues across age which could influence the detection of exercise issues at different ages, the question of whether exercise interfered with work, school, or one's daily routine was assessed at all four timepoints. Endorsement of this question, specifically, was relatively consistent across age and gender (See Supplemental Figure \@ref(fig:ex-interfere)), with 9.5 - 14.5% of individuals reporting that exercise interfered with work, school, or their daily routine across age and gender. 
+
+### Exercise Groups
+
+Figure \@ref(fig:freqfig) shows exercise status at ages 14-24 years in girls and boys, as a percentage of the total number of boys and girls who reported exercise data at the timepoint.
+
+```{r freqfig, fig.cap = 'Frequency of Exercise Groups Across Age'}
+
+exercise_group_data <- frq_table_by_age_sex(demo_ed.lf, exercise_group) 
+levels(exercise_group_data$exercise_group) <- c('No Exercise for Weight Loss', 'Exercise for Weight Loss', 'Maladaptive Exercise')
+
+exercise_status_plot_1 <- ggplot(data = exercise_group_data, 
+    aes(x = sex, y = pct, fill = exercise_group, label = sprintf('%0.1f%%', pct*100))) + #set the aesthetic features, including the labels at one decimal place
+    geom_bar(position = position_stack(reverse = TRUE), stat = 'identity') + #add column graph, with male and female separated
+    scale_y_continuous(labels = scales::percent, limits = c(0,1))+ #set the lower and upper limits of the y axis ( 0-100 percent); 
+    theme(legend.title = element_blank(), axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1), text = element_text(size = 15))+ #make legend text a bit bigger
+    labs(x = element_blank(), y = 'Percent (within gender)', title = 'Exercise Groups Across Age') +
+     geom_text(aes(label = sprintf('%0.1f%%', pct*100)), position = position_stack(reverse = TRUE, vjust = 0.5), color = 'white', size = 2.5, fontface = 'bold') +
+    facet_wrap(~age) + 
+    theme_classic()+
+    theme(legend.title = element_blank(), axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1), text = element_text(size = 15)) + #make legend text a bit bigger 
+   scale_fill_manual(values = wes_palette(name = 'GrandBudapest1', n = 3 ))
+
+exercise_status_plot_1
+```
+
+Visual inspection and raw percentage comparison indicates that percentage of males and female in the three exercise groups is relatively stable from ages 14-16 years, with a possible increase in exercise for weight loss at age 18 among girls, an increase in exercise for weight loss among men at age 24, and an increase in maladaptive exercise across gender at age 24.
+
+

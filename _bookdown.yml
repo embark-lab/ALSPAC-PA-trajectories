@@ -1,0 +1,6 @@
+book_filename: "alspac-dex-1-bookdown"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: FALSE
+output_dir: 'docs'

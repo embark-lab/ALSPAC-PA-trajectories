@@ -1,0 +1,82 @@
+# Mixed Effects Models - Completers-Partial Sample (for comparison and double checks)
+
+```{r}
+#Completers Models
+glm_girls_data <- demo_ed.lf.girls %>% 
+  mutate(age_adjust = as.numeric(age) - 14)
+bl_model_girls <- glmer(driven_exercise ~ 1 + (1|id), data = glm_girls_data, family= binomial)
+rand_int_dex_girls <- glmer(driven_exercise ~ 1 + age_adjust + (1|id), data = glm_girls_data, family = binomial)
+m_comp_girls_1 <- anova(bl_model_girls, rand_int_dex_girls)
+
+bl_model_girls
+rand_int_dex_girls
+m_comp_girls_1
+```
+
+```{r}
+#Make nice Tables to dispay results
+x <- summ(rand_int_dex_girls)
+se <- sqrt(diag(vcov(rand_int_dex_girls)))
+OR_table<- cbind (OR = exp(fixef(rand_int_dex_girls)), lower_CI = exp(fixef(rand_int_dex_girls) - 1.96*se), upper_CI = exp(fixef(rand_int_dex_girls) + 1.96*se))
+OR_table <- as.data.frame(OR_table)
+coefs <- as.data.frame (x[["coeftable"]])
+
+m_comp_tbl_girls_1 <- m_comp_girls_1 |> 
+  rownames_to_column('model') |> 
+  format_engr()
+kable(m_comp_tbl_girls_1) %>% 
+  kable_material(c('striped')) %>% 
+  kable_styling(font_size = 12)
+
+
+girl_dex_effects <- merge(coefs, OR_table, by = 'row.names') |> 
+  rename('Effect' = 'Row.names')
+girl_dex_effects_tab <- format_engr(girl_dex_effects)
+kable(girl_dex_effects_tab) %>% 
+  kable_material(c('striped')) %>% 
+  kable_styling(font_size = 12)
+
+
+predictors_1_dex_girls <- glmer(driven_exercise ~ 1 + age_adjust + parent_highest_occupation + bmi_z_bestavail.13 + (1|id), data = glm_girls_data, family = binomial)
+
+
+#Finally, we examine whether there is an interaction between thin-ideal interanlization at age 14 and age and body dissatisfaction at age 14 and age, such that individuals who exhibit eating disorder cognitions at age 14 are more likely to shift towards driven exercise engagement with age. 
+
+predictors_2_dex_girls <- glmer(driven_exercise ~ 1 + age_adjust + parent_highest_occupation + bmi_z_bestavail.13 + ti_mean_14_std +  body_sat_mean_14_std + (1|id), data = glm_girls_data, family = binomial)
+
+m_comp_g2 <- anova(rand_int_dex_girls, predictors_1_dex_girls)
+m_comp_g3 <- anova(predictors_1_dex_girls, predictors_2_dex_girls)
+```
+
+``` {r}
+#Run models and Model Comparisons 
+
+demo_ed.l.girls$ewl <- factor(demo_ed.l.girls$exercise_wtloss, ordered = TRUE)
+demo_ed.l.girls$id <- factor(demo_ed.l.girls$id)
+
+
+bl_ewl_girls <- clmm2(ewl ~ 1, random = id, data = demo_ed.l.girls, method = 'nlminb', Hess = TRUE)
+summary(bl_model)
+m1_ewl_girls <- clmm2(ewl ~ 1 + age_adjust, random = id, data = demo_ed.l.girls, method = 'nlminb', Hess = TRUE)
+summary(m1_ewl_girls)
+
+m_comp_f2 <- anova(bl_ewl_girls, m1_ewl_girls)
+
+```
+
+
+```{r}
+
+
+demo_ed.l.girls$id <- factor(demo_ed.l.girls$id)
+#filter to have at least one exercise assessment
+  filter_at(vars(driven_exercise.14, driven_exercise.16, driven_exercise.18, driven_exercise.24), any_vars(!is.na(.))) %>% 
+  
+  
+
+  #~3k observations removed when covariates are introduced as filters -- need to do some mice
+  filter(!is.na(parent_highest_occupation))%>% 
+  filter(!is.na(bmi_z_bestavail.13)) %>% 
+  filter(!is.na(body_sat_mean_14)) %>% 
+  filter(!is.na(ti_mean_14)) 
+```

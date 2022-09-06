@@ -1,0 +1,62 @@
+--- 
+title: "Patterns of Maladaptive Exercise Behavior from ages 14-24 in a Longitudinal Cohort"
+shorttitle: 'ALSPAC Driven Exercise'
+author: 
+- name: "Katherine Schaumberg"
+  affiliation : '1'
+  corresponding: yes
+  address: '6001 Research Park Blvd, Madison, WI, USA, 53719'
+  role: 
+  - Conceptualization
+  - Writing - Original Draft Preparation 
+  - Writing - Review & Editing
+date: "`r Sys.Date()`"
+documentclass: 'apa6'
+site: bookdown::bookdown_site
+bibliography: [DEx_ALSPAC.bib, packages.bib]
+biblio-style: apa
+link-citations: yes
+github-repo: kschaumb/alspac-dex-bookdown
+description: "This is a bookdown for ALSPAC Longitudinal DEx analyses"
+resource_files: 
+ -data/ed_data.RData
+ -R/05-01-histogram-functions.R
+ -R/06-02-transition-plot.R
+output: bookdown::gitbook
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+library(dplyr)
+library(wesanderson)
+library(ordinal)
+library(tidyr)
+library(tibble)
+library(ggplot2)
+library(haven)
+library(usethis)
+library(stringr)
+library(ggalluvial)
+library(ggthemes)
+library(rlang)
+library(viridis)
+library(lme4)
+library(flexplot)
+library(jtools)
+library(docxtools)
+library(msm)
+library(mice)
+library(datawizard)
+library(miceadds)
+library(purrr)
+library(labelled)
+library(broom.mixed)
+library(mitml)
+library(kableExtra)
+source("R/05-01-histogram-functions.R", local = knitr::knit_global())
+source("R/06-02-transition-plot.R", local = knitr::knit_global())
+load('data/ed_data.RData')
+```
+

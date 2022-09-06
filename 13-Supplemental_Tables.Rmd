@@ -1,0 +1,356 @@
+# Supplemental Tables
+
+```{r continuous}
+load('data/demo_tables.Rdata')
+knitr::kable(cont_vars, caption = 'Continuous Variable Descriptives')
+```
+
+```{r pses}
+colnames(pses_table) <-  c('Response', 'Girls N', 'Girls %', 'Boys N', 'Boys %')
+knitr::kable(pses_table, caption = 'Parent Highest Occupational Class - Responses Frequencies')
+```
+
+```{r fearwt}
+colnames(fear_wt_table) <- c('Response', 'Girls N', 'Girls %', 'Boys N', 'Boys %')
+knitr::kable(fear_wt_table, caption = 'Fear of Weight Gain at Age 14 - Responses Frequencies')
+```
+
+```{r state-table-girls}
+
+#state table for girls
+state_table_girls <- as.data.frame(statetable.msm(exercise_group, id, data = transition_data_girls))
+colnames(state_table_girls) <- c('From', 'To', 'N') 
+
+state_table_girls <- as.data.frame(state_table_girls) %>% 
+  mutate(From = as.character(as.numeric(From))) %>% 
+  mutate(To = as.character(as.numeric(To)))
+
+state_table_girls[state_table_girls == '1'] <- 'no EWL'
+state_table_girls[state_table_girls == '2'] <- 'EWL'
+state_table_girls[state_table_girls == '3'] <- 'Maladaptive Ex'
+
+knitr::kable(state_table_girls, 
+             caption = "Raw Number of Exercise State Transitions Amongst Girls")
+
+```
+
+
+```{r pmat-girls1}
+# #Markov model with covariates
+# 
+# ex_group_girls_1_pmat <- pmatrix.msm(ex_group_girls_1, t = 1, ci = 'normal')
+# 
+# estimate <- as.data.frame(ex_group_girls_1_pmat[['estimates']]) %>% 
+#   rownames_to_column('From') %>% 
+#   pivot_longer(c('No EWL', 'EWL', 'Maladaptive Ex'), names_to = 'To', values_to = 'P' ) %>% 
+#   mutate(P = sprintf("%.3f", as.numeric(P))) 
+# 
+# 
+# l <- as.data.frame(ex_group_girls_1_pmat[['L']]) %>%   
+#   mutate('From' = c('No EWL', 'EWL', 'Maladaptive Ex')) %>% 
+#   rename('No EWL' = V1) %>% 
+#   rename('EWL' = V2) %>% 
+#   rename('Maladaptive Ex' = V3) %>% 
+#   pivot_longer(c('No EWL', 'EWL', 'Maladaptive Ex'), names_to = 'To', values_to = 'L' ) %>% 
+#   mutate(L = sprintf("%.3f", as.numeric(L))) 
+# 
+# 
+# u <- as.data.frame(ex_group_girls_1_pmat[['U']]) %>% round(3)  %>% 
+#   mutate('From' = c('No EWL', 'EWL', 'Maladaptive Ex')) %>% 
+#   rename('No EWL' = V1) %>% 
+#   rename('EWL' = V2) %>% 
+#   rename('Maladaptive Ex' = V3) %>% 
+#   pivot_longer(c('No EWL', 'EWL', 'Maladaptive Ex'), names_to = 'To', values_to = 'U' ) %>% 
+#   mutate(U = sprintf("%.3f", as.numeric(U))) 
+# 
+# estimate <- cbind(estimate, l$L) 
+# estimate <- cbind(estimate, u$U)
+# 
+# estimate <- estimate %>% 
+#   rename('l' = `l$L`) %>% 
+#   rename('u' = `u$U`)
+# 
+#  
+# estimate$CI <- paste(estimate$l, estimate$u, sep = ', ')
+# addparens <- function(x){paste('(',x,')')}
+# estimate$CI <- addparens(estimate$CI)
+# estimate$P <- paste(estimate$P, estimate$CI, sep = ' ')
+# 
+# estimate <- estimate %>% 
+#   select (c('To', 'From', 'P')) %>% 
+#   pivot_wider(names_from = 'To', values_from = 'P') %>% 
+#   rename(' ' = From)
+# 
+# knitr::kable(estimate, 
+#              caption  = 'Estimates of Transition Probabilities Across 1-year amongst Girls: From (rows) - To (cols)')
+# 
+# # Note - From in Rows to in Columns
+```
+
+
+```{r pmat-girls1-covs}
+load('models/transition_models')
+
+ex_group_girls_1_covs_pmat <- pmatrix.msm(ex_group_girls_covs_1, t = 1, ci = 'normal')
+
+estimate <- as.data.frame(ex_group_girls_1_covs_pmat[['estimates']]) %>% round(3) %>% 
+  rownames_to_column('From') %>% 
+  pivot_longer(c('No EWL', 'EWL', 'Maladaptive Ex'), names_to = 'To', values_to = 'P' )
+
+l <- as.data.frame(ex_group_girls_1_covs_pmat[['L']]) %>% round(3) %>% 
+  mutate('From' = c('No EWL', 'EWL', 'Maladaptive Ex')) %>% 
+  rename('No EWL' = V1) %>% 
+  rename('EWL' = V2) %>% 
+  rename('Maladaptive Ex' = V3) %>% 
+  pivot_longer(c('No EWL', 'EWL', 'Maladaptive Ex'), names_to = 'To', values_to = 'L' )
+
+
+u <- as.data.frame(ex_group_girls_1_covs_pmat[['U']]) %>% round(3)  %>% 
+  mutate('From' = c('No EWL', 'EWL', 'Maladaptive Ex')) %>% 
+  rename('No EWL' = V1) %>% 
+  rename('EWL' = V2) %>% 
+  rename('Maladaptive Ex' = V3) %>% 
+  pivot_longer(c('No EWL', 'EWL', 'Maladaptive Ex'), names_to = 'To', values_to = 'U' )
+
+
+estimate <- cbind(estimate, l$L) 
+estimate <- cbind(estimate, u$U)
+
+estimate <- estimate %>% 
+  rename('l' = `l$L`) %>% 
+  rename('u' = `u$U`)
+
+ 
+estimate$CI <- paste(estimate$l, estimate$u, sep = ', ')
+addparens <- function(x){paste('(',x,')')}
+estimate$CI <- addparens(estimate$CI)
+estimate$P <- paste(estimate$P, estimate$CI, sep = ' ')
+
+estimate <- estimate %>% 
+  select (c('To', 'From', 'P')) %>% 
+  pivot_wider(names_from = 'To', values_from = 'P') %>% 
+  rename(' ' = From)
+
+knitr::kable(estimate, 
+             caption  = 'Estimates of Transition Probabilities Across 1-year amongst Girls - Covariate Model contstraining direct transitions betwen No EWL and Maladaptive Ex groups: From (rows) - To (cols)')
+
+```
+
+
+
+```{r}
+# Supplemental table - unconstrained covariate transitions amongst girls 
+
+# 
+# hr_2_girls <- hazard.msm(ex_group_girls_covs_2)
+# ti_girls_hazard_2 <-hr_2_girls[[1]]
+# bd_girls_hazard_2<- hr_2_girls[[2]] 
+# fear_wt_girls_hazard_2 <- hr_2_girls[[3]] 
+# bmi_girls_hazard_2 <-hr_2_girls[[4]]
+# 
+# 
+# dfnames <- c('fear_wt_girls_hazard_2', 'bd_girls_hazard_2', 'ti_girls_hazard_2', 'bmi_girls_hazard_2')
+# girl_HRs_2 <- do.call(rbind, lapply(dfnames, function(x) cbind(get(x), Covariate=x))) |> 
+#   as.data.frame() %>% 
+#   rownames_to_column(var = 'transition') %>% 
+#  mutate(HR = sprintf("%.2f", as.numeric(HR))) %>% 
+#  mutate(L = sprintf("%.2f", as.numeric(L))) %>% 
+#  mutate(U = sprintf("%.2f", as.numeric(U)))
+# 
+# girl_HRs_2$transition <- gsub('\\No.', 'No ', girl_HRs_2$transition)
+# girl_HRs_2$transition <- gsub('\\...', ' to ', girl_HRs_2$transition)
+# girl_HRs_2$transition <- gsub('\\..*', '', girl_HRs_2$transition)
+# girl_HRs_2$CI <- paste(girl_HRs_2$L, girl_HRs_2$U, sep = ', ')
+# addparens <- function(x){paste('(',x,')')}
+# girl_HRs_2$CI <- addparens(girl_HRs_2$CI)
+# girl_HRs_2$HR <- paste(girl_HRs_2$HR, girl_HRs_2$CI, sep = ' ')
+# 
+# 
+# girl_HRs_2 <- girl_HRs_2 |> 
+#   select( - c( L, U, CI)) %>% 
+#   pivot_wider(names_from = c(transition), values_from = HR)
+# girl_HRs_2['Covariate'][girl_HRs_2['Covariate'] == 'ti_girls_hazard_2'] <- 'Thin Ideal Internalization [14]'
+# girl_HRs_2['Covariate'][girl_HRs_2['Covariate'] == 'fear_wt_girls_hazard_2'] <- 'Fear of Weight Gain [14]'
+# girl_HRs_2['Covariate'][girl_HRs_2['Covariate'] == 'bmi_girls_hazard_2'] <- 'BMI Z-score [13]'
+# girl_HRs_2['Covariate'][girl_HRs_2['Covariate'] == 'bd_girls_hazard_2'] <- 'Body Satisfaction [14]'
+# 
+# girl_HRs_2 %>% 
+#   kbl(caption = 'Hazard Ratios for Transitions with Baseline Covariates (Transition from No EWL to Maladaptive Ex Constrained) - Girls')  %>% 
+#   kable_paper(full_width = T) %>% 
+#   kable_styling(font_size = 13)
+```
+
+```{r state-table-boys}
+#state table for boys
+state_table_boys <- as.data.frame(statetable.msm(exercise_group, id, data = transition_data_boys))
+
+colnames(state_table_boys) <- c('From', 'To', 'N')
+state_table_boys <- state_table_boys %>% 
+  mutate(From = as.character(as.numeric(From))) %>% 
+  mutate(To = as.character(as.numeric(To)))
+
+state_table_boys[state_table_boys == '1'] <- 'no EWL'
+state_table_boys[state_table_boys == '2'] <- 'EWL'
+state_table_boys[state_table_boys == '3'] <- 'Maladaptive Ex'
+
+knitr::kable(state_table_boys, 
+             caption = "Raw Number of Exercise State Transitions Amongst Boys")
+```
+
+
+```{r, label = 'Boys Hazard Ratios'}
+# ex_group_boys_covs_1_pmat <- pmatrix.msm(ex_group_boys_covs_1, t = 1, ci = 'normal')
+# hr_1_boys <- hazard.msm(ex_group_boys_covs_1)
+# 
+# ti_boys_hazard <-hr_1_boys[[1]]
+# bmi_boys_hazard <- hr_1_boys[[2]] 
+# fear_wt_boys_hazard <- hr_1_boys[[3]] 
+# 
+# dfnames <- c('fear_wt_boys_hazard', 'bmi_boys_hazard', 'ti_boys_hazard')
+# Boy_HRs <- do.call(rbind, lapply(dfnames, function(x) cbind(get(x), Covariate=x))) |> 
+#   as.data.frame() |> 
+#   rownames_to_column(var = 'transition') %>% 
+#  mutate(HR = sprintf("%.2f", as.numeric(HR))) %>% 
+#  mutate(L = sprintf("%.2f", as.numeric(L))) %>% 
+#  mutate(U = sprintf("%.2f", as.numeric(U)))
+# 
+# Boy_HRs$transition <- gsub('\\No.', 'No ', Boy_HRs$transition)
+# Boy_HRs$transition <- gsub('\\...', ' to ', Boy_HRs$transition)
+# Boy_HRs$transition <- gsub('\\..*', '', Boy_HRs$transition)
+# Boy_HRs$CI <- paste(Boy_HRs$L, Boy_HRs$U, sep = ', ')
+# addparens <- function(x){paste('(',x,')')}
+# Boy_HRs$CI <- addparens(Boy_HRs$CI)
+# Boy_HRs$HR <- paste(Boy_HRs$HR, Boy_HRs$CI, sep = ' ')
+# 
+# 
+# Boy_HRs <- Boy_HRs |> 
+#   select( - c( L, U, CI)) %>% 
+#   pivot_wider(names_from = c(transition), values_from = HR)
+# Boy_HRs['Covariate'][Boy_HRs['Covariate'] == 'ti_boys_hazard'] <- 'Thin Ideal Internalization [14]'
+# Boy_HRs['Covariate'][Boy_HRs['Covariate'] == 'fear_wt_boys_hazard'] <- 'Fear of Weight Gain [14]'
+# Boy_HRs['Covariate'][Boy_HRs['Covariate'] == 'bmi_boys_hazard'] <- 'BMI Z-score [13]'
+# 
+# 
+# Boy_HRs %>% 
+#   kbl(caption = 'Hazard Ratios for Transitions with Baseline Covariates - Boys', format = 'html')  %>% 
+#   kable_paper(full_width = T) 
+```
+
+```{r}
+# hr_2_boys <- hazard.msm(ex_group_boys_covs_2)
+# ti_boys_hazard_2 <-hr_2_boys[[1]]
+# bmi_boys_hazard_2<- hr_2_boys[[2]] 
+# fear_wt_boys_hazard_2 <- hr_2_boys[[3]] 
+# bd_boys_hazard <-hr_2_boys[[4]]
+# ses_boys_hazard <- hr_2_boys[[5]] 
+# 
+# 
+# dfnames <- c('fear_wt_boys_hazard_2', 'bmi_boys_hazard_2', 'ti_boys_hazard_2', 'bd_boys_hazard', 'ses_boys_hazard')
+# Boy_HRs_2 <- do.call(rbind, lapply(dfnames, function(x) cbind(get(x), Covariate=x))) |> 
+#   as.data.frame() |> 
+#   rownames_to_column(var = 'transition') %>% 
+#  mutate(HR = sprintf("%.2f", as.numeric(HR))) %>% 
+#  mutate(L = sprintf("%.2f", as.numeric(L))) %>% 
+#  mutate(U = sprintf("%.2f", as.numeric(U)))
+# 
+# Boy_HRs_2$transition <- gsub('\\No.', 'No ', Boy_HRs_2$transition)
+# Boy_HRs_2$transition <- gsub('\\...', ' to ', Boy_HRs_2$transition)
+# Boy_HRs_2$transition <- gsub('\\..*', '', Boy_HRs_2$transition)
+# Boy_HRs_2$CI <- paste(Boy_HRs_2$L, Boy_HRs_2$U, sep = ', ')
+# addparens <- function(x){paste('(',x,')')}
+# Boy_HRs_2$CI <- addparens(Boy_HRs_2$CI)
+# Boy_HRs_2$HR <- paste(Boy_HRs_2$HR, Boy_HRs_2$CI, sep = ' ')
+# 
+# 
+# Boy_HRs_2 <- Boy_HRs_2 |> 
+#   select( - c( L, U, CI)) %>% 
+#   pivot_wider(names_from = c(transition), values_from = HR)
+# Boy_HRs_2['Covariate'][Boy_HRs_2['Covariate'] == 'ti_boys_hazard_2'] <- 'Thin Ideal Internalization [14]'
+# Boy_HRs_2['Covariate'][Boy_HRs_2['Covariate'] == 'fear_wt_boys_hazard_2'] <- 'Fear of Weight Gain [14]'
+# Boy_HRs_2['Covariate'][Boy_HRs_2['Covariate'] == 'bmi_boys_hazard_2'] <- 'BMI Z-score [13]'
+# Boy_HRs_2['Covariate'][Boy_HRs_2['Covariate'] == 'bd_boys_hazard'] <- 'Body Satisfaction [14]'
+# Boy_HRs_2['Covariate'][Boy_HRs_2['Covariate'] == 'ses_boys_hazard'] <- 'Parent Occupation'
+
+# Boy_HRs_2 %>% 
+#   kbl(caption = 'Hazard Ratios for Transitions with Baseline Covariates and Constrained Transitions - Boys')  %>% 
+#   kable_paper(full_width = T) %>% 
+#   kable_styling(font_size = 13) %>% 
+#   column_spec(2, color = case_when(Boy_HRs_2$Covariate %in% c('BMI Z-score [13]') ~ 'blue', 
+#                               TRUE ~'black')) %>% 
+#   column_spec(3, color = case_when(Boy_HRs_2$Covariate %in% c('BMI Z-score [13]') ~ 'blue', 
+#                               TRUE ~'black')) %>% 
+#   column_spec(4, color = case_when(Boy_HRs_2$Covariate %in% c('BMI Z-score [13]') ~ 'red', 
+#                               TRUE ~'black')) %>% 
+#   column_spec(5, color = case_when(Boy_HRs_2$Covariate %in% c('BMI Z-score [13]') ~ 'blue', 
+#                               TRUE ~'black')) %>% 
+#   column_spec(7, color = case_when(Boy_HRs_2$Covariate %in% c('BMI Z-score [13]') ~ 'blue', 
+#                               TRUE ~'black'))
+
+```
+
+```{r imptab}
+library(dplyr)
+Imputation_Data <- tibble(Variable = c('Parent SES', 'BMI Z-score (13)', 'Thin-ideal Internalization Z-score (14)', 'Body Dissatisfaction Z-score (14)', 'Fear of Weight Gain (14)', 'Exercise for Weight Loss', 'Maladaptive  Exercise'), Data_Type = c('Ordinal', 'Continuous', 'Continuous', 'Continuous', 'Ordinal', 'Ordinal', 'Binary'), Method = c('PMM - Level 2', 'PMM - Level 2', 'PMM - Level 2', 'PMM - Level 2' , 'PMM - Level 2', '2-level PMM', '2-level Binary'))
+
+knitr::kable(Imputation_Data, caption = 'Imputation Data')
+```
+Note. PMM = 'Predictive Mean Matching'
+
+```{r predmat}
+load('data/glm_mice_girls/glm_mice_girls.Rdata')
+pred <- mi.res$predictorMatrix
+knitr::kable(pred, 
+             caption = 'Predictor Matrix for Multiple Imputation')
+```
+
+
+```{r pobs-girls}
+load('data/glm_mice_girls/glm_mice_girls.Rdata')
+pobs <- mice::flux(mi.res$data)[,1:3]
+pobs$`Percent Missing` <- 100 - round(pobs$pobs*100, 2)
+pobs <- pobs |> 
+  select (c(`Percent Missing`, influx, outflux)) |> 
+  round(2) |> 
+  rownames_to_column() |> 
+  rename('Variable' = rowname) |> 
+  rename('Influx' = influx) |> 
+  rename('Outflux' = outflux) |> 
+  filter(!(Variable %in% c('id', 'age_adjust', 'education_mum', 'education_partner')))
+
+pobs['Variable'][pobs['Variable'] == 'parent_highest_occupation'] <- 'Parent SES'
+pobs['Variable'][pobs['Variable'] == 'bmi_z_bestavail'] <- 'BMI Z - Age 13'
+pobs['Variable'][pobs['Variable'] == 'fear_wtgain_14'] <- 'Fear of Wt Gain - Age 14'
+pobs['Variable'][pobs['Variable'] == 'body_sat_mean_14_std'] <- 'Body Satisifaction - Age 14'
+pobs['Variable'][pobs['Variable'] == 'ti_mean_14_std'] <- 'Thin-ideal Internalization - Age 14'
+pobs['Variable'][pobs['Variable'] == 'driven_exercise'] <- 'Maladaptive Exercise'
+pobs['Variable'][pobs['Variable'] == 'exercise_wtloss'] <- 'Exercise for Weight Loss'
+
+knitr::kable(pobs, 
+             caption = 'Missing Data Prior to Imputation - Girls')
+```
+
+```{r pobs-boys}
+load('data/glm_mice_boys/glm_mice_boys.Rdata')
+pobs <- mice::flux(mi.res$data)[,1:3]
+pobs$`Percent Missing` <- 100 - round(pobs$pobs*100, 2)
+pobs <- pobs |> 
+  select (c(`Percent Missing`, influx, outflux)) |> 
+  round(2) |> 
+  rownames_to_column() |> 
+  rename('Variable' = rowname) |> 
+  rename('Influx' = influx) |> 
+  rename('Outflux' = outflux) |> 
+  filter(!(Variable %in% c('id', 'age_adjust', 'education_mum', 'education_partner')))
+
+pobs['Variable'][pobs['Variable'] == 'parent_highest_occupation'] <- 'Parent SES'
+pobs['Variable'][pobs['Variable'] == 'bmi_z_bestavail'] <- 'BMI Z - Age 13'
+pobs['Variable'][pobs['Variable'] == 'fear_wtgain_14'] <- 'Fear of Wt Gain - Age 14'
+pobs['Variable'][pobs['Variable'] == 'body_sat_mean_14_std'] <- 'Body Satisifaction - Age 14'
+pobs['Variable'][pobs['Variable'] == 'ti_mean_14_std'] <- 'Thin-ideal Internalization - Age 14'
+pobs['Variable'][pobs['Variable'] == 'driven_exercise'] <- 'Maladaptive Exercise'
+pobs['Variable'][pobs['Variable'] == 'exercise_wtloss'] <- 'Exercise for Weight Loss'
+
+knitr::kable(pobs, 
+             caption = 'Missing Data Prior to Imputation - Boys')
+
+```

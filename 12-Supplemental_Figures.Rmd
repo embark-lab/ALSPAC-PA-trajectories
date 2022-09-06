@@ -1,0 +1,95 @@
+# Supplemental Figures
+
+```{r}
+rm(list = ls())
+source("R/05-01-histogram-functions.R", local = knitr::knit_global())
+source("R/06-02-transition-plot.R", local = knitr::knit_global())
+load('data/ed_data.RData')
+load('models/transition_models')
+load('data/transition_data.RData')
+```
+
+
+```{r age24-raw-ewl, fig.cap = 'Age 24 raw Exercise for Weight Loss Percentages', out.width= '90%'}
+age_24_raw_ewl_plot <- hist_by_sex(demo_ed.f, exercise_wtloss_raw.24, 'Frequency of Exercise For Weight Loss Reported as Raw Data - Age 24')
+age_24_raw_ewl_plot
+```
+
+```{r ex-interfere, fig.cap = 'Endorsement of Exercise Interfering with Work, School or Daily Activities Across Age'}
+exercise_interfere_gf_df  <- pivot_longer(demo_ed, cols = c('exercise_interfere_present.14', 'exercise_interfere_present.16', 'exercise_interfere_present.18', 'exercise_interfere_present.24'), names_to = 'age', names_prefix = 'exercise_interfere_present.', values_to = 'exercise_interfere') 
+
+exercise_interfere_data <- frq_table_by_age_sex(exercise_interfere_gf_df, exercise_interfere)
+
+exercise_interfere_plot_1 <- ggplot(data = exercise_interfere_data, 
+                                    aes(x = sex, y = pct, fill = exercise_interfere, label = sprintf('%0.1f%%', pct*100))) + #set the aesthetic features, including the labels at one decimal place
+  geom_col(position = position_stack(reverse = TRUE)) + #add column graph, with male and female separated
+  scale_y_continuous(labels = scales::percent_format(), limits = c(0,1))+ #set the lower and upper limits of the y axis ( 0-100 percent); 
+  theme(legend.title = element_blank(), axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1), text = element_text(size = 15))+ #make legend text a bit bigger
+  labs(x = element_blank(), y = 'Percent (within gender)', title = 'Exercise Interference with Work, School, or Daily Activities Across Age') +
+  geom_text(aes(label = sprintf('%0.1f%%', pct*100)), position = position_stack(reverse = TRUE, vjust = 0.5)) + 
+  theme_classic()+
+  theme(legend.title = element_blank(), axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1), text = element_text(size = 15)) + #make legend text a bit bigger 
+  scale_fill_manual(values = wes_palette(name = 'GrandBudapest1', n = 2)) +
+  facet_wrap(~age) 
+
+exercise_interfere_plot_1
+```
+
+
+```{r ewl-plot, fig.cap = 'Exercise for Weight Loss Across Age - Girls', out.width= '90%'}
+ewl_data <- frq_table_by_age_sex(demo_ed.lf, exercise_wtloss)
+
+ewl_plot <- ggplot(data = ewl_data, 
+    aes(x = sex, y = pct, fill = exercise_wtloss, label = sprintf('%0.1f%%', pct*100))) + #set the aesthetic features, including the labels at one decimal place
+    geom_bar(position = position_stack(reverse = TRUE), stat = 'identity') + #add column graph, with male and female separated
+    scale_y_continuous(labels = scales::percent, limits = c(0,1))+ #set the lower and upper limits of the y axis ( 0-100 percent); 
+    theme(legend.title = element_blank(), axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1), text = element_text(size = 15))+ #make legend text a bit bigger
+    labs(x = element_blank(), y = 'Percent (within gender)', title = 'Exercise for Weight Loss Frequency Across Age') +
+     geom_text(aes(label = sprintf('%0.1f%%', pct*100)), position = position_stack(reverse = TRUE, vjust = 0.5), color = 'white', size = 2.5, fontface = 'bold') +
+    facet_wrap(~age) + 
+    theme_classic()+
+    theme(legend.title = element_blank(), axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1), text = element_text(size = 15)) + #make legend text a bit bigger 
+   scale_fill_manual(values = wes_palette(name = 'GrandBudapest1', n = 3 ))
+
+ewl_plot
+
+```
+
+
+```{r ex-issues, fig.cap = 'Endorsement of Exercise Issues Across Age'}
+
+exercise_issues_gf_df  <- pivot_longer(demo_ed.f, cols = c('exercise_issues.14', 'exercise_issues_gf.16', 'exercise_issues_gf.18', 'exercise_issues.24'), names_to = 'age', names_prefix = 'exercise_issues.', values_to = 'exercise_issues') %>% 
+  mutate(age = recode(age, 'gf.16' = '16', 'gf.18' = '18'))
+
+exercise_issues_data <- frq_table_by_age_sex(exercise_issues_gf_df, exercise_issues)
+
+exercise_issues_plot_1 <- ggplot(data = exercise_issues_data, 
+    aes(x = sex, y = pct, fill = exercise_issues, label = sprintf('%0.1f%%', pct*100))) + #set the aesthetic features, including the labels at one decimal place
+    geom_col(position = position_stack(reverse = TRUE)) + #add column graph, with male and female separated
+    scale_y_continuous(labels = scales::percent_format(), limits = c(0,1))+ #set the lower and upper limits of the y axis ( 0-100 percent); 
+    theme(legend.title = element_blank(), axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1), text = element_text(size = 15))+ #make legend text a bit bigger
+    labs(x = element_blank(), y = 'Percent (within gender)', title = 'Exercise Issues Across Age') +
+    geom_text(aes(label = sprintf('%0.1f%%', pct*100)), position = position_stack(reverse = TRUE, vjust = 0.5)) + 
+    theme_classic()+
+    theme(legend.title = element_blank(), axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1), text = element_text(size = 15)) + #make legend text a bit bigger 
+   scale_fill_manual(values = wes_palette(name = 'GrandBudapest1', n = 2 )) +
+    facet_wrap(~age) 
+
+
+exercise_issues_plot_1
+
+```
+
+
+```{r psm-plot-girls, fig.cap= 'Observed vs. Expected Exercise Group Membership Based on Transition Analysis - Girls' }
+plot_2_girls <- plot.prevalence.msm(ex_group_girls_2, mintime = 14, maxtime = 24, xlab = 'age', legend.pos = c(19, 90))
+
+```
+
+```{r psm-plot-boys, fig.cap= 'Observed vs. Expected Exercise Group Membership Based on Transition Analysis - Boys' }
+
+plot_2_boys <- plot.prevalence.msm(ex_group_boys_2, mintime = 14, maxtime = 24, xlab = 'age', legend.pos = c(19, 90))
+
+```
+
+

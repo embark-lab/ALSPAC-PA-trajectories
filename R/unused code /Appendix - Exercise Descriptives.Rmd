@@ -1,0 +1,98 @@
+
+
+Rates of exercise for weight loss are presented in the graph below:
+
+```{r}
+load('data/ed_data.RData')
+source('R/plot_by_age_sex.R')
+exercise_wtloss_df  <- pivot_longer(demo_ed, cols = c('exercise_wtloss.14', 'exercise_wtloss.16', 'exercise_wtloss.18', 'exercise_wtloss.24'), names_to = 'age', names_prefix = 'exercise_wtloss.', values_to = 'exercise_wtloss') 
+
+ewl_plot <- hist_by_age_sex(exercise_wtloss_df, exercise_wtloss, 'Exercise for Weight Loss Across Age')
+
+ewl_plot
+
+
+```
+
+By visual examination, it appears that females report exercise for weight loss more frequently across adolescent and young adult (AYA) development, though discrepancies in exercise for weight loss between males and females may be reduced at age 24 as compared to younger ages. Overall, rates of frequent exercise for weight loss appear to increase steadily from ages 14-18 amongst girls and stay roughly the same amongst boys. It appears that there may be an uptick in reporting of exercise for weight loss in general at age 24, though it is somewhet unclear whether this represents a true increase, given that response options for the question differ somewhat at this timepoint.
+
+**Categorizing 1-3x/mo as 'No exercise for weight loss' at Age 24, 1-4x/wk as sometimes, and 5x/wk or more as frequently**
+
+```{r, message = FALSE, warning = FALSE, out.width='75%'}
+exercise_wtloss_df_2  <- pivot_longer(demo_ed, cols = c('exercise_wtloss.14', 'exercise_wtloss.16', 'exercise_wtloss.18', 'exercise_wtloss_h1.24'), names_to = 'age', names_prefix = 'exercise_wtloss.', values_to = 'exercise_wtloss') %>% 
+  mutate(age = recode(age, 'h1.24' = '24'))
+
+ewl_plot_2 <- hist_by_age_sex(exercise_wtloss_df_2, exercise_wtloss, 'Exercise for Weight Loss Frequency \n - 1-3x/mo as *no* age 24')
+ewl_plot_2
+```
+
+Changing the categorization for 1-3x/mo to be 'no' instead of 'sometimes', with 1-4x/wk being 'sometimes' and \>1x/wk as 'frequently', the rates of exercise for weight loss endorsement at age 24 drop somewhat, remaining higher than ages 14-18 for males and settling at similar levels to ages 14-18 for females. Overall, it seems that exercise for weight loss endorsement increases for boys at age 24, relative to younger ages, regardless of how the variable is harmonized.
+
+**Analytic Decision 4.9.2022** : KS and NM discusssion
+
+Logically, 1-3x/mo seems to fit better in a 'Yes- sometimes' category as opposed to a 'No' category, and 1x/wk meets similar threshold to other diagnotic ; thus, \*\*additional anlyses requiring harmonization across age for this question will proceed with categorizing \<1x/mo as 'No', 1-3x/mo as 'Yes-sometimes', and 1x/wk or more as 'freqently at age 24\*
+
+(1) 1x/wk is a common threshold for diagnostic-level eating disorder symptoms
+(2) Frequency of exercise has demonstrated less predictive value than psychological components of exercise in defining eating disorder risk; thus, more conservative cutoffs for frequency may miss individuals engaging in maladaptive exercise or at ED risk
+
+Overall, it seems possible that the frequency of exercise for weight loss increases in young adulthood, relative to younger ages, due to reduced engagement in competitive sport during this time span and greater societal focus on exercise as a tool for weight management (as opposed to other benefits of exercise) in adulthood.
+
+### Exercise Issues
+
+As discussed earlier, two component symptoms of driven exercise were assessed at each time point. Participants reported whether exercise interfered with work, school or daily activities at each timepoint plus one other driven exercise syptom - either feeling guilty after missing an exercise session or exercising even when sick or injured. Together, these were defined as 'exercise related issues', and endorsement of exercise issues across age is presented below:
+
+```{r}
+exercise_issues_df <- pivot_longer(demo_ed, cols = c('exercise_issues.14', 'exercise_issues.16', 'exercise_issues.18', 'exercise_issues.24'), names_to = 'age', names_prefix = 'exercise_issues.', values_to = 'exercise_issues') 
+
+ex_issues_plot <- hist_by_age_sex(exercise_issues_df, exercise_issues, 'Exercise Issues across Age')
+ex_issues_plot
+```
+
+It appears that endorsement of exercise issues is slightly higher at ages 16 and 18 as compared to 14 and 24. It is unclear whether this is an accurate representation or whether it could be an artifact of slightly different questions at ages 14,24 and 16,18. To investigate this possibility, we examine just the question that is asked at all four time points - whether exercise interferes with work, school, or daily routine. The graph below presents the endorsement of exercise interfering with work, school, or daily routine across age.
+
+```{r}
+
+exercise_interfere_df <- pivot_longer(demo_ed, cols = starts_with('exercise_interfere_present'), names_to = 'age', names_prefix = 'exercise_interfere_present.', values_to = 'exercise_interfere') 
+ex_interfere_plot <- hist_by_age_sex(exercise_interfere_df, exercise_interfere, 'Exercise Interferes with Work/School/Daily Routine by Age')
+ex_interfere_plot
+```
+
+Consistent with data reported above, the age at which exercise is most likely to interfere is age 16; however, exercise interference at age 18 is lowest. Further, as only 10-15% of individuals report this symptom across ages, it appears that the majority of endorsment for exercise issues is arising from the second question -- at ages 16 and 18, experiencing guilt after missing an exercise session. Below we examine rates of exercise issues if a more stringent cutoff is identified -- i.e. individuals must report either exercise interfereing with work or school and/or guilt after missing an exercise question occurs **frequently** at ages 16 and 18.
+
+```{r, out.width='80%'}
+exercise_issues_gf_df  <- pivot_longer(demo_ed, cols = c('exercise_issues.14', 'exercise_issues_gf.16', 'exercise_issues_gf.18', 'exercise_issues.24'), names_to = 'age', names_prefix = 'exercise_issues.', values_to = 'exercise_issues') %>% 
+  mutate(age = recode(age, 'gf.16' = '16', 'gf.18' = '18'))
+
+ex_issues_gf_plot <- hist_by_age_sex(exercise_issues_gf_df, exercise_issues, 'Endorsement of exercise issues across age \n - Frequent guilt required at 16/18')
+ex_issues_gf_plot
+```
+
+Requiring guilt to be present freqently after missing an exercise session reduces endorsement of exercise issues at ages 16 and 18 to be more similar to rates at 14 and 24. Patterns here seem to reflect the pattern of exercise interfering with work, school, or daily routine across age; thus, analyses that require harmonization of exercise issues across age (i.e. defining groups reporting driven exercise) will require **exercise interfering with work/school OR frequent guilt at ages 16/18** and **exercise interfering with work/school/daily routine OR exercising even when sick/injured sometimes or more at ages 14/24**
+
+### Driven Exercise
+
+Driven exercise is defined as exercise for weight loss being present **sometimes** or **frequently** AND exercise issues being **present** at each age, as defined above. Overall, it seems that there is an increase in driven exercise at age 24, relative to prior ages.
+
+```{r}
+driven_exercise_df  <- pivot_longer(demo_ed, cols = c('driven_exercise.14', 'driven_exercise.16', 'driven_exercise.18', 'driven_exercise.24'), names_to = 'age', names_prefix = 'driven_exercise.', values_to = 'driven_exercise') 
+driven_exercise_plot <- hist_by_age_sex(driven_exercise_df, driven_exercise, 'Driven Exercise Across Age')
+driven_exercise_plot
+```
+
+In the below graph, we adjust the definition of driven exercise such that exercise for weight loss must occur **frequently** ('frequently' is self-defined at ages 14-18, and defined as 1x/wk or more at age 24). In this graph, it appears that this more strict definition of driven exercise results in substantially lower rates that are more consistent across age. In subsequent analyses, we will refer to this definition which requires frequent exercise for weight loss along with at least one issue related to exercise as 'strictly defined' driven exercise.
+
+```{r}
+driven_exercise_df_2  <- pivot_longer(demo_ed, cols = c('driven_exercise_2.14', 'driven_exercise_2.16', 'driven_exercise_2.18', 'driven_exercise_2.24'), names_to = 'age', names_prefix = 'driven_exercise_2.', values_to = 'driven_exercise_2') 
+
+driven_exercise_plot_2 <- hist_by_age_sex(driven_exercise_df_2, driven_exercise_2, 'Driven Exercise (strictly defined) Across Age')
+driven_exercise_plot_2
+```
+
+**Analytic Decision 4.9.2022** KS and NM Discussion: The primary driven exercise variable will be defined as exercising for weight loss **sometimes or frequently** and at least one **exercise issue** present at each time point. Decision factors: (1) frequency of exercise may be less important than cognitive features in defining exercise risk in the context of EDs (2) The nature of the epidemiological sample and the concomitant goals of our analyses are such that we are interested in identifying early risk indicators, which may be best captured via a broad definition
+
+**Analytic Decision 4.9.2022** KS and NM Discussion: Subsequent analyses will include models of two primary variables:
+
+(1) ordinal Exercise for Weight Loss (0 = No, 1 = Sometimes, 2 = Frequently)
+(2) dichotomous Driven Exercise (0 = Absent, 1 = Present)
+
+

@@ -1,0 +1,56 @@
+
+# Method
+
+## Sample - The ALSPAC Cohort
+
+
+The ALSPAC Cohort [@boydCohortProfileChildren2013; @fraserCohortProfileAvon2013] was established to understand how genetic and environmental characteristics influence health and development in parents and children. Ethical approval for this study was granted by the ALSPAC Law and Ethics Committee and Local Ethics Committees. All pregnant women living in the geographical area of Avon, United Kingdom, who were expected to deliver between April 1, 1991 and December 31, 1992, were invited to participate in the study. Children from 14,541 pregnancies were enrolled; 13,988 children were alive at 1 year. An additional 913 children were enrolled during subsequent phases of enrollment, with a total sample size alive at 1 year of 14,901. All women gave informed and written consent. Among twin pairs, one twin per pair was randomly excluded from the current study.
+
+A fully searchable ALSPAC data dictionary is available [here](http://www.bris.ac.uk/alspac/researchers/data-access/data-dictionary/).
+
+The sample size is defined for the current study as the number of individuals of each gender reporting exercise for weight loss data from ages 14-24 years. Sample size ranged from 3229 (age 18) to 5950 (age 14), with slightly more female than male participants responding at all time points. Across all time points, 3319 Male, 4360 Female, and 9 participants not reporting gender completed at least one assessment of exercise for weight loss (**Total N = 7688**). Participants reporting exercise for weight loss data at one or more time points were included in analyses. A graph of sample size at each age is presented in Figure \@ref(fig:SampleSize):
+
+```{r SampleSize, fig.cap= "Sample Size Across Age"}
+
+#The first chunk of code defines the table for evaluation
+
+exercise_wtloss_df  <- pivot_longer(demo_ed, cols = c('exercise_wtloss.14', 'exercise_wtloss.16', 'exercise_wtloss.18', 'exercise_wtloss.24'), names_to = 'age', names_prefix = 'exercise_wtloss.', values_to = 'exercise_wtloss') 
+
+ewl_ss1 <- exercise_wtloss_df %>% 
+  subset(!is.na(exercise_wtloss) & !is.na(sex)) %>% 
+  select(exercise_wtloss, sex, age) %>% 
+  mutate (exercise_wtloss = as_factor(exercise_wtloss)) %>% 
+  mutate (sex = as_factor(sex)) %>% 
+  group_by(sex, age) %>% 
+  summarise(sample_size = n()) %>% 
+  ungroup 
+ewl_ss2 <- ewl_ss1 %>% 
+  group_by(age) %>% 
+  summarise(sample_size = sum(sample_size)) %>% 
+  ungroup %>% 
+  add_column(sex = 'Combined')
+
+ewl_sample_size <- full_join(ewl_ss1, ewl_ss2)
+
+# Here, I also define the effective sample size of indivdiuals who report any time point
+exercise_wtloss_df_2 <- demo_ed.f %>% 
+  select(sex, exercise_wtloss.14, exercise_wtloss.16, exercise_wtloss.18, exercise_wtloss.24) %>% 
+  group_by(as_factor(sex)) %>% 
+  count(as_factor(sex)) 
+
+#This chunk of code creates the graph 
+ss_plot <- ggplot(data = ewl_sample_size, aes(x = age, y = sample_size, color = sex))+
+      geom_line(aes(group = sex)) +
+      geom_point(color = 'white', size = 5.5) + 
+      geom_point(size = 4) + 
+      labs (x = 'Age', y = element_blank(), title = 'Sample Size Reporting Exercise Data Across Age') +
+      scale_color_manual(values = c('Male' = 'darkgreen', 'Female' = 'orange', 'Combined' = 'purple'))+
+      geom_text(aes(y = sample_size, label = sample_size,
+              vjust = 2, color = 'black'), size = 3.5) +
+      scale_y_continuous(limits = c(500,8000)) +
+      theme_classic() +
+      theme (legend.title = element_blank(), text = element_text(size = 10)) 
+
+ss_plot
+```
+

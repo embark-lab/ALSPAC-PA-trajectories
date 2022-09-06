@@ -1,0 +1,107 @@
+
+## Measures
+
+### Socioeconomic Status (SES)
+
+Measures of parent occupation were obtained for both mother and partner during child gestation. Parental occupations were then classified as unskilled(0), partly skilled (1), skilled manual (2), skilled non-manual (3), manegerial and technical (4), or professional (5). Of reported parent occupations, the highest reported occupation was used as a proxy for parent SES, to be treated as a continuous (0-5) covariate in analyses.
+
+### Eating Disorder Cognitions
+
+Eating disorder cognitions were assessed when children were 14 years of age. Relevant variables for the current analyses included: body dissatisfaction, thin-ideal internalization, and fear of weight gain.
+
+#### Body Dissatisfaction
+
+```{r bd, include=FALSE}
+#Code for calculating Chronbach's Alpha amongst boys and girls for body dissatisfaction
+
+bd_girls <- c('body_sat_weight_14', 'body_sat_figure_14', 'body_sat_breasts_14',  'body_sat_stomach_14', 'body_sat_waist_14', 'body_sat_thighs_14', 'body_sat_buttocks_14', 'body_sat_hips_14', 'body_sat_legs_14', 'body_sat_hair_14')
+
+bd_boys <- c('body_sat_weight_14', 'body_sat_figure_14', 'body_sat_build_14',  'body_sat_stomach_14', 'body_sat_waist_14', 'body_sat_thighs_14', 'body_sat_buttocks_14', 'body_sat_hips_14', 'body_sat_legs_14', 'body_sat_hair_14')
+
+girl_bd_alpha <- demo_ed.f |> 
+  filter(sex == 1) |> 
+  select( all_of(bd_girls) )  |> 
+  performance::cronbachs_alpha() %>% 
+  round(3)
+
+boy_bd_alpha <- demo_ed.f |> 
+  filter(sex == 0) |> 
+  select( all_of(bd_boys ))|> 
+  performance::cronbachs_alpha() %>% 
+  round(3)
+```
+
+Body Dissatisfaction was assessed via an 11-item scale adapted from the satisfaction and dissatisfaction with body parts scale [@sticeProspectiveTestDualpathway2001], which has been used in several previous studies involving the ALSPAC Cohort [@bornioliAdolescentBodyDissatisfaction2019; @bornioliBodyDissatisfactionPredicts2021; @schaumbergAnxietyDisorderSymptoms2019; @schaumbergProspectiveAssociationsChildhood2021]. Among the 11 items, one item differs between the sexes (satisfaction with 'breasts' is specified for girls and 'build' for boys). Two items address overall body satisfaction with weight and figure, and the remaining items evaluate satisfaction with specific body parts. Responses are graded on a 5 point likert scale from "Extremely Satisfied" (1) to "Extremely Dissatisfied" (5). Reliability was high in both girls (Cronbach's $\alpha$ = `r girl_bd_alpha`) and boys (Cronbach's $\alpha$ = `r boy_bd_alpha`)  In the current study, body dissatisfaction was scored using the mean of all 11 items, with higher scores indicating greater body dissatisfaction, which was standardized within gender prior to analyses.
+
+#### Thin-ideal Internalization
+
+```{r ti, include=FALSE}
+#Code for calculating Chronbach's Alpha amongst boys and girls for thin-ideal internalization
+
+ti_girls <- c('ti_thin_f_14', 'ti_lean_f_14', 'ti_tall_f_14', 'ti_longlegs_f_14',  'ti_shapely_f_14', 'ti_petite_f_14')
+girl_ti_alpha <- demo_ed.f |> 
+  filter(sex == 1) |> 
+  select( ti_girls ) |> 
+  performance::cronbachs_alpha() %>% 
+  round(3)
+
+ti_boys <- c('ti_thin_m_14', 'ti_lean_m_14',  'ti_tall_m_14', 'ti_shape_m_14','ti_muscles_m_14', 'ti_bodybuild_m_14')
+boy_ti_alpha <- demo_ed.f |> 
+  filter(sex == 0) |> 
+  select( ti_boys )|> 
+  performance::cronbachs_alpha() %>% 
+  round(3)
+
+```
+
+Thin-ideal internalization was assessed using the Ideal-Body Stereotype Scale-Revised (IBSS-R) [@sticeTestDualPathway1996] Girls and boys were both asked six questions, three of which were the same and three of which were gender-specific, assessing the perceived attractiveness of same-sex individuals based on physical characteristics (e.g. being 'lean', 'tall', 'petite'). Items are rated on a 5-point likert scale ranging from 'Strongly Disagree' (0) to 'Strongly Agree' (4). (Cronbach's $\alpha$ = `r girl_ti_alpha` for girls; `r boy_ti_alpha` for boys) [@calzoSexualOrientationDisparities2018]. As with body dissatisfaction, the mean of all items was calculated, which was then standardized within gender prior to analysis.
+
+#### Fear of Weight Gain
+
+Fear of weight gain was assessed via a single item asking the degree to which participants have worried about gaining a little weight, using a likert response scale (0=not at all, 1=a little, 2=a lot, and 3=all the time). 
+
+### Body Mass Index Z-score (BMI-Z) at Age 13
+
+```{r bmi, include = FALSE}
+clinic <- sum(!is.na(demo_ed.f$bmi_clinic.13))
+no_clinic <- sum(is.na(demo_ed.f$bmi_clinic.13))
+best_avail <- sum(!is.na(demo_ed.f$bmi_bestavail.13))
+
+missing_n <- 7688- best_avail
+pr_n <- best_avail-clinic
+missing_percent <- round ((7688 - best_avail)/7688*100 , 2)
+clinic_percent <-  round ((clinic)/7688*100, 2)
+pr_percent <- round((best_avail-clinic)/7688*100, 2)
+
+```
+
+Child BMI-Z was assessed via two indices at age 13 years. First, objective height and weight were obtained for those who completed a clinic visit at age 13 (median age at clinic visit = 13.8 years). Second, parents reported child height and weight via questionnaire (median age = 13.1). An age and sex adjusted BMI-Z score was obtained from these self-report and clinic-recorded measurments. In order to maximize accuracy, when clinic-obtained measurements were obtained, this BMI-Z score was used (n = `r clinic`; `r clinic_percent`%). BMI-Z from parent report was used when clinic measurement was not available (n = `r pr_n`; `r pr_percent`%). A portion of the sample had neither measurement available (n = `r missing_n`; `r missing_percent`%)
+
+### Exercise Measures
+
+Questions related to maladaptive exercise were self-reported at ages 14, 16, 18, and 24 years. Questions were adapted from the Youth Risk Behavior Survelliance System [@kannYouthRiskBehavior1995].
+
+#### Exercise for Weight Loss
+
+At ages 14, 16, and 18 years, participants were asked if they exercised to lose weight or avoid gaining weight, with response options of: No(0), Yes-Sometimes(1), and Yes-Frequently(2).
+
+At age 24, participants were asked the frequency with which they exercised to lose weight or avoid gaining weight, with response options of: Never, \<1x/mo, 1-3x/mo, 1-4x/wk, and 5 or more times per week. For the purposes of analysis, responses at age 24 were harmonized with age 14, 16, and 18. Responses of Never were binned as "No" (0); 1x/mo - <1x/week were binned as 'Yes - Sometimes'(1), and 1x/wk or more as 'Yes - Frequently'(2). Once a week or more was chosen as the threshold for 'frequent' exercise for weight loss at age 24 to align with DSM-V diagnostic frequency thresholds for other eating disorder behaviors, such as binge eating and purging [@americanpsychiatricassociationDiagnosticStatisticalManual2013]. The primary derived outcome variable of analysis for exercise for weight loss is an ordinal variable, defined as 0 = No, 1 = Sometimes, and 2 = Frequently. 
+
+#### Maladaptive Exercise
+
+Issues that are associated with exercise were also reported at ages 14,16, 18, and 24 years. At all assessment points, participants reported whether exercise interferes with work/school (14,16,18), or their daily routine (24). At ages 14 and 24, participants also reported whether they exercised to lose weight even when sick or injured. At ages 16 and 18 years, participants reported whether they felt guilty about missing an exercise session -- see Table \@ref(tab:tab2) .  Responses options for exercise issues were 'No', 'yes - Sometimes', or 'Yes - Frequently'. 
+
+```{r tab2}
+x <- tibble(age = c(14,16,18,24), Interferes = c('x','x','x','x'), Sick_Injured = c('x',' ',' ', 'x'), Guilt = c('' ,'x','x', '')) 
+
+knitr::kable(x, caption = 'Exercise Issues Assessed at Each Age')
+```
+
+Exercise issues are deemmed to be 'present' at each time point if an individual endorses: (1) exercise interfering with work/school sometimes or more OR frequent guilt when missing an exercise session at ages 16 and 18 years and (2) exercise interfering with work/school/daily routine sometimes or more OR exercising even when sick/injured sometimes or more at ages 14 and 24 years. 
+
+The presence of maladaptive exercise in this study was defined as exercising for weight loss **sometimes or frequently** and at least one **exercise issue** defined as  present at each time point. Frequency of exercise for weight loss as sometimes or more was chosen for this definition as (1) existing literature suggests that frequency of exercise may be less important than cognitive features in defining exercise risk in the context of eating disorders [@adkinsDoesExcessiveCompulsive2005; @mondUpdateDefinitionExcessive2006] and (2) the nature of the epidemiological sample and the concomitant goals of this paper are such that we are interested in identifying early risk indicators, which may be best captured via a broad (vs. narrow) definition of maladaptive exercise. The primary variable to define maladaptive exercise was derived as described, resulting in a dichotomous outcome (0 = Absent, 1 = Present). 
+
+
+#### Exercise Gropus
+
+Exericse groups over time are defined for descriptive analyses and transition states, replicating groups defined in @schaumbergProspectiveAssociationsDriven2022. Those who report no exericse for weight loss at each time point are placed in a 'No Exercise for Weight Loss' group, those who report exercise for weight loss at least sometimes, but do not meet criteria for maladaptive exercise are placed in an 'Exercise for Weight Loss' group, and those meeting maladaptive exercise criteria are placed in the 'Maladaptive Exercise' group.

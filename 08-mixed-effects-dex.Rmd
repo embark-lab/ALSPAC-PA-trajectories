@@ -1,0 +1,153 @@
+## Mixed Effects Models - Maladaptive Exercise over Time
+
+Mixed effects logistic regression models examined changes in maladaptive exercise across age, along with predictors baseline (age 14) predictors of this behavior and interactions between baseline predictors and the linear effect of age.
+
+### Girls
+
+Results for girls are reported in \@ref(tab:dex-models-girls). Model comparisons (presented in Table \@ref(tab:mcomp-dex-girls) ), indicated that the most complex (Step 3) model which included all predictors and Age x Predictor interactions fit best. In the baseline model, a substantial portion of girls (~13%) reported maladaptive exercise. Baseline levels of maladaptive exercise at age 14 were included as a random effect in subsequent models. In the model including only age as a predictor, age was a significant predictor, with effect sizes indicating a small but relevant linear increase in maladaptive exercise risk each year. In the model including parent SES and BMI at age 13 as predictors, BMI Z-score at age 13 predicted higher levels of maladaptive exercise overall amongst girls, with a one standard deviation in BMI increasing odds ($OR = 1.35$) of maladaptive exercise. When ED cognitions were introduced into the model (Step 2 Covariates), BMI Z-score remained a significant predictor of maladaptive exercise, though its effect size decreased in magnitude. Fear of weight gain at age 14 also emerged as a significant predictor. In the final model that included Age x Predictor interactions (Step 3 Covariates), Age, Age 13 BMI-Z, and Fear of Weight Gain remained significant predictors, and thin-ideal internalization at age 14 also reached significance. In this model, increase of 1-unit in fear of weight gain (e.g. increasing from 'Not at All' afraid of weight gain, the median response, to 'A Little' afraid of weight gain) was associated with odds of maladaptive exercise over adolescent and young adulthood increasing by 80%, while a one standard deviation increase in thin-ideal internalization mean was associated with a modest (14%) increase in odds of maladaptive exercise. 
+
+
+```{r dex-models-girls}
+
+rm(list = ls())
+load('models/Girl_models_DEx_Output')
+
+dfnames <- c("bl_0_dex_girls_ORs", "age_1_dex_girls_ORs", 'covs_2_dex_girls_ORs', 'covs_3_dex_girls_ORs', 'covs_4_dex_girls_ORs')
+pooled_coefs <- do.call(rbind, lapply(dfnames, function(x) cbind(get(x), Model=x))) |> 
+  relocate(Model) %>% 
+  select(-c(p.value, statistic, df, `2.5 %`, `97.5 %`))
+
+for (i in 3:ncol(pooled_coefs) ) {
+  pooled_coefs[i] <- round(pooled_coefs[i], digits = 3)
+}
+
+pooled_coefs['Model'][pooled_coefs['Model'] == 'bl_0_dex_girls_ORs'] <- 'Baseline Model'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'age_1_dex_girls_ORs'] <- 'Age Effect Model'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'covs_2_dex_girls_ORs'] <- 'Step 1 Covariates'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'covs_3_dex_girls_ORs'] <- 'Step 2 Covariates'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'covs_4_dex_girls_ORs'] <- 'Step 3 Age x Cov Interactions'
+
+pooled_coefs <- pooled_coefs |> mutate(term = as.character(term))
+pooled_coefs['term'][pooled_coefs['term'] == 'parent_highest_occupation'] <- 'Parent SES'
+pooled_coefs['term'][pooled_coefs['term'] == 'bmi_z_bestavail'] <- 'BMI Z - Age 13'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust'] <- 'Age'
+pooled_coefs['term'][pooled_coefs['term'] == 'fear_wtgain_14'] <- 'Fear of Wt Gain - Age 14'
+pooled_coefs['term'][pooled_coefs['term'] == 'body_sat_mean_14_std'] <- 'Body Dissatisifaction - Age 14'
+pooled_coefs['term'][pooled_coefs['term'] == 'ti_mean_14_std'] <- 'Thin-ideal Internalization - Age 14'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:bmi_z_bestavail'] <- 'Age x BMI (13)'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:fear_wtgain_14'] <- 'Age x Fear of Wt Gain (14)'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:body_sat_mean_14_std'] <- 'Age x Body Satisfaction (14)'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:ti_mean_14_std'] <- 'Age x Thin-Ideal Internalization (14)'
+
+est_color <- function (df) {
+  if (pooled_coefs$term[i] != '(Intercept)') {
+  column_spec(df, 3, color = ifelse(pooled_coefs$estimate > 1, "blue", "red"))}
+  else{
+  column_spec(df, column = 3, color = 'black')}}
+
+kable(pooled_coefs,
+  caption = 'Parameter Estimates for Models Predicting Maladaptive Exercise in Girls') %>% 
+  row_spec(row = c(2:3, 8:14), background = '#E0E0E0') %>% 
+  column_spec(2:3, color = case_when(pooled_coefs$term != '(Intercept)' & pooled_coefs$`0.25 %` > 1  ~ "blue",
+                                   pooled_coefs$term != '(Intercept)' & pooled_coefs$`99.75 %`< 1  ~ "red",
+                                   pooled_coefs$term == '(Intercept)' & pooled_coefs$`0.25 %`> 0 ~ "blue",
+                                   pooled_coefs$term == '(Intercept)' & pooled_coefs$`99.75 %`< 0  ~ "red",
+                                   TRUE ~ 'black')) |>
+  kable_paper(full_width = T)
+
+```
+
+```{r mcomp-dex-girls}
+#Results Table - Model Comparisons
+
+model_comparisons <- c('mcomp_1', 'mcomp_2', 'mcomp_3', 'mcomp_4')
+
+n = list() 
+for (i in model_comparisons) { 
+  x<- as.list((eval(ensym(i))[2])) 
+  x<- data.frame(t(unlist(x)))
+  colnames(x) = c('statistic', 'df1', 'df2', 'p.value','riv')
+  n[[i]] = x
+}
+pooled_coefs_2 <- do.call('rbind', n) 
+
+rownames(pooled_coefs_2) <- c('Baseline vs. Age Effects', 'Age vs. Step 1 Covs', 'Step 1 Covs vs. Step 2 Covs', 'Step 2 Covs vs. Step 3 Age x Cov Interactions')
+
+knitr::kable(pooled_coefs_2, 
+             caption = 'Table 2: Model Comparisons - Maladaptive Exercise in Girls', digits = 3) 
+
+
+```
+
+### Boys
+
+Models for boys are presented in Table \@ref(tab:dex-coefs-boys), with model comparisons presented in Table \@ref(tab:mcomp-dex-boys). For boys, the introduction of age, baseline covariates, and baseline ED predictors resulted in improved model fit, though there was not an improved model fit via age x predictor interactions. Boys showed low initial variability in maladaptive exercise endorsement, however, there was a significant effect of age, such that maladaptive exercise endoresment was more common as boys got older (odds increasing at ~10% per year). When including parent SES and Age 13 BMI in the model, age 13 BMI was again a significant predictor of maladaptive exercise engagement, with odds of maladaptive exercise increasing 89% with a one standard deviation increase in BMI. When baseline ED cognitions were entered into the model, fear of weight gain was the only additional significant predictor of maladaptive exercise, with similar increase in odds as compared to girls, as fear of weight gain increased.
+
+
+```{r dex-coefs-boys}
+rm(list = ls())
+load('models/Boy_models_DEx_Output')
+
+dfnames <- c("bl_0_dex_boys_ORs", "age_1_dex_boys_ORs", 'covs_2_dex_boys_ORs', 'covs_3_dex_boys_ORs', 'covs_4_dex_boys_ORs')
+pooled_coefs <- do.call(rbind, lapply(dfnames, function(x) cbind(get(x), Model=x))) |> 
+  relocate(Model) %>% 
+  select(-c(p.value, statistic, df, `2.5 %`, `97.5 %`))
+
+for (i in 3:ncol(pooled_coefs) ) {
+  pooled_coefs[i] <- round(pooled_coefs[i], digits = 3)
+}
+
+pooled_coefs['Model'][pooled_coefs['Model'] == 'bl_0_dex_boys_ORs'] <- 'Baseline Model'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'age_1_dex_boys_ORs'] <- 'Age Effect Model'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'covs_2_dex_boys_ORs'] <- 'Step 1 Covariates'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'covs_3_dex_boys_ORs'] <- 'Step 2 Covariates'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'covs_4_dex_boys_ORs'] <- 'Step 3 Age x Cov Interactions'
+
+pooled_coefs <- pooled_coefs |> mutate(term = as.character(term))
+pooled_coefs['term'][pooled_coefs['term'] == 'parent_highest_occupation'] <- 'Parent SES'
+pooled_coefs['term'][pooled_coefs['term'] == 'bmi_z_bestavail'] <- 'BMI Z - Age 13'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust'] <- 'Age'
+pooled_coefs['term'][pooled_coefs['term'] == 'fear_wtgain_14'] <- 'Fear of Wt Gain - Age 14'
+pooled_coefs['term'][pooled_coefs['term'] == 'body_sat_mean_14_std'] <- 'Body Dissatisifaction - Age 14'
+pooled_coefs['term'][pooled_coefs['term'] == 'ti_mean_14_std'] <- 'Thin-ideal Internalization - Age 14'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:bmi_z_bestavail'] <- 'Age x BMI (13)'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:fear_wtgain_14'] <- 'Age x Fear of Wt Gain (14)'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:body_sat_mean_14_std'] <- 'Age x Body Satisfaction (14)'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:ti_mean_14_std'] <- 'Age x Thin-Ideal Internalization (14)'
+
+
+knitr::kable(pooled_coefs,
+  caption = 'Table 1: Parameter Estimates for Models Predicting Maladaptive Exercise in Boys') %>% 
+  row_spec(c(2:3, 8:14), background = '#E0E0E0') %>% 
+  column_spec(2:3, color = case_when(pooled_coefs$term != '(Intercept)' & pooled_coefs$`0.25 %` > 1  ~ "blue",
+                                   pooled_coefs$term != '(Intercept)' & pooled_coefs$`99.75 %`< 1  ~ "red",
+                                   pooled_coefs$term == '(Intercept)' & pooled_coefs$`0.25 %`> 0 ~ "blue",
+                                   pooled_coefs$term == '(Intercept)' & pooled_coefs$`99.75 %`< 0  ~ "red",
+                                   TRUE ~ 'black')) |>
+  kable_paper(full_width = T)
+
+```
+
+
+
+```{r mcomp-dex-boys}
+#Results Table - Model Comparisons
+
+model_comparisons <- c('mcomp_1', 'mcomp_2', 'mcomp_3', 'mcomp_4')
+
+n = list() 
+for (i in model_comparisons) { 
+  x<- as.list((eval(ensym(i))[2])) 
+  x<- data.frame(t(unlist(x)))
+  colnames(x) = c('statistic', 'df1', 'df2', 'p.value','riv')
+  n[[i]] = x
+}
+pooled_coefs_2 <- do.call('rbind', n) 
+
+rownames(pooled_coefs_2) <- c('Baseline vs. Age Effects', 'Age vs. Step 1 Covs', 'Step 1 Covs vs. Step 2 Covs', 'Step 2 Covs vs. Step 3 Age x Cov Interactions')
+
+knitr::kable(pooled_coefs_2, 
+             caption = 'Model Comparisons - Maladaptive Exercise in Boys', digits = 3) 
+
+```
+

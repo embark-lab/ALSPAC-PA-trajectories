@@ -1,0 +1,116 @@
+
+## Mixed-Effect Models - Exercise for Weight Loss
+
+The same multilevel modeling approach was used to examine endorsement of EWL over time in the sample, substituting a cummulative-link modeling approach to accommodate the ordinal outcome of EWL frequency.To compare models with imputed datasets with ordinal outcomes implemented in R, we estimated the improvement in fit of models by examining the mean AIC of all 20 models for imputed data, along with the mean difference in log liklihood when comparing all nested models on all iterations of imputed datasets. Summary statistics for model comparisons are presented in Table \@ref(tab:ewl-mcomp-girls) for Girls and Table \@ref(tab:ewl-mcomp-boys) for boys
+
+### Girls
+
+Overall, the most complex model (including Age x Predictor interactions) was identified as the best model fit for girls, both in terms of the median -2 log likelihood difference comparison as well as via the lowest AIC. 
+
+```{r ewl-mcomp-girls}
+load('models/ewl_mcomp_tables.Rdata')
+knitr::kable(girls_mcomp_table,
+             caption = "Model Comparison Table for Exercise for Weight Loss - Girls")
+```
+
+With regards to specific predictors, age, parent SES, BMI at age 13, thin-ideal internalization, and fear of weight gain all emerged as significant, positive predictors of exercise for weight loss frequency (see Table \@ref(tab:ewl-coefs-girls) for coefficients). Body dissatisfaction was the only ED cognition variable that did not significantly predict exercise for weight loss amongst girls. Once Age x Covariate interactions were entered into the model, body dissatisfaction did emerge as a significant predictor, along with an interaction between body dissatisfaction and age, as well as an interaction between fear of weight gain and age. In this instance, while higher levels of body dissatisfaction at age 14 were, overall, associated with increased frequency of exercise for weight loss, this association attenuated across age. Similarly, the fear of weight gain by age interaction suggests a similar pattern, with overall, a strong association between increased fear of weight gain at age 14 and exercise for weight loss during adolescence and young adulthood, the relationship between 14-year-old fear of weight gain and exercise for weight loss frequency is not as pronounced at later ages. 
+
+```{r ewl-coefs-girls}
+
+load('models/Girl_models_EWL_Output')
+
+dfnames <- c('age_1_EWL_girls_ORs', 'covs_2_EWL_girls_ORs', 'covs_3_EWL_girls_ORs', 'covs_4_EWL_girls_ORs')
+pooled_coefs <- do.call(rbind, lapply(dfnames, function(x) cbind(get(x), Model=x))) |> 
+  relocate(Model) %>% 
+  select(-c(p.value, statistic, df, `2.5 %`, `97.5 %`, `0.25 %`, `99.75 %`, std.error, estimate))
+
+for (i in 3:ncol(pooled_coefs) ) {
+  pooled_coefs[i] <- round(pooled_coefs[i], digits = 3)
+}
+
+pooled_coefs['Model'][pooled_coefs['Model'] == 'age_1_EWL_girls_ORs'] <- 'Age Effect Model'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'covs_2_EWL_girls_ORs'] <- 'Step 1 Covariates'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'covs_3_EWL_girls_ORs'] <- 'Step 2 Covariates'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'covs_4_EWL_girls_ORs'] <- 'Step 3 Age x Cov Interactions'
+
+pooled_coefs <- pooled_coefs |> mutate(term = as.character(term))
+pooled_coefs['term'][pooled_coefs['term'] == 'parent_highest_occupation'] <- 'Parent SES'
+pooled_coefs['term'][pooled_coefs['term'] == 'bmi_z_bestavail'] <- 'BMI Z - Age 13'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust'] <- 'Age'
+pooled_coefs['term'][pooled_coefs['term'] == 'fear_wtgain_14'] <- 'Fear of Wt Gain - Age 14'
+pooled_coefs['term'][pooled_coefs['term'] == 'body_sat_mean_14_std'] <- 'Body Dissatisifaction - Age 14'
+pooled_coefs['term'][pooled_coefs['term'] == 'ti_mean_14_std'] <- 'Thin-ideal Internalization - Age 14'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:bmi_z_bestavail'] <- 'Age x BMI (13)'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:fear_wtgain_14'] <- 'Age x Fear of Wt Gain (14)'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:body_sat_mean_14_std'] <- 'Age x Body Satisfaction (14)'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:ti_mean_14_std'] <- 'Age x Thin-Ideal Internalization (14)'
+
+
+pooled_coefs_ewl_girls <- pooled_coefs|> 
+  kbl(caption = 'Table 1: Parameter Estimates for Models Predicting Exercise for Weight Loss in Girls') %>% 
+  row_spec(c(4:8, 17:28), background = '#E0E0E0') %>% 
+  column_spec(2:3, color = case_when(pooled_coefs$`OR LCI` > 1  ~ "blue",
+                                   pooled_coefs$`OR HCI`< 1  ~ "red", 
+                                   TRUE ~ 'black')) |> 
+  kable_paper(full_width = T)
+
+pooled_coefs_ewl_girls
+
+```
+
+
+### Boys
+
+For boys, again, the Step 3 model including all covariates and Age x Covariate interactions appeared to provide the most optimal model fit. 
+
+```{r ewl-mcomp-boys}
+load('models/ewl_mcomp_tables.Rdata')
+knitr::kable(boys_mcomp_table,
+             caption = "Model Comparison Table for Exercise for Weight Loss - Boys")
+```
+
+Specific Parameters and coefficients are presented in Table \@ref(tab:ewl-coefs-boys). Amongst boys, associations between ED cognitions and exercise for weight loss were more limited. age, BMI at age 13, and fear of weight gain all appeared to be robust predictors of exercise for weight loss. Odds of exercise for weight loss increased modestly for each year of age, with pronounced increases in exercise for weight loss as BMI z-score at age 13 and fear of weight gain at age 14 increased. As with girls, there was a significant interaction between age and fear of weight gain at age 14 in prediction of exercise for weight loss, with fear of weight gain showing greater predictive power at younger (more proximal) ages.
+
+```{r ewl-coefs-boys}
+
+load('models/boy_models_EWL_output')
+
+dfnames <- c('age_1_EWL_boys_ORs', 'covs_2_EWL_boys_ORs', 'covs_3_EWL_boys_ORs', 'covs_4_EWL_boys_ORs')
+pooled_coefs <- do.call(rbind, lapply(dfnames, function(x) cbind(get(x), Model=x))) |> 
+  relocate(Model) %>% 
+  select(-c(p.value, statistic, df, `2.5 %`, `97.5 %`, `0.25 %`, `99.75 %`, std.error, estimate))
+
+for (i in 3:ncol(pooled_coefs) ) {
+  pooled_coefs[i] <- round(pooled_coefs[i], digits = 3)
+}
+
+pooled_coefs['Model'][pooled_coefs['Model'] == 'age_1_EWL_boys_ORs'] <- 'Age Effect Model'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'covs_2_EWL_boys_ORs'] <- 'Step 1 Covariates'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'covs_3_EWL_boys_ORs'] <- 'Step 2 Covariates'
+pooled_coefs['Model'][pooled_coefs['Model'] == 'covs_4_EWL_boys_ORs'] <- 'Step 3 Age x Cov Interactions'
+
+pooled_coefs <- pooled_coefs |> mutate(term = as.character(term))
+pooled_coefs['term'][pooled_coefs['term'] == 'parent_highest_occupation'] <- 'Parent SES'
+pooled_coefs['term'][pooled_coefs['term'] == 'bmi_z_bestavail'] <- 'BMI Z - Age 13'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust'] <- 'Age'
+pooled_coefs['term'][pooled_coefs['term'] == 'fear_wtgain_14'] <- 'Fear of Wt Gain - Age 14'
+pooled_coefs['term'][pooled_coefs['term'] == 'body_sat_mean_14_std'] <- 'Body Satisifaction - Age 14'
+pooled_coefs['term'][pooled_coefs['term'] == 'ti_mean_14_std'] <- 'Thin-ideal Internalization - Age 14'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:bmi_z_bestavail'] <- 'Age x BMI (13)'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:fear_wtgain_14'] <- 'Age x Fear of Wt Gain (14)'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:body_sat_mean_14_std'] <- 'Age x Body Satisfaction (14)'
+pooled_coefs['term'][pooled_coefs['term'] == 'age_adjust:ti_mean_14_std'] <- 'Age x Thin-Ideal Internalization (14)'
+
+
+pooled_coefs_ewl_boys <- pooled_coefs|> 
+  kbl(caption = 'Table 1: Parameter Estimates for Models Predicting Exercise for Weight Loss in Boys') %>% 
+  row_spec(c(4:8, 17:28), background = '#E0E0E0') %>% 
+  column_spec(2:3, color = case_when(pooled_coefs$`OR LCI` > 1  ~ "blue",
+                                   pooled_coefs$`OR HCI`< 1  ~ "red", 
+                                   TRUE ~ 'black')) |> 
+  kable_paper(full_width = T)
+
+pooled_coefs_ewl_boys
+
+```
+

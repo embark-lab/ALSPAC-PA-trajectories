@@ -1,6 +1,6 @@
 --- 
-title: "Patterns of Maladaptive Exercise Behavior from ages 14-24 in a Longitudinal Cohort"
-shorttitle: 'ALSPAC Driven Exercise'
+title: "Associations between Physical Activity Trajectories in Childhood and Driven Exercise in Adolescence in the ALSPAC Cohort"
+shorttitle: 'ALSPAC PA Trajectories'
 author: 
 - name: "Katherine Schaumberg"
   affiliation : '1'
@@ -13,7 +13,7 @@ author:
 date: "`r Sys.Date()`"
 documentclass: 'apa6'
 site: bookdown::bookdown_site
-bibliography: [DEx_ALSPAC.bib, packages.bib]
+bibliography: [PA_trajectories.bib, packages.bib]
 biblio-style: apa
 link-citations: yes
 github-repo: kschaumb/alspac-dex-bookdown
@@ -57,6 +57,11 @@ library(mitml)
 library(kableExtra)
 source("R/05-01-histogram-functions.R", local = knitr::knit_global())
 source("R/06-02-transition-plot.R", local = knitr::knit_global())
-load('data/ed_data.RData')
+
 ```
 
+max was here
+lauren was here <3
+This is the introduction to the Physical Activites trajectory paper. 
+
+Katherine is making a citation here [@schaumbergAnxietyDisorderSymptoms2018]

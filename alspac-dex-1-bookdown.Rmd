@@ -17,11 +17,8 @@ bibliography: [PA_trajectories.bib, packages.bib]
 biblio-style: apa
 link-citations: yes
 github-repo: kschaumb/alspac-dex-bookdown
-description: "This is a bookdown for ALSPAC Longitudinal DEx analyses"
+description: "This is a bookdown for ALSPAC PA trajectories Paper"
 resource_files: 
- -data/ed_data.RData
- -R/05-01-histogram-functions.R
- -R/06-02-transition-plot.R
 output: bookdown::gitbook
 
 ---
@@ -30,199 +27,207 @@ output: bookdown::gitbook
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
 library(dplyr)
-library(wesanderson)
-library(ordinal)
 library(tidyr)
 library(tibble)
 library(ggplot2)
 library(haven)
 library(usethis)
 library(stringr)
-library(ggalluvial)
-library(ggthemes)
 library(rlang)
-library(viridis)
-library(lme4)
-library(flexplot)
-library(jtools)
-library(docxtools)
-library(msm)
-library(mice)
-library(datawizard)
-library(miceadds)
 library(purrr)
 library(labelled)
-library(broom.mixed)
-library(mitml)
-library(kableExtra)
-source("R/05-01-histogram-functions.R", local = knitr::knit_global())
-source("R/06-02-transition-plot.R", local = knitr::knit_global())
+
 
 ```
 
-max was here
-lauren was here <3
-This is the introduction to the Physical Activites trajectory paper. 
-
-Katherine is making a citation here [@schaumbergAnxietyDisorderSymptoms2018]
-
 <!--chapter:end:index.Rmd-->
-
 
 # Introduction
 
-Placeholder
-
-
-## Current Study
-## Study Aims {#aims}
 
 <!--chapter:end:01-Introduction.Rmd-->
 
 
 # Method
 
-Placeholder
-
-
 ## Sample - The ALSPAC Cohort
+
+
+The ALSPAC Cohort [@boydCohortProfileChildren2013; @fraserCohortProfileAvon2013] was established to understand how genetic and environmental characteristics influence health and development in parents and children. Ethical approval for this study was granted by the ALSPAC Law and Ethics Committee and Local Ethics Committees. All pregnant women living in the geographical area of Avon, United Kingdom, who were expected to deliver between April 1, 1991 and December 31, 1992, were invited to participate in the study. Children from 14,541 pregnancies were enrolled; 13,988 children were alive at 1 year. An additional 913 children were enrolled during subsequent phases of enrollment, with a total sample size alive at 1 year of 14,901. All women gave informed and written consent. Among twin pairs, one twin per pair was randomly excluded from the current study.
+
+A fully searchable ALSPAC data dictionary is available [here](http://www.bris.ac.uk/alspac/researchers/data-access/data-dictionary/).
 
 <!--chapter:end:02-Method_Sample.Rmd-->
 
 
-
 ## Measures
+
 ### Socioeconomic Status (SES)
+
+Measures of parent occupation were obtained for both mother and partner during child gestation. Parental occupations were then classified as unskilled(0), partly skilled (1), skilled manual (2), skilled non-manual (3), manegerial and technical (4), or professional (5). Of reported parent occupations, the highest reported occupation was used as a proxy for parent SES, to be treated as a continuous (0-5) covariate in analyses.
+
 ### Eating Disorder Cognitions
+
+Eating disorder cognitions were assessed when children were 14 years of age. Relevant variables for the current analyses included: body dissatisfaction, thin-ideal internalization, and fear of weight gain.
+
 #### Body Dissatisfaction
+
+```{r bd, include=FALSE}
+# #Code for calculating Chronbach's Alpha amongst boys and girls for body dissatisfaction
+# 
+# bd_girls <- c('body_sat_weight_14', 'body_sat_figure_14', 'body_sat_breasts_14',  'body_sat_stomach_14', 'body_sat_waist_14', 'body_sat_thighs_14', 'body_sat_buttocks_14', 'body_sat_hips_14', 'body_sat_legs_14', 'body_sat_hair_14')
+# 
+# bd_boys <- c('body_sat_weight_14', 'body_sat_figure_14', 'body_sat_build_14',  'body_sat_stomach_14', 'body_sat_waist_14', 'body_sat_thighs_14', 'body_sat_buttocks_14', 'body_sat_hips_14', 'body_sat_legs_14', 'body_sat_hair_14')
+# 
+# girl_bd_alpha <- demo_ed.f |> 
+#   filter(sex == 1) |> 
+#   select( all_of(bd_girls) )  |> 
+#   performance::cronbachs_alpha() %>% 
+#   round(3)
+# 
+# boy_bd_alpha <- demo_ed.f |> 
+#   filter(sex == 0) |> 
+#   select( all_of(bd_boys ))|> 
+#   performance::cronbachs_alpha() %>% 
+#   round(3)
+```
+
+Body Dissatisfaction was assessed via an 11-item scale adapted from the satisfaction and dissatisfaction with body parts scale [@sticeProspectiveTestDualpathway2001], which has been used in several previous studies involving the ALSPAC Cohort [@bornioliAdolescentBodyDissatisfaction2019; @bornioliBodyDissatisfactionPredicts2021; @schaumbergAnxietyDisorderSymptoms2019; @schaumbergProspectiveAssociationsChildhood2021]. Among the 11 items, one item differs between the sexes (satisfaction with 'breasts' is specified for girls and 'build' for boys). Two items address overall body satisfaction with weight and figure, and the remaining items evaluate satisfaction with specific body parts. Responses are graded on a 5 point likert scale from "Extremely Satisfied" (1) to "Extremely Dissatisfied" (5). Reliability was high in both girls (Cronbach's $\alpha$ =  girl_bd_alpha) and boys (Cronbach's $\alpha$ =  boy_bd_alpha)  In the current study, body dissatisfaction was scored using the mean of all 11 items, with higher scores indicating greater body dissatisfaction, which was standardized within gender prior to analyses.
+
 #### Thin-ideal Internalization
+
+```{r ti, include=FALSE}
+#Code for calculating Chronbach's Alpha amongst boys and girls for thin-ideal internalization
+
+# ti_girls <- c('ti_thin_f_14', 'ti_lean_f_14', 'ti_tall_f_14', 'ti_longlegs_f_14',  'ti_shapely_f_14', 'ti_petite_f_14')
+# girl_ti_alpha <- demo_ed.f |> 
+#   filter(sex == 1) |> 
+#   select( ti_girls ) |> 
+#   performance::cronbachs_alpha() %>% 
+#   round(3)
+# 
+# ti_boys <- c('ti_thin_m_14', 'ti_lean_m_14',  'ti_tall_m_14', 'ti_shape_m_14','ti_muscles_m_14', 'ti_bodybuild_m_14')
+# boy_ti_alpha <- demo_ed.f |> 
+#   filter(sex == 0) |> 
+#   select( ti_boys )|> 
+#   performance::cronbachs_alpha() %>% 
+#   round(3)
+
+```
+
+Thin-ideal internalization was assessed using the Ideal-Body Stereotype Scale-Revised (IBSS-R) [@sticeTestDualPathway1996] Girls and boys were both asked six questions, three of which were the same and three of which were gender-specific, assessing the perceived attractiveness of same-sex individuals based on physical characteristics (e.g. being 'lean', 'tall', 'petite'). Items are rated on a 5-point likert scale ranging from 'Strongly Disagree' (0) to 'Strongly Agree' (4). (Cronbach's $\alpha$ = girl_ti_alpha for girls; boy_ti_alpha for boys) [@calzoSexualOrientationDisparities2018]. As with body dissatisfaction, the mean of all items was calculated, which was then standardized within gender prior to analysis.
+
 #### Fear of Weight Gain
+
+Fear of weight gain was assessed via a single item asking the degree to which participants have worried about gaining a little weight, using a likert response scale (0=not at all, 1=a little, 2=a lot, and 3=all the time). 
+
 ### Body Mass Index Z-score (BMI-Z) at Age 13
+
+```{r bmi, include = FALSE}
+# clinic <- sum(!is.na(demo_ed.f$bmi_clinic.13))
+# no_clinic <- sum(is.na(demo_ed.f$bmi_clinic.13))
+# best_avail <- sum(!is.na(demo_ed.f$bmi_bestavail.13))
+# 
+# missing_n <- 7688- best_avail
+# pr_n <- best_avail-clinic
+# missing_percent <- round ((7688 - best_avail)/7688*100 , 2)
+# clinic_percent <-  round ((clinic)/7688*100, 2)
+# pr_percent <- round((best_avail-clinic)/7688*100, 2)
+
+```
+
+Child BMI-Z was assessed via two indices at age 13 years. First, objective height and weight were obtained for those who completed a clinic visit at age 13 (median age at clinic visit = 13.8 years). Second, parents reported child height and weight via questionnaire (median age = 13.1). An age and sex adjusted BMI-Z score was obtained from these self-report and clinic-recorded measurments. In order to maximize accuracy, when clinic-obtained measurements were obtained, this BMI-Z score was used (n = r clinic;  clinic_percent %. BMI-Z from parent report was used when clinic measurement was not available (n = pr_n;  pr_percent%). A portion of the sample had neither measurement available (n = missing_n`; missing_percent%)
+
 ### Exercise Measures
+
+Questions related to maladaptive exercise were self-reported at ages 14, 16, 18, and 24 years. Questions were adapted from the Youth Risk Behavior Survelliance System [@kannYouthRiskBehavior1995].
+
 #### Exercise for Weight Loss
+
+At ages 14, 16, and 18 years, participants were asked if they exercised to lose weight or avoid gaining weight, with response options of: No(0), Yes-Sometimes(1), and Yes-Frequently(2).
+
+At age 24, participants were asked the frequency with which they exercised to lose weight or avoid gaining weight, with response options of: Never, \<1x/mo, 1-3x/mo, 1-4x/wk, and 5 or more times per week. For the purposes of analysis, responses at age 24 were harmonized with age 14, 16, and 18. Responses of Never were binned as "No" (0); 1x/mo - <1x/week were binned as 'Yes - Sometimes'(1), and 1x/wk or more as 'Yes - Frequently'(2). Once a week or more was chosen as the threshold for 'frequent' exercise for weight loss at age 24 to align with DSM-V diagnostic frequency thresholds for other eating disorder behaviors, such as binge eating and purging [@americanpsychiatricassociationDiagnosticStatisticalManual2013]. The primary derived outcome variable of analysis for exercise for weight loss is an ordinal variable, defined as 0 = No, 1 = Sometimes, and 2 = Frequently. 
+
 #### Maladaptive Exercise
+
+Issues that are associated with exercise were also reported at ages 14,16, 18, and 24 years. At all assessment points, participants reported whether exercise interferes with work/school (14,16,18), or their daily routine (24). At ages 14 and 24, participants also reported whether they exercised to lose weight even when sick or injured. At ages 16 and 18 years, participants reported whether they felt guilty about missing an exercise session -- see Table \@ref(tab:tab2) .  Responses options for exercise issues were 'No', 'yes - Sometimes', or 'Yes - Frequently'. 
+
+```{r tab2}
+# x <- tibble(age = c(14,16,18,24), Interferes = c('x','x','x','x'), Sick_Injured = c('x',' ',' ', 'x'), Guilt = c('' ,'x','x', '')) 
+# 
+# knitr::kable(x, caption = 'Exercise Issues Assessed at Each Age')
+```
+
+Exercise issues are deemmed to be 'present' at each time point if an individual endorses: (1) exercise interfering with work/school sometimes or more OR frequent guilt when missing an exercise session at ages 16 and 18 years and (2) exercise interfering with work/school/daily routine sometimes or more OR exercising even when sick/injured sometimes or more at ages 14 and 24 years. 
+
+The presence of maladaptive exercise in this study was defined as exercising for weight loss **sometimes or frequently** and at least one **exercise issue** defined as  present at each time point. Frequency of exercise for weight loss as sometimes or more was chosen for this definition as (1) existing literature suggests that frequency of exercise may be less important than cognitive features in defining exercise risk in the context of eating disorders [@adkinsDoesExcessiveCompulsive2005; @mondUpdateDefinitionExcessive2006] and (2) the nature of the epidemiological sample and the concomitant goals of this paper are such that we are interested in identifying early risk indicators, which may be best captured via a broad (vs. narrow) definition of maladaptive exercise. The primary variable to define maladaptive exercise was derived as described, resulting in a dichotomous outcome (0 = Absent, 1 = Present). 
+
+
 #### Exercise Gropus
+
+Exericse groups over time are defined for descriptive analyses and transition states, replicating groups defined in @schaumbergProspectiveAssociationsDriven2022. Those who report no exericse for weight loss at each time point are placed in a 'No Exercise for Weight Loss' group, those who report exercise for weight loss at least sometimes, but do not meet criteria for maladaptive exercise are placed in an 'Exercise for Weight Loss' group, and those meeting maladaptive exercise criteria are placed in the 'Maladaptive Exercise' group.
 
 <!--chapter:end:03-Method_Measures.Rmd-->
 
 
 # Analytic Plan
 
-Analyses will be gender stratified. The primary predictor variable of interest is time, with the purpose of investigating persistence and changes in exercise behavior over adolescent and young adult development. Secondary predictors include: BMI-Z score at age 13 and Eating Disorder Cognitions at Age 14. Parent SES will be entered as a covariate as it is possible, though not hypothesized, that exercise patterns may vary based on socioeconomic status. 
-
-## Multi-State Transition Analyses
-
-The first step in analyses will evaluate overall changes in the presence of exercise for weight loss and maladaptive exercise over time in the sample. Visualization will be completed with transition plots [@cernatVisualizingTransitionsTime2021] for those completing all four assessment points. For those completing at least two assessment points, transition analysis will include multi-state Markov models for panel data [@jacksonMultistateModellingMsm], the implementation of which on the current data will describe how individuals move between the 'No Exercise for Weight Loss', 'Exercise for Weight Loss', and 'Maladaptive Exercise' groups over time, with transition intensities representing the instantaneous risk of moving between these three groups. An initial transition matrix will be specified in which instantaneous transitions between adjacent states are permitted, as well as transitions between the Maladaptive Exercise-No Exercise for Weight Loss state (direct transition to exercise abstinence). If initial models do not converge, direct transitions from Maladaptive Ex to No-Exercise for Weight Loss will also be constrained to 0, such that a sojurn through the Exercise for Weight Loss state is required (See \@ref(fig:transfig)) Transition analyses will be completed separately for boys and girls, and the fitted transition probability matrix, $P(t)$ will be reported over an interval of 1-year, which will describe the liklihood of transition between exercise groups in a given year during the study time frame. Exploratory analysis of transition states will examine whether baseline covariates (Parent SES, BMI-Z at age 13 years, eating disorder cognitions at age 14 years) impact transition intensities amongst the three exercise groups.  
-
-```{r transfig, fig.cap = 'Transitions between Exercise Groups', out.width= '90%'}
-knitr::include_graphics('figs/Transition-Diagram.png')
-```
-
-
-## Missing Data
-
-Prior to mixed-effects modeling, missing data was imputed using the `mice` and `miceadds` packages [@R-mice; @R-miceadds]. Imputed variables and imputation approach for each variable is noted in Supplemental Table \@ref(tab:imptab). Time-invariant variables were imputed at level-2 only using a Predictive Mean Matching (PMM) approach, and outcome variables were imputed using 2-level approaches, which consider time. Datasets for girls and boys are imputed separately, with 20 imputed datasets. In addition to covariate and predictor variables, parent education was also included in the imputation model specifically to improve imputation of highest parent occupation (measure of SES).
-
-## Mixed Effects Modeling
-
-Mixed Effects Models for ordinal and binary data [@christensenAnalysisOrdinalData2015; @christensenTutorialFittingCumulative2019; @landermanModelingRepeatedMeasures2011]  examine whether levels of exercise for weight loss and maladaptive exercise change across age. Parameter pooling was utilized to combine models fit to the imputed datasets.
-
-Nested models allow for a random intercept for each individual, then a fixed effect of Time (assessment point - with baseline set to 14 years), followed by fixed effects for all baseline predictors and covariates, and, finally, all Predictor x Time interactions. Models were compared via the multivariate Wald test, using the D1 statistic [@buurenMiceMultivariateImputation2011]. Parameters for each model are presented in Supplement (Chapter \@ref(supp1) ). 
-
+Analyses will be gender stratified.
+ 
 
 <!--chapter:end:04-Analytic_Plan.Rmd-->
 
 
 # Results
 
-Placeholder
-
-
 ## Descriptives
+
 ### Covariates: SES, BMIZ at Age 13, ED Cognitions at age 14
+
+Descriptive information for continuous variables are provided in Supplemental Table \@ref(tab:continuous). Descriptives for ordinal variables (Parent SES and Fear of Weight Gain) are provided in Supplemental Tables \@ref(tab:pses) and \@ref(tab:fearwt)
+
 ### Exercise for Weight Loss Frequency
+
+Exercise for weight loss frequency across age and gender is presented in Figure \@ref(fig:ewl-plot), with a plot of the raw frequencies at age 24 presented in Supplement (Figure \@ref(fig:age24-raw-ewl)). Visual inspection of plots suggests a potential increase in frequency of exercise for weight loss across age, with a consistent increase over time amongst girls and an increase in frequency particularly between ages 18 and 24 years amongst boys.
+
+
 ### Exercise Issues Frequency
+
+With regards to exercise issues across time, the percentage of participants reporting any exercise issues as present at each age was relatively stable, as seen in Figure \@ref(fig:ex-issues). Although there was some variation in reporting of the secondary question regarding exercise issues across age which could influence the detection of exercise issues at different ages, the question of whether exercise interfered with work, school, or one's daily routine was assessed at all four timepoints. Endorsement of this question, specifically, was relatively consistent across age and gender (See Supplemental Figure \@ref(fig:ex-interfere)), with 9.5 - 14.5% of individuals reporting that exercise interfered with work, school, or their daily routine across age and gender. 
+
 ### Exercise Groups
+
+Figure \@ref(fig:freqfig) shows exercise status at ages 14-24 years in girls and boys, as a percentage of the total number of boys and girls who reported exercise data at the timepoint.
+
+```{r freqfig, fig.cap = 'Frequency of Exercise Groups Across Age'}
+# 
+# exercise_group_data <- frq_table_by_age_sex(demo_ed.lf, exercise_group) 
+# levels(exercise_group_data$exercise_group) <- c('No Exercise for Weight Loss', 'Exercise for Weight Loss', 'Maladaptive Exercise')
+# 
+# exercise_status_plot_1 <- ggplot(data = exercise_group_data, 
+#     aes(x = sex, y = pct, fill = exercise_group, label = sprintf('%0.1f%%', pct*100))) + #set the aesthetic features, including the labels at one decimal place
+#     geom_bar(position = position_stack(reverse = TRUE), stat = 'identity') + #add column graph, with male and female separated
+#     scale_y_continuous(labels = scales::percent, limits = c(0,1))+ #set the lower and upper limits of the y axis ( 0-100 percent); 
+#     theme(legend.title = element_blank(), axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1), text = element_text(size = 15))+ #make legend text a bit bigger
+#     labs(x = element_blank(), y = 'Percent (within gender)', title = 'Exercise Groups Across Age') +
+#      geom_text(aes(label = sprintf('%0.1f%%', pct*100)), position = position_stack(reverse = TRUE, vjust = 0.5), color = 'white', size = 2.5, fontface = 'bold') +
+#     facet_wrap(~age) + 
+#     theme_classic()+
+#     theme(legend.title = element_blank(), axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1), text = element_text(size = 15)) + #make legend text a bit bigger 
+#    scale_fill_manual(values = wes_palette(name = 'GrandBudapest1', n = 3 ))
+# 
+# exercise_status_plot_1
+```
+
+Visual inspection and raw percentage comparison indicates that percentage of males and female in the three exercise groups is relatively stable from ages 14-16 years, with a possible increase in exercise for weight loss at age 18 among girls, an increase in exercise for weight loss among men at age 24, and an increase in maladaptive exercise across gender at age 24.
+
+
 
 <!--chapter:end:05-Descriptives.Rmd-->
 
-
-
-## Transitions in Exercise Groups Over Time
-### Girls
-### Boys
-
-<!--chapter:end:06-Transitions.Rmd-->
-
-## Imputation
-
-As stated in the analytic plan, data was imputed prior to conducting mixed effects models, with 10 iterations on 20 imputed datasets  The predictor matrix is presented in Supplemental Table \@ref(tab:predmat) ; the percent missing for each variable prior to imputation is presented in Supplemental Table \@ref(tab:pobs-girls) for girls and Supplemental Table \@ref(tab:pobs-boys) for boys, along with the influx (overall number of variable pairs \((Y_j,Y_k)\) with \(Y_j\) missing and \(Y_k\) observed, divided by the total number of observed data cells), and outflux (the number of variable pairs with \(Y_j\) observed and \(Y_k\) missing, divided by the total number of incomplete data cells) for each variable. The influx refers to connection to the observed data (ease of imputation, with one representing the highest level of connection to the observed data) the outflux refers to potential contribution to this variable in imputing other data, both on a 0-1 scale with one representing the highest possible levels of influx/outflux. Overall, there was moderate levels of missingness in the current data.
-
-<!--chapter:end:07-Imputation.Rmd-->
-
-
-
-## Mixed Effects Models - Maladaptive Exercise over Time
-### Girls
-### Boys
-
-<!--chapter:end:08-mixed-effects-dex.Rmd-->
-
-
-
-## Mixed-Effect Models - Exercise for Weight Loss
-### Girls
-### Boys
-
-<!--chapter:end:09-mixed-effects-EWL.Rmd-->
-
-
 # Discussion
 
-Placeholder
-
-
-## Transitions Across Exercise Groups
-## Rates of Exercise for Weight Loss and Maladaptive Exercise over Time 
-## Predictors of Maladaptive Exercise
-### Eating Disorder Cognitions
-### Age 13 BMI
-## Limitations 
-### Data harmonization across age
-### Assessment gap between 18-24 years
-### Model Convergence for Transition Models
-### Snapshot of Anglo-Western Culture
-## Future Directions
-## Conclusions
-
-<!--chapter:end:10-discussion.Rmd-->
-
-
-# Supplement 1 - Mixed Models {#supp1}
-
-Placeholder
-
-
-
-<!--chapter:end:11-Supplement_1.Rmd-->
-
-
-# Supplemental Figures
-
-Placeholder
-
-
-
-<!--chapter:end:12-Supplemental_Figures.Rmd-->
-
-
-# Supplemental Tables
-
-Placeholder
-
-
-
-<!--chapter:end:13-Supplemental_Tables.Rmd-->
+<!--chapter:end:06-discussion.Rmd-->
 
 
 # References {-}
@@ -239,5 +244,5 @@ knitr::write_bib(c(
 
 '`
 
-<!--chapter:end:14-References.Rmd-->
+<!--chapter:end:07-References.Rmd-->
 

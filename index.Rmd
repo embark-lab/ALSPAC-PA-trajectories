@@ -16,7 +16,7 @@ site: bookdown::bookdown_site
 bibliography: [PA_trajectories.bib, packages.bib]
 biblio-style: apa
 link-citations: yes
-github-repo: kschaumb/alspac-dex-bookdown
+github-repo: embark-lab/ALSPAC-PA-trajectories
 description: "This is a bookdown for ALSPAC PA trajectories Paper"
 resource_files: 
 output: bookdown::gitbook
@@ -25,7 +25,6 @@ output: bookdown::gitbook
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-
 library(dplyr)
 library(tidyr)
 library(tibble)
@@ -36,6 +35,4 @@ library(stringr)
 library(rlang)
 library(purrr)
 library(labelled)
-
-
 ```

@@ -43,6 +43,6 @@ While previous studies have shown how inactivity in adolescence can lead to nega
 >>>>>>> b0af0e95358d2565ee3c2b75a288b2a3b018e86b
 
 Sarah Intro:
-The Avon Longitudinal Study of Parents and Children (ALSPAC), a transgenerational observational study investigating influences on health across the life course includes data describing childhood and adult activity levels [@article{boydCohortProfileChildren2013]. Activity levels in early life are thought to influence adult levels of activity.... 
+The Avon Longitudinal Study of Parents and Children (ALSPAC), a transgenerational observational study investigating influences on health across the life course includes data describing childhood and adult activity levels [@boydCohortProfileChildren2013]. Activity levels in early life are thought to influence adult levels of activity.... 
 
 >>>>>>> abe5fe3a0d4e87ecca21d51bd3c858e498b744d6

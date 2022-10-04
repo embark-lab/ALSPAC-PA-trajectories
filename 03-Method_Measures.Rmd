@@ -12,49 +12,49 @@ Eating disorder cognitions were assessed when children were 14 years of age. Rel
 #### Body Dissatisfaction
 
 ```{r bd, include=FALSE}
-#Code for calculating Chronbach's Alpha amongst boys and girls for body dissatisfaction
-
-bd_girls <- c('body_sat_weight_14', 'body_sat_figure_14', 'body_sat_breasts_14',  'body_sat_stomach_14', 'body_sat_waist_14', 'body_sat_thighs_14', 'body_sat_buttocks_14', 'body_sat_hips_14', 'body_sat_legs_14', 'body_sat_hair_14')
-
-bd_boys <- c('body_sat_weight_14', 'body_sat_figure_14', 'body_sat_build_14',  'body_sat_stomach_14', 'body_sat_waist_14', 'body_sat_thighs_14', 'body_sat_buttocks_14', 'body_sat_hips_14', 'body_sat_legs_14', 'body_sat_hair_14')
-
-girl_bd_alpha <- demo_ed.f |> 
-  filter(sex == 1) |> 
-  select( all_of(bd_girls) )  |> 
-  performance::cronbachs_alpha() %>% 
-  round(3)
-
-boy_bd_alpha <- demo_ed.f |> 
-  filter(sex == 0) |> 
-  select( all_of(bd_boys ))|> 
-  performance::cronbachs_alpha() %>% 
-  round(3)
+# #Code for calculating Chronbach's Alpha amongst boys and girls for body dissatisfaction
+# 
+# bd_girls <- c('body_sat_weight_14', 'body_sat_figure_14', 'body_sat_breasts_14',  'body_sat_stomach_14', 'body_sat_waist_14', 'body_sat_thighs_14', 'body_sat_buttocks_14', 'body_sat_hips_14', 'body_sat_legs_14', 'body_sat_hair_14')
+# 
+# bd_boys <- c('body_sat_weight_14', 'body_sat_figure_14', 'body_sat_build_14',  'body_sat_stomach_14', 'body_sat_waist_14', 'body_sat_thighs_14', 'body_sat_buttocks_14', 'body_sat_hips_14', 'body_sat_legs_14', 'body_sat_hair_14')
+# 
+# girl_bd_alpha <- demo_ed.f |> 
+#   filter(sex == 1) |> 
+#   select( all_of(bd_girls) )  |> 
+#   performance::cronbachs_alpha() %>% 
+#   round(3)
+# 
+# boy_bd_alpha <- demo_ed.f |> 
+#   filter(sex == 0) |> 
+#   select( all_of(bd_boys ))|> 
+#   performance::cronbachs_alpha() %>% 
+#   round(3)
 ```
 
-Body Dissatisfaction was assessed via an 11-item scale adapted from the satisfaction and dissatisfaction with body parts scale [@sticeProspectiveTestDualpathway2001], which has been used in several previous studies involving the ALSPAC Cohort [@bornioliAdolescentBodyDissatisfaction2019; @bornioliBodyDissatisfactionPredicts2021; @schaumbergAnxietyDisorderSymptoms2019; @schaumbergProspectiveAssociationsChildhood2021]. Among the 11 items, one item differs between the sexes (satisfaction with 'breasts' is specified for girls and 'build' for boys). Two items address overall body satisfaction with weight and figure, and the remaining items evaluate satisfaction with specific body parts. Responses are graded on a 5 point likert scale from "Extremely Satisfied" (1) to "Extremely Dissatisfied" (5). Reliability was high in both girls (Cronbach's $\alpha$ = `r girl_bd_alpha`) and boys (Cronbach's $\alpha$ = `r boy_bd_alpha`)  In the current study, body dissatisfaction was scored using the mean of all 11 items, with higher scores indicating greater body dissatisfaction, which was standardized within gender prior to analyses.
+Body Dissatisfaction was assessed via an 11-item scale adapted from the satisfaction and dissatisfaction with body parts scale [@sticeProspectiveTestDualpathway2001], which has been used in several previous studies involving the ALSPAC Cohort [@bornioliAdolescentBodyDissatisfaction2019; @bornioliBodyDissatisfactionPredicts2021; @schaumbergAnxietyDisorderSymptoms2019; @schaumbergProspectiveAssociationsChildhood2021]. Among the 11 items, one item differs between the sexes (satisfaction with 'breasts' is specified for girls and 'build' for boys). Two items address overall body satisfaction with weight and figure, and the remaining items evaluate satisfaction with specific body parts. Responses are graded on a 5 point likert scale from "Extremely Satisfied" (1) to "Extremely Dissatisfied" (5). Reliability was high in both girls (Cronbach's $\alpha$ =  girl_bd_alpha) and boys (Cronbach's $\alpha$ =  boy_bd_alpha)  In the current study, body dissatisfaction was scored using the mean of all 11 items, with higher scores indicating greater body dissatisfaction, which was standardized within gender prior to analyses.
 
 #### Thin-ideal Internalization
 
 ```{r ti, include=FALSE}
 #Code for calculating Chronbach's Alpha amongst boys and girls for thin-ideal internalization
 
-ti_girls <- c('ti_thin_f_14', 'ti_lean_f_14', 'ti_tall_f_14', 'ti_longlegs_f_14',  'ti_shapely_f_14', 'ti_petite_f_14')
-girl_ti_alpha <- demo_ed.f |> 
-  filter(sex == 1) |> 
-  select( ti_girls ) |> 
-  performance::cronbachs_alpha() %>% 
-  round(3)
-
-ti_boys <- c('ti_thin_m_14', 'ti_lean_m_14',  'ti_tall_m_14', 'ti_shape_m_14','ti_muscles_m_14', 'ti_bodybuild_m_14')
-boy_ti_alpha <- demo_ed.f |> 
-  filter(sex == 0) |> 
-  select( ti_boys )|> 
-  performance::cronbachs_alpha() %>% 
-  round(3)
+# ti_girls <- c('ti_thin_f_14', 'ti_lean_f_14', 'ti_tall_f_14', 'ti_longlegs_f_14',  'ti_shapely_f_14', 'ti_petite_f_14')
+# girl_ti_alpha <- demo_ed.f |> 
+#   filter(sex == 1) |> 
+#   select( ti_girls ) |> 
+#   performance::cronbachs_alpha() %>% 
+#   round(3)
+# 
+# ti_boys <- c('ti_thin_m_14', 'ti_lean_m_14',  'ti_tall_m_14', 'ti_shape_m_14','ti_muscles_m_14', 'ti_bodybuild_m_14')
+# boy_ti_alpha <- demo_ed.f |> 
+#   filter(sex == 0) |> 
+#   select( ti_boys )|> 
+#   performance::cronbachs_alpha() %>% 
+#   round(3)
 
 ```
 
-Thin-ideal internalization was assessed using the Ideal-Body Stereotype Scale-Revised (IBSS-R) [@sticeTestDualPathway1996] Girls and boys were both asked six questions, three of which were the same and three of which were gender-specific, assessing the perceived attractiveness of same-sex individuals based on physical characteristics (e.g. being 'lean', 'tall', 'petite'). Items are rated on a 5-point likert scale ranging from 'Strongly Disagree' (0) to 'Strongly Agree' (4). (Cronbach's $\alpha$ = `r girl_ti_alpha` for girls; `r boy_ti_alpha` for boys) [@calzoSexualOrientationDisparities2018]. As with body dissatisfaction, the mean of all items was calculated, which was then standardized within gender prior to analysis.
+Thin-ideal internalization was assessed using the Ideal-Body Stereotype Scale-Revised (IBSS-R) [@sticeTestDualPathway1996] Girls and boys were both asked six questions, three of which were the same and three of which were gender-specific, assessing the perceived attractiveness of same-sex individuals based on physical characteristics (e.g. being 'lean', 'tall', 'petite'). Items are rated on a 5-point likert scale ranging from 'Strongly Disagree' (0) to 'Strongly Agree' (4). (Cronbach's $\alpha$ = girl_ti_alpha for girls; boy_ti_alpha for boys) [@calzoSexualOrientationDisparities2018]. As with body dissatisfaction, the mean of all items was calculated, which was then standardized within gender prior to analysis.
 
 #### Fear of Weight Gain
 
@@ -63,19 +63,19 @@ Fear of weight gain was assessed via a single item asking the degree to which pa
 ### Body Mass Index Z-score (BMI-Z) at Age 13
 
 ```{r bmi, include = FALSE}
-clinic <- sum(!is.na(demo_ed.f$bmi_clinic.13))
-no_clinic <- sum(is.na(demo_ed.f$bmi_clinic.13))
-best_avail <- sum(!is.na(demo_ed.f$bmi_bestavail.13))
-
-missing_n <- 7688- best_avail
-pr_n <- best_avail-clinic
-missing_percent <- round ((7688 - best_avail)/7688*100 , 2)
-clinic_percent <-  round ((clinic)/7688*100, 2)
-pr_percent <- round((best_avail-clinic)/7688*100, 2)
+# clinic <- sum(!is.na(demo_ed.f$bmi_clinic.13))
+# no_clinic <- sum(is.na(demo_ed.f$bmi_clinic.13))
+# best_avail <- sum(!is.na(demo_ed.f$bmi_bestavail.13))
+# 
+# missing_n <- 7688- best_avail
+# pr_n <- best_avail-clinic
+# missing_percent <- round ((7688 - best_avail)/7688*100 , 2)
+# clinic_percent <-  round ((clinic)/7688*100, 2)
+# pr_percent <- round((best_avail-clinic)/7688*100, 2)
 
 ```
 
-Child BMI-Z was assessed via two indices at age 13 years. First, objective height and weight were obtained for those who completed a clinic visit at age 13 (median age at clinic visit = 13.8 years). Second, parents reported child height and weight via questionnaire (median age = 13.1). An age and sex adjusted BMI-Z score was obtained from these self-report and clinic-recorded measurments. In order to maximize accuracy, when clinic-obtained measurements were obtained, this BMI-Z score was used (n = `r clinic`; `r clinic_percent`%). BMI-Z from parent report was used when clinic measurement was not available (n = `r pr_n`; `r pr_percent`%). A portion of the sample had neither measurement available (n = `r missing_n`; `r missing_percent`%)
+Child BMI-Z was assessed via two indices at age 13 years. First, objective height and weight were obtained for those who completed a clinic visit at age 13 (median age at clinic visit = 13.8 years). Second, parents reported child height and weight via questionnaire (median age = 13.1). An age and sex adjusted BMI-Z score was obtained from these self-report and clinic-recorded measurments. In order to maximize accuracy, when clinic-obtained measurements were obtained, this BMI-Z score was used (n = r clinic;  clinic_percent %. BMI-Z from parent report was used when clinic measurement was not available (n = pr_n;  pr_percent%). A portion of the sample had neither measurement available (n = missing_n`; missing_percent%)
 
 ### Exercise Measures
 
@@ -92,9 +92,9 @@ At age 24, participants were asked the frequency with which they exercised to lo
 Issues that are associated with exercise were also reported at ages 14,16, 18, and 24 years. At all assessment points, participants reported whether exercise interferes with work/school (14,16,18), or their daily routine (24). At ages 14 and 24, participants also reported whether they exercised to lose weight even when sick or injured. At ages 16 and 18 years, participants reported whether they felt guilty about missing an exercise session -- see Table \@ref(tab:tab2) .  Responses options for exercise issues were 'No', 'yes - Sometimes', or 'Yes - Frequently'. 
 
 ```{r tab2}
-x <- tibble(age = c(14,16,18,24), Interferes = c('x','x','x','x'), Sick_Injured = c('x',' ',' ', 'x'), Guilt = c('' ,'x','x', '')) 
-
-knitr::kable(x, caption = 'Exercise Issues Assessed at Each Age')
+# x <- tibble(age = c(14,16,18,24), Interferes = c('x','x','x','x'), Sick_Injured = c('x',' ',' ', 'x'), Guilt = c('' ,'x','x', '')) 
+# 
+# knitr::kable(x, caption = 'Exercise Issues Assessed at Each Age')
 ```
 
 Exercise issues are deemmed to be 'present' at each time point if an individual endorses: (1) exercise interfering with work/school sometimes or more OR frequent guilt when missing an exercise session at ages 16 and 18 years and (2) exercise interfering with work/school/daily routine sometimes or more OR exercising even when sick/injured sometimes or more at ages 14 and 24 years. 

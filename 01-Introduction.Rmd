@@ -1,5 +1,48 @@
 # Introduction
 
+<<<<<<< HEAD
 Lauren's Intro:
 
 Driven exercise (EDx), or exercise that has a compulsive quality, is a common symptom of eating disorders (ED) (@stiles-shieldsDrivenExerciseTreatmentSeeking2011a). When unable to exercise, individuals who experience EDx feel extreme guilt or anxiety for not exercising and may exercise even when injured or having prior engagements (@stiles-shieldsDrivenExerciseTreatmentSeeking2011a). The typical age of onset for EDx patterns occurs during adolescence, which is also the age when more than 25% of individuals engage in exercise for weight loss (EWL) (@schaumbergProspectiveAssociationsDriven2022a). Due to the overlap in development of EWL and DEx behaviors during late childhood, it is imperative to assess the possible precursor of engagement in physical activity in adolescence to DEx as an eating disorder symptom during early adulthood.
+=======
+<<<<<<< HEAD
+max was here
+lauren was here <3
+Sarah was here
+This is the introduction to the Physical Activities trajectory paper. 
+
+Exercise, which is often associated with positive mental and physical health outcomes in the general population [@penedoExerciseWellbeingReview2005; @chekroudAssociationPhysicalExercise2018; @deslandesExerciseMentalHealth2009], can also become maladaptive, particularly in the context of disordered eating [@dittmerCompulsiveExerciseEating2018; @dallegraveCompulsiveExerciseControl2008]. Though definitions of maladaptive exercise vary and many terms have been used to describe this behavior, a broad conceptualization of maladaptive exercise includes exercise that exhibits one or more of the following qualities: a) exercise that is driven or compulsive in nature, b) feelings of distress or guilt arise when an individual is unable to exercise, c) exercise that interferes with one's ability to engage in school, work, or daily activities, d) the inability to refrain from exercise despite circumstances (e.g. illness, injury) in which it is not recommended [@gorrellPsychosocialEtiologyMaladaptive2021; @scharmerCompulsiveExerciseExercise2020; @dittmerCompulsiveExerciseEating2018]. Such experiences most often arise when individuals also report a primary motivation for engaging in exercise related to weight loss [@scharmerCompulsiveExerciseExercise2020; @zmijewskiExerciseDependenceAttitudes2003]. Most concerning, maladaptive exercise may be an early indicator of disordered eating behavior, as retrospective reports of individuals with eating disorders suggest that maladaptive exercise can be an early-developing eating disorder feature [@stiles-shieldsDrivenExerciseTreatmentseeking2011; @davisRolePhysicalActivity1994]. Further, our previous prospective study in the Avon Longitudinal Study of Parents and Children (ALSPAC) indicated that young people who reported either exercise for weight loss or maladaptive exercise at age 14 were also more likely to report higher concurrent and future (Age 16) eating disorder behaviors [@schaumbergProspectiveAssociationsDriven2022], highlighting the potential etiological relevance of this behavior. Once entrenched, problematic exercise patterns can be a pernicious and debilitating eating disorder symptom and a potential marker of poor prognosis [@brosofExploringContributionExercise2020; @dallegraveCompulsiveExerciseControl2008; @monellRunningEmptyNationwide2018; @solenbergerExerciseEatingDisorders2001]. Amongst individuals with eating disorders, maladaptive (and, more specifically, driven and compulsive) exercise is a commonly-reported feature of illness, with a national clinical eating disorder database estimating that this transdiagnostic symptom is present in approximately half of all eating disorder patients presenting to tretament [@monellRunningEmptyNationwide2018]. 
+
+Given the risks associated with maladaptive exercise patterns and the potential etiologic relevance of exercise behavior the context of eating disorders, clarification regarding both the prevalence of and early predictors of high-risk exercise behavior during adolescence could build knowledge necessary to prevent maladaptive exercise patterns from taking hold. Previous research highlights several potential predictors of maladaptive exercise in young people, including, at a social level: pressures to conform to body image ideals [@reynoldsSocioculturalInfluencesCompulsive2022], at a psychological level: weight and shape concerns, negative affect, thinnness expectations [@gorrellPsychosocialEtiologyMaladaptive2021], and, at a biolgoical level: genetic risk for obsessive-compulsive disorder and/or anorexia nervosa [@yilmazPredictingEatingDisorder2022].
+
+Altogether, initial evidence suggests that engaging in exercise for weight loss could escalate to maladaptive exercise and trigger eating disorder risk in some cases, though additional investigation is necessary to clarify the processes that influence exercise-related risk and the frequency with which young people transition to and from maladaptive patterns of exercise. Further, identification of early predictors of maladaptive exercise could aid in identifying youth at risk for the development of disordered eating.
+
+## Current Study
+
+In the current study, we extend a longitudinal investigation of exercise for weight loss and maladaptive exercise across a developmental window from middle adolescence to young adulthood (ages 14-24). Specifically, we aim to examine the frequency of exercise states, based on the three categories of 'no exercise for weight loss', 'exercise for weight loss', and 'maladaptive exercise', amongst boys and girls at ages 14, 16, 18, and 24 years old. We examine rates of transitions between these exercise states over time, and identify preliminary predictors of these transitions. Further, we aim to characterize overall risk for engaging in maladaptive exercise across age, and identify potential demographic or early (age 14) eating disorder cognition variables that may enhance risk for maladaptive exercise throughout adolescence. Based on previous literature [@allenEatingDisorderSymptom2013; @schaumbergProspectiveAssociationsDriven2022; @davisDevelopmentalTrajectoriesCompensatory2016], we hypothesize that exercise for weight loss will be a common behaivor across adolescence, with maladaptive exercise being less common than exercise for weight loss, but will occur in a sizable minority of individuals. Further, we hypothesize that eating disorder cognitions assessed at age 14 will be associated with higher likelihood of exercise for weight loss and maladaptive exercise across adolescence. Specific aims are as follows:
+
+## Study Aims {#aims}
+
+**Aim 1:** To investigate rates of transition between 'no exercise for weight loss', 'exercise for weight loss', and 'maladaptive exercise' groups from ages 14-24, and characterize initial predictors of transitions to maladaptive exercise amongst boys and girls.
+
+H1a: Maladaptive exercise will be moderately absorbant; that is, individuals will be likely to remain in this category once they transition into the cateogry.
+
+H1b: Transitions between the maladaptive exercise and exercise for weight loss categories will be more common than transitions between the maladaptive exercise and no exercise for weight loss category.
+
+**Aim 2:** To examine overall changes in probability of maladaptive exercise and exercise for weight loss from ages 14-24 and characterize initial predictors of changes in probability of maladaptive exercise and exercise for weight loss over time
+
+H2a: We hypothesize that the prevalence of exercise for weight loss and maladaptive exercise will show modest increases with age, reflecting transition through peak age of onset for eating disorders during late adolescence.
+
+H2b: We have no directional hypotheses regarding parent SES or Age 13 BMI as predictors of maladaptive exercise. 
+
+H2c: We hypothesize that ED cognitions at age 14 will predict maladaptive exercise and exercise for weight loss across adolescent and young adult development, with strongest prediction at most proximal timepoints.
+
+=======
+Max Intro:
+While previous studies have shown how inactivity in adolescence can lead to negative outcomes later in life[@kannYouthRiskBehavior1996] . Less is known about the affects of maladaptive exeercise in adolesence and how it relates to adulthood. Analysis of the Avon Logitudinal Study of Parents and Children Cohort (ALSPAC) in adolesence and adulthood will help to establish the connection beweeen adolescent and adulthood physical activity [@boydCohortProfileChildren2013] [@fraserCohortProfileAvon2013a] 
+>>>>>>> b0af0e95358d2565ee3c2b75a288b2a3b018e86b
+
+Sarah Intro:
+The Avon Longitudinal Study of Parents and Children (ALSPAC), a transgenerational observational study investigating influences on health across the life course includes data describing childhood and adult activity levels [@article{boydCohortProfileChildren2013]. Activity levels in early life are thought to influence adult levels of activity.... 
+
+>>>>>>> abe5fe3a0d4e87ecca21d51bd3c858e498b744d6

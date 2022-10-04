@@ -1,2 +1,4 @@
 # Introduction
 
+Max Intro:
+While previous studies have shown how inactivity in adolescence can lead to negative outcomes later in life[@kannYouthRiskBehavior1996] . Less is known about the affects of maladaptive exeercise in adolesence and how it relates to adulthood. Analysis of the Avon Logitudinal Study of Parents and Children Cohort (ALSPAC) in adolesence and adulthood will help to establish the connection beweeen adolescent and adulthood physical activity [@boydCohortProfileChildren2013] [@fraserCohortProfileAvon2013a] 

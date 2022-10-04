@@ -16,7 +16,7 @@ site: bookdown::bookdown_site
 bibliography: [PA_trajectories.bib, packages.bib]
 biblio-style: apa
 link-citations: yes
-github-repo: kschaumb/alspac-dex-bookdown
+github-repo: embark-lab/ALSPAC-PA-trajectories
 description: "This is a bookdown for ALSPAC PA trajectories Paper"
 resource_files: 
 output: bookdown::gitbook
@@ -25,7 +25,6 @@ output: bookdown::gitbook
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-
 library(dplyr)
 library(tidyr)
 library(tibble)
@@ -36,13 +35,23 @@ library(stringr)
 library(rlang)
 library(purrr)
 library(labelled)
-
-
 ```
 
 <!--chapter:end:index.Rmd-->
 
 # Introduction
+
+
+Lauren's Intro:
+
+Driven exercise (EDx), or exercise that has a compulsive quality, is a common symptom of eating disorders (ED) [@stiles-shieldsDrivenExerciseTreatmentSeeking2011]. When unable to exercise, individuals who experience EDx feel extreme guilt or anxiety for not exercising and may exercise even when injured or having prior engagements [@stiles-shieldsDrivenExerciseTreatmentSeeking2011]. The typical age of onset for EDx patterns occurs during adolescence, which is also the age when more than 25% of individuals engage in exercise for weight loss (EWL) [@schaumbergProspectiveAssociationsDriven2022]. Due to the overlap in development of EWL and DEx behaviors during late childhood, it is imperative to assess the possible precursor of engagement in physical activity in adolescence to DEx as an eating disorder symptom during early adulthood.
+
+
+Max Intro:
+While previous studies have shown how inactivity in adolescence can lead to negative outcomes later in life[@kannYouthRiskBehavior1996] . Less is known about the affects of maladaptive exeercise in adolesence and how it relates to adulthood. Analysis of the Avon Logitudinal Study of Parents and Children Cohort (ALSPAC) in adolesence and adulthood will help to establish the connection beweeen adolescent and adulthood physical activity [@boydCohortProfileChildren2013] [@fraserCohortProfileAvon2013] 
+
+Sarah Intro:
+The Avon Longitudinal Study of Parents and Children (ALSPAC), a transgenerational observational study investigating influences on health across the life course includes data describing childhood and adult activity levels [@boydCohortProfileChildren2013]. Activity levels in early life are thought to influence adult levels of activity.... 
 
 
 <!--chapter:end:01-Introduction.Rmd-->

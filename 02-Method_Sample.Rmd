@@ -7,3 +7,11 @@
 The ALSPAC Cohort [@boydCohortProfileChildren2013; @fraserCohortProfileAvon2013] was established to understand how genetic and environmental characteristics influence health and development in parents and children. Ethical approval for this study was granted by the ALSPAC Law and Ethics Committee and Local Ethics Committees. All pregnant women living in the geographical area of Avon, United Kingdom, who were expected to deliver between April 1, 1991 and December 31, 1992, were invited to participate in the study. Children from 14,541 pregnancies were enrolled; 13,988 children were alive at 1 year. An additional 913 children were enrolled during subsequent phases of enrollment, with a total sample size alive at 1 year of 14,901. All women gave informed and written consent. Among twin pairs, one twin per pair was randomly excluded from the current study.
 
 A fully searchable ALSPAC data dictionary is available [here](http://www.bris.ac.uk/alspac/researchers/data-access/data-dictionary/).
+
+
+11,13,15 - PA
+
+14,16,18,24 - DEx
+
+Inclusion - have to have one of each PA and DEx
+

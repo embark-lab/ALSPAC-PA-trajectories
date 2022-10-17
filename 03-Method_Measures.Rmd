@@ -55,3 +55,10 @@ Exericse groups over time are defined for descriptive analyses and transition st
 
 ### Physical Activity 
 
+### Eating Disorder Diagnoses
+
+Eating disorder diagnoses (AN, BN,BED, purging disorder [PD], and Other Specified Feeding and Eating Disorder (OSFED)) for adolescents were derived using questionnaire data from the Youth Risk Behavior Surveillance System questionnaire (YRBSS) using DSM-5 diagnostic criteria (excluding OSFED) [@micaliAdolescentEatingDisorders2015][@americanpsychiatricassociationDiagnosticStatisticalManual2013]. AN was assessed using both the YRBSS self-report and parental report since adolescents tend to under-report AN symptoms [@houseDiagnosingEatingDisorders2008]. Table X shows the criteria used for each diagnosis [@micaliAdolescentEatingDisorders2015]. 
+
+Diagnoses were assessed at Waves14+, 16+, 18+, and 24+. Body mass index (BMI), which is an objective measure, was also collected at face to face assessment (median ages: 13.8, 15.5, 17.8, and 24.0) and used as a diagnostic criteria for AN. Furthermore, an underweight assignment was determined using age, gender, and BMI-specific cutoffs (based on UK reference data); corresponding to World Health Organization (WHO) grade 1 thinness [@coleBodyMassIndex2007]. Excessive exercise, which is used as criteria for an AN and OSFED diagnoses, was assigned to the adolescent if they found themselves lacking time to do schoolwork due to engaging in exercise, exercising when sick or injured, and feeling guilt when unable to exercise. 
+
+

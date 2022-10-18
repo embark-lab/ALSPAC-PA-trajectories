@@ -58,6 +58,8 @@ Exericse groups over time are defined for descriptive analyses and transition st
 
 ### Physical Activity 
 
+Moderate-to-vigorous physical activity (MVPA) was assessed via Actigraph^tm^ accelerometers at 4 timepoints; age 11.5, 13.5, 15.5, and 24 years old. Participants were asked to wear the accelerometers for 7 days with the expception of age 24 where participants were asked to wear the accelerometer for 4 consecutive days.  Accelerometer data was used to extract total physical activity which was measured as the average counts per minute (CPM) over the period of valid recording, 480 to 600 minutes or recording in a day.[@mattocksUseAccelerometersLarge2008] Group based trajectory modeling (GBTM)[@naginGroupbasedTrajectoryModeling2010] was used to define trajectories of MVPA from middle childhood through emerging adulthood for all participants with at least one PA assessment, using Maximum likelihood (ML) estimation with estimation maximization (EM). Following estimation, posterior class probabilities were derived and used to assign individuals to classes.
+
 ### Eating Disorder Diagnoses
 
 Eating disorder diagnoses (AN, BN,BED, purging disorder [PD], and Other Specified Feeding and Eating Disorder (OSFED)) for adolescents were derived using questionnaire data from the Youth Risk Behavior Surveillance System questionnaire (YRBSS) using DSM-5 diagnostic criteria (excluding OSFED) [@micaliAdolescentEatingDisorders2015][@americanpsychiatricassociationDiagnosticStatisticalManual2013]. AN was assessed using both the YRBSS self-report and parental report since adolescents tend to under-report AN symptoms [@houseDiagnosingEatingDisorders2008]. Table X shows the criteria used for each diagnosis [@micaliAdolescentEatingDisorders2015]. 

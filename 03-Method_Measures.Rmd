@@ -52,12 +52,11 @@ The presence of maladaptive exercise in this study was defined as exercising for
 
 Exericse groups over time are defined for descriptive analyses and transition states, replicating groups defined in @schaumbergProspectiveAssociationsDriven2022. Those who report no exericse for weight loss at each time point are placed in a 'No Exercise for Weight Loss' group, those who report exercise for weight loss at least sometimes, but do not meet criteria for maladaptive exercise are placed in an 'Exercise for Weight Loss' group, and those meeting maladaptive exercise criteria are placed in the 'Maladaptive Exercise' group.
 
-<<<<<<< HEAD
 #### Eating Disorder Behaviors
-=======
+
 
 ### Physical Activity 
-
+s
 Moderate-to-vigorous physical activity (MVPA) was assessed via Actigraph^tm^ accelerometers at 4 timepoints; age 11.5, 13.5, 15.5, and 24 years old. Participants were asked to wear the accelerometers for 7 days with the expception of age 24 where participants were asked to wear the accelerometer for 4 consecutive days.  Accelerometer data was used to extract total physical activity which was measured as the average counts per minute (CPM) over the period of valid recording, 480 to 600 minutes or recording in a day.[@mattocksUseAccelerometersLarge2008] Group based trajectory modeling (GBTM)[@naginGroupbasedTrajectoryModeling2010] was used to define trajectories of MVPA from middle childhood through emerging adulthood for all participants with at least one PA assessment, using Maximum likelihood (ML) estimation with estimation maximization (EM). Following estimation, posterior class probabilities were derived and used to assign individuals to classes.
 
 ### Eating Disorder Diagnoses
@@ -88,5 +87,4 @@ Diagnoses were assessed at Waves14+, 16+, 18+, and 24+. Body mass index (BMI), w
 | Other Specified Feeding and Eating Disorder-other 1 (OSFED-other 1) | Self-Report     | monthly binge eating, purging, excessive exercising or fasting                                                                                                                                               |   |   |
 | Other Specified Feeding and Eating Disorder-other 2 (OSFED-other 2) | Self-Report     | < monthly binge eating, purging, excessive exercise or fasting                                                                                                                                               |   |   |
 |                                                                     |                 | AND weight and shape concern                                                                                                                                                                                 |   |   |
->>>>>>> a67990961bf7e7764679d41f027318c5ed2fdd83
 

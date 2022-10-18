@@ -5,62 +5,8 @@
 
 Measures of parent occupation were obtained for both mother and partner during child gestation. Parental occupations were then classified as unskilled(0), partly skilled (1), skilled manual (2), skilled non-manual (3), manegerial and technical (4), or professional (5). Of reported parent occupations, the highest reported occupation was used as a proxy for parent SES, to be treated as a continuous (0-5) covariate in analyses.
 
-### Eating Disorder Cognitions
 
-Eating disorder cognitions were assessed when children were 14 years of age. Relevant variables for the current analyses included: body dissatisfaction, thin-ideal internalization, and fear of weight gain.
-
-#### Body Dissatisfaction
-
-```{r bd, include=FALSE}
-# #Code for calculating Chronbach's Alpha amongst boys and girls for body dissatisfaction
-# 
-# bd_girls <- c('body_sat_weight_14', 'body_sat_figure_14', 'body_sat_breasts_14',  'body_sat_stomach_14', 'body_sat_waist_14', 'body_sat_thighs_14', 'body_sat_buttocks_14', 'body_sat_hips_14', 'body_sat_legs_14', 'body_sat_hair_14')
-# 
-# bd_boys <- c('body_sat_weight_14', 'body_sat_figure_14', 'body_sat_build_14',  'body_sat_stomach_14', 'body_sat_waist_14', 'body_sat_thighs_14', 'body_sat_buttocks_14', 'body_sat_hips_14', 'body_sat_legs_14', 'body_sat_hair_14')
-# 
-# girl_bd_alpha <- demo_ed.f |> 
-#   filter(sex == 1) |> 
-#   select( all_of(bd_girls) )  |> 
-#   performance::cronbachs_alpha() %>% 
-#   round(3)
-# 
-# boy_bd_alpha <- demo_ed.f |> 
-#   filter(sex == 0) |> 
-#   select( all_of(bd_boys ))|> 
-#   performance::cronbachs_alpha() %>% 
-#   round(3)
-```
-
-Body Dissatisfaction was assessed via an 11-item scale adapted from the satisfaction and dissatisfaction with body parts scale [@sticeProspectiveTestDualpathway2001], which has been used in several previous studies involving the ALSPAC Cohort [@bornioliAdolescentBodyDissatisfaction2019; @bornioliBodyDissatisfactionPredicts2021; @schaumbergAnxietyDisorderSymptoms2019; @schaumbergProspectiveAssociationsChildhood2021]. Among the 11 items, one item differs between the sexes (satisfaction with 'breasts' is specified for girls and 'build' for boys). Two items address overall body satisfaction with weight and figure, and the remaining items evaluate satisfaction with specific body parts. Responses are graded on a 5 point likert scale from "Extremely Satisfied" (1) to "Extremely Dissatisfied" (5). Reliability was high in both girls (Cronbach's $\alpha$ =  girl_bd_alpha) and boys (Cronbach's $\alpha$ =  boy_bd_alpha)  In the current study, body dissatisfaction was scored using the mean of all 11 items, with higher scores indicating greater body dissatisfaction, which was standardized within gender prior to analyses.
-
-#### Thin-ideal Internalization
-
-```{r ti, include=FALSE}
-#Code for calculating Chronbach's Alpha amongst boys and girls for thin-ideal internalization
-
-# ti_girls <- c('ti_thin_f_14', 'ti_lean_f_14', 'ti_tall_f_14', 'ti_longlegs_f_14',  'ti_shapely_f_14', 'ti_petite_f_14')
-# girl_ti_alpha <- demo_ed.f |> 
-#   filter(sex == 1) |> 
-#   select( ti_girls ) |> 
-#   performance::cronbachs_alpha() %>% 
-#   round(3)
-# 
-# ti_boys <- c('ti_thin_m_14', 'ti_lean_m_14',  'ti_tall_m_14', 'ti_shape_m_14','ti_muscles_m_14', 'ti_bodybuild_m_14')
-# boy_ti_alpha <- demo_ed.f |> 
-#   filter(sex == 0) |> 
-#   select( ti_boys )|> 
-#   performance::cronbachs_alpha() %>% 
-#   round(3)
-
-```
-
-Thin-ideal internalization was assessed using the Ideal-Body Stereotype Scale-Revised (IBSS-R) [@sticeTestDualPathway1996] Girls and boys were both asked six questions, three of which were the same and three of which were gender-specific, assessing the perceived attractiveness of same-sex individuals based on physical characteristics (e.g. being 'lean', 'tall', 'petite'). Items are rated on a 5-point likert scale ranging from 'Strongly Disagree' (0) to 'Strongly Agree' (4). (Cronbach's $\alpha$ = girl_ti_alpha for girls; boy_ti_alpha for boys) [@calzoSexualOrientationDisparities2018]. As with body dissatisfaction, the mean of all items was calculated, which was then standardized within gender prior to analysis.
-
-#### Fear of Weight Gain
-
-Fear of weight gain was assessed via a single item asking the degree to which participants have worried about gaining a little weight, using a likert response scale (0=not at all, 1=a little, 2=a lot, and 3=all the time). 
-
-### Body Mass Index Z-score (BMI-Z) at Age 13
+### Body Mass Index Z-score (BMI-Z) at Age 10
 
 ```{r bmi, include = FALSE}
 # clinic <- sum(!is.na(demo_ed.f$bmi_clinic.13))
@@ -106,5 +52,17 @@ The presence of maladaptive exercise in this study was defined as exercising for
 
 Exericse groups over time are defined for descriptive analyses and transition states, replicating groups defined in @schaumbergProspectiveAssociationsDriven2022. Those who report no exericse for weight loss at each time point are placed in a 'No Exercise for Weight Loss' group, those who report exercise for weight loss at least sometimes, but do not meet criteria for maladaptive exercise are placed in an 'Exercise for Weight Loss' group, and those meeting maladaptive exercise criteria are placed in the 'Maladaptive Exercise' group.
 
+<<<<<<< HEAD
 #### Eating Disorder Behaviors
+=======
+
+### Physical Activity 
+
+### Eating Disorder Diagnoses
+
+Eating disorder diagnoses (AN, BN,BED, purging disorder [PD], and Other Specified Feeding and Eating Disorder (OSFED)) for adolescents were derived using questionnaire data from the Youth Risk Behavior Surveillance System questionnaire (YRBSS) using DSM-5 diagnostic criteria (excluding OSFED) [@micaliAdolescentEatingDisorders2015][@americanpsychiatricassociationDiagnosticStatisticalManual2013]. AN was assessed using both the YRBSS self-report and parental report since adolescents tend to under-report AN symptoms [@houseDiagnosingEatingDisorders2008]. Table X shows the criteria used for each diagnosis [@micaliAdolescentEatingDisorders2015]. 
+
+Diagnoses were assessed at Waves14+, 16+, 18+, and 24+. Body mass index (BMI), which is an objective measure, was also collected at face to face assessment (median ages: 13.8, 15.5, 17.8, and 24.0) and used as a diagnostic criteria for AN. Furthermore, an underweight assignment was determined using age, gender, and BMI-specific cutoffs (based on UK reference data); corresponding to World Health Organization (WHO) grade 1 thinness [@coleBodyMassIndex2007]. Excessive exercise, which is used as criteria for an AN and OSFED diagnoses, was assigned to the adolescent if they found themselves lacking time to do schoolwork due to engaging in exercise, exercising when sick or injured, and feeling guilt when unable to exercise. 
+
+>>>>>>> a67990961bf7e7764679d41f027318c5ed2fdd83
 

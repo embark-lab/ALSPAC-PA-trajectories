@@ -58,11 +58,7 @@ At ages 11.5, 13.5, and 15.5, during a clinic visit, young people were asked to 
 #CPM
 Accelerometer data was used to extract total physical activity which was measured as the total counts per minute (CPM) over the period of valid recording Associations with total physical activity are usually calculated per 100 cpm as this difference is of a similar order to the differences observed between males and females in these data.
 
-
-
-
-
-
+#old
 s Moderate-to-vigorous physical activity (MVPA) was assessed via Actigraph^tm^ accelerometers at 4 timepoints; age 11.5, 13.5, 15.5, and 24 years old. Participants were asked to wear the accelerometers for 7 days with the expception of age 24 where participants were asked to wear the accelerometer for 4 consecutive days. Accelerometer data was used to extract total physical activity which was measured as the average counts per minute (CPM) over the period of valid recording, 480 to 600 minutes or recording in a day.[@mattocksUseAccelerometersLarge2008] Group based trajectory modeling (GBTM)[@naginGroupbasedTrajectoryModeling2010] was used to define trajectories of MVPA from middle childhood through emerging adulthood for all participants with at least one PA assessment, using Maximum likelihood (ML) estimation with estimation maximization (EM). Following estimation, posterior class probabilities were derived and used to assign individuals to classes.
 
 ### Eating Disorder Diagnoses

@@ -51,7 +51,9 @@ Exericse groups over time are defined for descriptive analyses and transition st
 
 #### Eating Disorder Behaviors
 
-The measurement of eating disorder behaviors (e.g., fasting, purging, binge eating, excessive exercise) in adolescents captures the full range of behaviors beyond ED diagnosis. Eating disorder behaviors were assessed through questionnaires at __ timepoints . 
+The measurement of eating disorder behaviors in adolescence captures a more complete range of behaviors beyond ED diagnosis. Eating disorder behaviors were assessed through questionnaires developed from the Youth Risk Behavior Surveillance System (YRBSS) at Waves 14+, 16+, 18+, and 24+ years. Participants were asked to consider the past year in their responses.
+
+
 
 ### Physical Activity
 

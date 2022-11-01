@@ -21,43 +21,17 @@ analyses.
 
 ```
 
-Child BMI-Z was assessed via two indices at age 13 years. First,
-objective height and weight were obtained for those who completed a
-clinic visit at age 13 (median age at clinic visit = 13.8 years).
-Second, parents reported child height and weight via questionnaire
-(median age = 13.1). An age and sex adjusted BMI-Z score was obtained
-from these self-report and clinic-recorded measurments. In order to
-maximize accuracy, when clinic-obtained measurements were obtained, this
-BMI-Z score was used (n = r clinic; clinic_percent %. BMI-Z from parent
-report was used when clinic measurement was not available (n = pr_n;
-pr_percent%). A portion of the sample had neither measurement available
-(n = missing_n\`; missing_percent%)
+Child BMI-Z was assessed via two indices at age 13 years. First, objective height and weight were obtained for those who completed a clinic visit at age 13 (median age at clinic visit = 13.8 years). Second, parents reported child height and weight via questionnaire (median age = 13.1). An age and sex adjusted BMI-Z score was obtained from these self-report and clinic-recorded measurments. In order to maximize accuracy, when clinic-obtained measurements were obtained, this BMI-Z score was used (n = r clinic; clinic_percent %. BMI-Z from parent report was used when clinic measurement was not available (n = pr_n; pr_percent%). A portion of the sample had neither measurement available (n = missing_n\`; missing_percent%)
 
 ### Exercise Measures
 
-Questions related to maladaptive exercise were self-reported at ages 14,
-16, 18, and 24 years. Questions were adapted from the Youth Risk
-Behavior Survelliance System [@kannYouthRiskBehavior1995].
+Questions related to maladaptive exercise were self-reported at ages 14, 16, 18, and 24 years. Questions were adapted from the Youth Risk Behavior Survelliance System [@kannYouthRiskBehavior1995].
 
 #### Exercise for Weight Loss
 
-At ages 14, 16, and 18 years, participants were asked if they exercised
-to lose weight or avoid gaining weight, with response options of: No(0),
-Yes-Sometimes(1), and Yes-Frequently(2).
+At ages 14, 16, and 18 years, participants were asked if they exercised to lose weight or avoid gaining weight, with response options of: No(0), Yes-Sometimes(1), and Yes-Frequently(2).
 
-At age 24, participants were asked the frequency with which they
-exercised to lose weight or avoid gaining weight, with response options
-of: Never, \<1x/mo, 1-3x/mo, 1-4x/wk, and 5 or more times per week. For
-the purposes of analysis, responses at age 24 were harmonized with age
-14, 16, and 18. Responses of Never were binned as "No" (0); 1x/mo -
-\<1x/week were binned as 'Yes - Sometimes'(1), and 1x/wk or more as
-'Yes - Frequently'(2). Once a week or more was chosen as the threshold
-for 'frequent' exercise for weight loss at age 24 to align with DSM-V
-diagnostic frequency thresholds for other eating disorder behaviors,
-such as binge eating and purging
-[@americanpsychiatricassociationDiagnosticStatisticalManual2013]. The
-primary derived outcome variable of analysis for exercise for weight
-loss is an ordinal variable, defined as 0 = No, 1 = Sometimes, and 2 = Frequently.
+At age 24, participants were asked the frequency with which they exercised to lose weight or avoid gaining weight, with response options of: Never, \<1x/mo, 1-3x/mo, 1-4x/wk, and 5 or more times per week. For the purposes of analysis, responses at age 24 were harmonized with age 14, 16, and 18. Responses of Never were binned as "No" (0); 1x/mo - \<1x/week were binned as 'Yes - Sometimes'(1), and 1x/wk or more as 'Yes - Frequently'(2). Once a week or more was chosen as the threshold for 'frequent' exercise for weight loss at age 24 to align with DSM-V diagnostic frequency thresholds for other eating disorder behaviors, such as binge eating and purging [@americanpsychiatricassociationDiagnosticStatisticalManual2013]. The primary derived outcome variable of analysis for exercise for weight loss is an ordinal variable, defined as 0 = No, 1 = Sometimes, and 2 = Frequently.
 
 #### Maladaptive Exercise
 
@@ -175,36 +149,15 @@ cutpoint of \>=2296. Both sets of data were included in analysis. At age
 
 #### Valid Days
 
-Valid Days are calculated using a cutoff of minutes per day that an
-accelerometer was worn. For ages 11.5-15.5 a cutoff of \>=600 minutes
-per day was used. At age 24 Valid Days were operationalised as a wear
-time of at least 500 minutes, after excluding intervals of \>60 minutes
-with zero counts. \#### Sedentary Behavior
+Valid Days are calculated using a cutoff of minutes per day that an accelerometer was worn. For ages 11.5-15.5 a cutoff of \>=600 minutes per day was used. At age 24 Valid Days were operationalised as a wear time of at least 500 minutes, after excluding intervals of \>60 minutes with zero counts. \#### Sedentary Behavior
 
 ### Eating Disorder Diagnoses
 
-Eating disorder diagnoses (AN, BN,BED, purging disorder [PD], and Other
-Specified Feeding and Eating Disorder (OSFED)) for adolescents were
-derived using questionnaire data from the Youth Risk Behavior
-Surveillance System questionnaire (YRBSS) using DSM-5 diagnostic
-criteria (excluding OSFED)
-[@micaliAdolescentEatingDisorders2015][@americanpsychiatricassociationDiagnosticStatisticalManual2013].
-AN was assessed using both the YRBSS self-report and parental report
-since adolescents tend to under-report AN symptoms
-[@houseDiagnosingEatingDisorders2008]. Table X shows the criteria used
-for each diagnosis [@micaliAdolescentEatingDisorders2015].
+Eating disorder diagnoses (AN, BN,BED, purging disorder [PD], and Other Specified Feeding and Eating Disorder (OSFED)) for adolescents were derived using questionnaire data from the Youth Risk Behavior
+Surveillance System questionnaire (YRBSS) using DSM-5 diagnostic criteria (excluding OSFED)
+[@micaliAdolescentEatingDisorders2015][@americanpsychiatricassociationDiagnosticStatisticalManual2013]. AN was assessed using both the YRBSS self-report and parental report since adolescents tend to under-report AN symptoms [@houseDiagnosingEatingDisorders2008]. Table X shows the criteria used for each diagnosis [@micaliAdolescentEatingDisorders2015].
 
-Diagnoses were assessed at Waves14+, 16+, 18+, and 24+. Body mass index
-(BMI), which is an objective measure, was also collected at face to face
-assessment (median ages: 13.8, 15.5, 17.8, and 24.0) and used as a
-diagnostic criteria for AN. Furthermore, an underweight assignment was
-determined using age, gender, and BMI-specific cutoffs (based on UK
-reference data); corresponding to World Health Organization (WHO) grade
-1 thinness [@coleBodyMassIndex2007]. Excessive exercise, which is used
-as criteria for an AN and OSFED diagnoses, was assigned to the
-adolescent if they found themselves lacking time to do schoolwork due to
-engaging in exercise, exercising when sick or injured, and feeling guilt
-when unable to exercise.
+Diagnoses were assessed at Waves14+, 16+, 18+, and 24+. Body mass index (BMI), which is an objective measure, was also collected at face to face assessment (median ages: 13.8, 15.5, 17.8, and 24.0) and used as a diagnostic criteria for AN. Furthermore, an underweight assignment wasdetermined using age, gender, and BMI-specific cutoffs (based on UK reference data); corresponding to World Health Organization (WHO) grade 1 thinness [@coleBodyMassIndex2007]. Excessive exercise, which is used as criteria for an AN and OSFED diagnoses, was assigned to the adolescent if they found themselves lacking time to do schoolwork due to engaging in exercise, exercising when sick or injured, and feeling guilt when unable to exercise.
 
 | **Table X. Diagnostic Criteria**                                    |                 |                                                                                                                                                                                                              |                                                                                                                                                                                                              |                                                                                                                                                                                                              |                                                                                    |
 |------------|------------|------------|------------|------------|------------|

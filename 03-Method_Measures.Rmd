@@ -1,8 +1,20 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 ## Measures
 
 ### Socioeconomic Status (SES)
 
-Measures of parent occupation were obtained for both mother and partner during child gestation. Parental occupations were then classified as unskilled(0), partly skilled (1), skilled manual (2), skilled non-manual (3), manegerial and technical (4), or professional (5). Of reported parent occupations, the highest reported occupation was used as a proxy for parent SES, to be treated as a continuous (0-5) covariate in analyses.
+Measures of parent occupation were obtained for both mother and partner
+during child gestation. Parental occupations were then classified as
+unskilled(0), partly skilled (1), skilled manual (2), skilled non-manual
+(3), manegerial and technical (4), or professional (5). Of reported
+parent occupations, the highest reported occupation was used as a proxy
+for parent SES, to be treated as a continuous (0-5) covariate in
+analyses.
 
 ### Body Mass Index Z-score (BMI-Z) at Age 10
 
@@ -19,21 +31,55 @@ Measures of parent occupation were obtained for both mother and partner during c
 
 ```
 
-Child BMI-Z was assessed via two indices at age 13 years. First, objective height and weight were obtained for those who completed a clinic visit at age 13 (median age at clinic visit = 13.8 years). Second, parents reported child height and weight via questionnaire (median age = 13.1). An age and sex adjusted BMI-Z score was obtained from these self-report and clinic-recorded measurments. In order to maximize accuracy, when clinic-obtained measurements were obtained, this BMI-Z score was used (n = r clinic; clinic_percent %. BMI-Z from parent report was used when clinic measurement was not available (n = pr_n; pr_percent%). A portion of the sample had neither measurement available (n = missing_n\`; missing_percent%)
+Child BMI-Z was assessed via two indices at age 13 years. First,
+objective height and weight were obtained for those who completed a
+clinic visit at age 13 (median age at clinic visit = 13.8 years).
+Second, parents reported child height and weight via questionnaire
+(median age = 13.1). An age and sex adjusted BMI-Z score was obtained
+from these self-report and clinic-recorded measurments. In order to
+maximize accuracy, when clinic-obtained measurements were obtained, this
+BMI-Z score was used (n = r clinic; clinic_percent %. BMI-Z from parent
+report was used when clinic measurement was not available (n = pr_n;
+pr_percent%). A portion of the sample had neither measurement available
+(n = missing_n\`; missing_percent%)
 
 ### Exercise Measures
 
-Questions related to maladaptive exercise were self-reported at ages 14, 16, 18, and 24 years. Questions were adapted from the Youth Risk Behavior Survelliance System [@kannYouthRiskBehavior1995].
+Questions related to maladaptive exercise were self-reported at ages 14,
+16, 18, and 24 years. Questions were adapted from the Youth Risk
+Behavior Survelliance System [@kannYouthRiskBehavior1995].
 
 #### Exercise for Weight Loss
 
-At ages 14, 16, and 18 years, participants were asked if they exercised to lose weight or avoid gaining weight, with response options of: No(0), Yes-Sometimes(1), and Yes-Frequently(2).
+At ages 14, 16, and 18 years, participants were asked if they exercised
+to lose weight or avoid gaining weight, with response options of: No(0),
+Yes-Sometimes(1), and Yes-Frequently(2).
 
-At age 24, participants were asked the frequency with which they exercised to lose weight or avoid gaining weight, with response options of: Never, \<1x/mo, 1-3x/mo, 1-4x/wk, and 5 or more times per week. For the purposes of analysis, responses at age 24 were harmonized with age 14, 16, and 18. Responses of Never were binned as "No" (0); 1x/mo - \<1x/week were binned as 'Yes - Sometimes'(1), and 1x/wk or more as 'Yes - Frequently'(2). Once a week or more was chosen as the threshold for 'frequent' exercise for weight loss at age 24 to align with DSM-V diagnostic frequency thresholds for other eating disorder behaviors, such as binge eating and purging [@americanpsychiatricassociationDiagnosticStatisticalManual2013]. The primary derived outcome variable of analysis for exercise for weight loss is an ordinal variable, defined as 0 = No, 1 = Sometimes, and 2 = Frequently.
+At age 24, participants were asked the frequency with which they
+exercised to lose weight or avoid gaining weight, with response options
+of: Never, \<1x/mo, 1-3x/mo, 1-4x/wk, and 5 or more times per week. For
+the purposes of analysis, responses at age 24 were harmonized with age
+14, 16, and 18. Responses of Never were binned as "No" (0); 1x/mo -
+\<1x/week were binned as 'Yes - Sometimes'(1), and 1x/wk or more as
+'Yes - Frequently'(2). Once a week or more was chosen as the threshold
+for 'frequent' exercise for weight loss at age 24 to align with DSM-V
+diagnostic frequency thresholds for other eating disorder behaviors,
+such as binge eating and purging
+[@americanpsychiatricassociationDiagnosticStatisticalManual2013]. The
+primary derived outcome variable of analysis for exercise for weight
+loss is an ordinal variable, defined as 0 = No, 1 = Sometimes, and 2 =
+Frequently.
 
 #### Maladaptive Exercise
 
-Issues that are associated with exercise were also reported at ages 14,16, 18, and 24 years. At all assessment points, participants reported whether exercise interferes with work/school (14,16,18), or their daily routine (24). At ages 14 and 24, participants also reported whether they exercised to lose weight even when sick or injured. At ages 16 and 18 years, participants reported whether they felt guilty about missing an exercise session -- see Table \@ref(tab:tab2) . Responses options for exercise issues were 'No', 'yes - Sometimes', or 'Yes - Frequently'.
+Issues that are associated with exercise were also reported at ages
+14,16, 18, and 24 years. At all assessment points, participants reported
+whether exercise interferes with work/school (14,16,18), or their daily
+routine (24). At ages 14 and 24, participants also reported whether they
+exercised to lose weight even when sick or injured. At ages 16 and 18
+years, participants reported whether they felt guilty about missing an
+exercise session -- see Table \@ref(tab:tab2) . Responses options for
+exercise issues were 'No', 'yes - Sometimes', or 'Yes - Frequently'.
 
 ```{r tab2}
 # x <- tibble(age = c(14,16,18,24), Interferes = c('x','x','x','x'), Sick_Injured = c('x',' ',' ', 'x'), Guilt = c('' ,'x','x', '')) 
@@ -41,38 +87,130 @@ Issues that are associated with exercise were also reported at ages 14,16, 18, a
 # knitr::kable(x, caption = 'Exercise Issues Assessed at Each Age')
 ```
 
-Exercise issues are deemmed to be 'present' at each time point if an individual endorses: (1) exercise interfering with work/school sometimes or more OR frequent guilt when missing an exercise session at ages 16 and 18 years and (2) exercise interfering with work/school/daily routine sometimes or more OR exercising even when sick/injured sometimes or more at ages 14 and 24 years.
+Exercise issues are deemmed to be 'present' at each time point if an
+individual endorses: (1) exercise interfering with work/school sometimes
+or more OR frequent guilt when missing an exercise session at ages 16
+and 18 years and (2) exercise interfering with work/school/daily routine
+sometimes or more OR exercising even when sick/injured sometimes or more
+at ages 14 and 24 years.
 
-The presence of maladaptive exercise in this study was defined as exercising for weight loss **sometimes or frequently** and at least one **exercise issue** defined as present at each time point. Frequency of exercise for weight loss as sometimes or more was chosen for this definition as (1) existing literature suggests that frequency of exercise may be less important than cognitive features in defining exercise risk in the context of eating disorders [@adkinsDoesExcessiveCompulsive2005; @mondUpdateDefinitionExcessive2006] and (2) the nature of the epidemiological sample and the concomitant goals of this paper are such that we are interested in identifying early risk indicators, which may be best captured via a broad (vs. narrow) definition of maladaptive exercise. The primary variable to define maladaptive exercise was derived as described, resulting in a dichotomous outcome (0 = Absent, 1 = Present).
+The presence of maladaptive exercise in this study was defined as
+exercising for weight loss **sometimes or frequently** and at least one
+**exercise issue** defined as present at each time point. Frequency of
+exercise for weight loss as sometimes or more was chosen for this
+definition as (1) existing literature suggests that frequency of
+exercise may be less important than cognitive features in defining
+exercise risk in the context of eating disorders
+[@adkinsDoesExcessiveCompulsive2005; @mondUpdateDefinitionExcessive2006]
+and (2) the nature of the epidemiological sample and the concomitant
+goals of this paper are such that we are interested in identifying early
+risk indicators, which may be best captured via a broad (vs. narrow)
+definition of maladaptive exercise. The primary variable to define
+maladaptive exercise was derived as described, resulting in a
+dichotomous outcome (0 = Absent, 1 = Present).
 
 #### Exercise Gropus
 
-Exericse groups over time are defined for descriptive analyses and transition states, replicating groups defined in @schaumbergProspectiveAssociationsDriven2022. Those who report no exericse for weight loss at each time point are placed in a 'No Exercise for Weight Loss' group, those who report exercise for weight loss at least sometimes, but do not meet criteria for maladaptive exercise are placed in an 'Exercise for Weight Loss' group, and those meeting maladaptive exercise criteria are placed in the 'Maladaptive Exercise' group.
+Exericse groups over time are defined for descriptive analyses and
+transition states, replicating groups defined in
+@schaumbergProspectiveAssociationsDriven2022. Those who report no
+exericse for weight loss at each time point are placed in a 'No Exercise
+for Weight Loss' group, those who report exercise for weight loss at
+least sometimes, but do not meet criteria for maladaptive exercise are
+placed in an 'Exercise for Weight Loss' group, and those meeting
+maladaptive exercise criteria are placed in the 'Maladaptive Exercise'
+group.
 
 #### Eating Disorder Behaviors
 
-The measurement of eating disorder behaviors in adolescence captures a more complete range of behaviors beyond ED diagnosis. Eating disorder behaviors were assessed through questionnaires developed from the Youth Risk Behavior Surveillance System (YRBSS) at Waves 14+, 16+, 18+, and 24+ years. Participants were asked to consider the past year in their responses.
+The measurement of eating disorder behaviors in adolescence captures a
+more complete range of behaviors beyond ED diagnosis. Eating disorder
+behaviors were assessed through questionnaires developed from the Youth
+Risk Behavior Surveillance System (YRBSS) at Waves 14+, 16+, 18+, and
+24+ years. Participants were asked to consider the past year in their
+responses.
 
-
+| Construct                   | Timepoint  | Description                                                                                                                                                                                                                                                     |     |     |
+|-------|-------|----------------------------------------------|-------|-------|
+| Thin ideal internalization  | 14         | Thin ideal internalisation was measured at age 14 with the Ideal_Body Stereotype Scale_Revised (Stice, 1998). Adolescents responded to statements regarding appearance ideals rated on a five_point Likert scale from 'strongly agree' to 'strongly disagree.'  |     |     |
+| Body Satisfaction           | 14, 18, 24 | The Body Satisfaction Scale was measured at 14, 18, and 24 and asked individuals to rate their satisfaction with their body parts on a 5-point Likert scale, from 'extremely satisfied' to 'extremely dissatisfied' with higher values indicating higher dissat |     |     |
+| Pressure to lose weight     | 14         | Pressure to lose weight was measured at age 14 with an adapted version of the Perceived Sociocultural Pressure Scale. Pressure to lose weight from friends, family, romantic partners, and the media was recorded.                                              |     |     |
+| Pressure to increase muscle | 14         | Pressure to gain muscle was measured at age 14 with an adapted version of the Perceived Sociocultural Pressure Scale. Pressure to gain muscle from friends, family, romantic partners, and the media was recorded.                                              |     |     |
+| Weight-related teasing      | .          | Adolescents were asked to report weight related teasing from peers and family members with five possible responses ranging from "never" to "at least once a week."                                                                                              |     |     |
+| Dieting                     | 14, 16, 18 | Participant dieting was measured at age 14, 16, and 18 and measured frequency during the past year YP went on a diet to lose weight/keep from gaining weight, length of diet, amount of weight lost, and amount of weight regained.                             |     |     |
+| External Eating             | 14         | Participants completed a variation of the Dutch Eating Behavior Questionnaire (DEBQ) at age 14. Dysfunctional eating patterns such as emotional eating, external eating, and restrained eating were assessed.                                                   |     |     |
+| Restrained Eating           | 14         | Participants completed a variation of the Dutch Eating Behavior Questionnaire (DEBQ) at age 14. Dysfunctional eating patterns such as emotional eating, external eating, and restrained eating were assessed.                                                   |     |     |
+| Emotional Eating            | 14         | Participants completed a variation of the Dutch Eating Behavior Questionnaire (DEBQ) at age 14. Dysfunctional eating patterns such as emotional eating, external eating, and restrained eating were assessed.                                                   |     |     |
+| Fear of Weight gain         | 14, 24     | Participants asked the degree they worried about gaining a little weight (two pounds) in the past year.                                                                                                                                                         |     |     |
+| Maternal Dieting            | 14         | Mothers were asked the frequency they tried to lose weight in the past year.                                                                                                                                                                                    |     |     |
+| Craving                     | 16         | Participants were asked the frequency of occurance of strong cravings for food that they find hard to resist.                                                                                                                                                   |     |     |
+| Weight intentions           | 14, 18     | Respondent asked about what they are trying to do with their weight.                                                                                                                                                                                            |     |     |
+| Weight Perception           | 14, 18     | Participant notes their perception of their weight.                                                                                                                                                                                                             |     |     |
+| Weight valuation            | 18         | Participant notes the degree to which their weight has made a difference to how they feel about themselves.                                                                                                                                                     |     |     |
+| Feeling fat                 | 24         | Participant notes the frequency that they have felt fat in the past year.                                                                                                                                                                                       |     |     |
+| Weight/Shape concern        | 14         | Weight and shape concern at age 14 was assessed using a 4 item questionaire adapted from the McKnight Risk Factor Survey.                                                                                                                                       |     |     |
 
 ### Physical Activity
-##Accelerometers
-Physical activity data was captured using the Actigraph^tm^ accelerometer, which is often used in child physical activity studies. Participants were instructed to wear accelerometers around the waist just above their right hip for the duration of the tracking period. Accelerometer data was collected at the following four time points.
-At ages 11.5, 13.5, and 15.5, during a clinic visit, young people were asked to wear the accelerometer for 7 days, beginning the day after clinic attendance [@mattocksUseAccelerometersLarge2008]. At age 24 participants were asked to wear accelerometers for four days beginning the day after clinic attendance [@troianoPhysicalActivityUnited2008].
-#CPM
-Accelerometer data was used to extract total physical activity which was measured as the total counts per minute (CPM) over the period of valid recording Associations with total physical activity are usually calculated per 100 cpm as this difference is of a similar order to the differences observed between males and females in these data.
 
-#old
-s Moderate-to-vigorous physical activity (MVPA) was assessed via Actigraph^tm^ accelerometers at 4 timepoints; age 11.5, 13.5, 15.5, and 24 years old. Participants were asked to wear the accelerometers for 7 days with the expception of age 24 where participants were asked to wear the accelerometer for 4 consecutive days. Accelerometer data was used to extract total physical activity which was measured as the average counts per minute (CPM) over the period of valid recording, 480 to 600 minutes or recording in a day.[@mattocksUseAccelerometersLarge2008] Group based trajectory modeling (GBTM)[@naginGroupbasedTrajectoryModeling2010] was used to define trajectories of MVPA from middle childhood through emerging adulthood for all participants with at least one PA assessment, using Maximum likelihood (ML) estimation with estimation maximization (EM). Following estimation, posterior class probabilities were derived and used to assign individuals to classes.
+##Accelerometers Physical activity data was captured using the
+Actigraph^tm^ accelerometer, which is often used in child physical
+activity studies. Participants were instructed to wear accelerometers
+around the waist just above their right hip for the duration of the
+tracking period. Accelerometer data was collected at the following four
+time points. At ages 11.5, 13.5, and 15.5, during a clinic visit, young
+people were asked to wear the accelerometer for 7 days, beginning the
+day after clinic attendance [@mattocksUseAccelerometersLarge2008]. At
+age 24 participants were asked to wear accelerometers for four days
+beginning the day after clinic attendance
+[@troianoPhysicalActivityUnited2008]. #CPM Accelerometer data was used
+to extract total physical activity which was measured as the total
+counts per minute (CPM) over the period of valid recording Associations
+with total physical activity are usually calculated per 100 cpm as this
+difference is of a similar order to the differences observed between
+males and females in these data.
+
+#old s Moderate-to-vigorous physical activity (MVPA) was assessed via
+Actigraph^tm^ accelerometers at 4 timepoints; age 11.5, 13.5, 15.5, and
+24 years old. Participants were asked to wear the accelerometers for 7
+days with the expception of age 24 where participants were asked to wear
+the accelerometer for 4 consecutive days. Accelerometer data was used to
+extract total physical activity which was measured as the average counts
+per minute (CPM) over the period of valid recording, 480 to 600 minutes
+or recording in a day.[@mattocksUseAccelerometersLarge2008] Group based
+trajectory modeling (GBTM)[@naginGroupbasedTrajectoryModeling2010] was
+used to define trajectories of MVPA from middle childhood through
+emerging adulthood for all participants with at least one PA assessment,
+using Maximum likelihood (ML) estimation with estimation maximization
+(EM). Following estimation, posterior class probabilities were derived
+and used to assign individuals to classes.
 
 ### Eating Disorder Diagnoses
 
-Eating disorder diagnoses (AN, BN,BED, purging disorder [PD], and Other Specified Feeding and Eating Disorder (OSFED)) for adolescents were derived using questionnaire data from the Youth Risk Behavior Surveillance System questionnaire (YRBSS) using DSM-5 diagnostic criteria (excluding OSFED) [@micaliAdolescentEatingDisorders2015][@americanpsychiatricassociationDiagnosticStatisticalManual2013]. AN was assessed using both the YRBSS self-report and parental report since adolescents tend to under-report AN symptoms [@houseDiagnosingEatingDisorders2008]. Table X shows the criteria used for each diagnosis [@micaliAdolescentEatingDisorders2015].
+Eating disorder diagnoses (AN, BN,BED, purging disorder [PD], and Other
+Specified Feeding and Eating Disorder (OSFED)) for adolescents were
+derived using questionnaire data from the Youth Risk Behavior
+Surveillance System questionnaire (YRBSS) using DSM-5 diagnostic
+criteria (excluding OSFED)
+[@micaliAdolescentEatingDisorders2015][@americanpsychiatricassociationDiagnosticStatisticalManual2013].
+AN was assessed using both the YRBSS self-report and parental report
+since adolescents tend to under-report AN symptoms
+[@houseDiagnosingEatingDisorders2008]. Table X shows the criteria used
+for each diagnosis [@micaliAdolescentEatingDisorders2015].
 
-Diagnoses were assessed at Waves14+, 16+, 18+, and 24+. Body mass index (BMI), which is an objective measure, was also collected at face to face assessment (median ages: 13.8, 15.5, 17.8, and 24.0) and used as a diagnostic criteria for AN. Furthermore, an underweight assignment was determined using age, gender, and BMI-specific cutoffs (based on UK reference data); corresponding to World Health Organization (WHO) grade 1 thinness [@coleBodyMassIndex2007]. Excessive exercise, which is used as criteria for an AN and OSFED diagnoses, was assigned to the adolescent if they found themselves lacking time to do schoolwork due to engaging in exercise, exercising when sick or injured, and feeling guilt when unable to exercise.
+Diagnoses were assessed at Waves14+, 16+, 18+, and 24+. Body mass index
+(BMI), which is an objective measure, was also collected at face to face
+assessment (median ages: 13.8, 15.5, 17.8, and 24.0) and used as a
+diagnostic criteria for AN. Furthermore, an underweight assignment was
+determined using age, gender, and BMI-specific cutoffs (based on UK
+reference data); corresponding to World Health Organization (WHO) grade
+1 thinness [@coleBodyMassIndex2007]. Excessive exercise, which is used
+as criteria for an AN and OSFED diagnoses, was assigned to the
+adolescent if they found themselves lacking time to do schoolwork due to
+engaging in exercise, exercising when sick or injured, and feeling guilt
+when unable to exercise.
 
 | **Table X. Diagnostic Criteria**                                    |                 |                                                                                                                                                                                                              |                                                                                                                                                                                                              |              |              |
-|-------------|---------|------------------|------------------|---------|---------|
+|------------|------------|------------|------------|------------|------------|
 |                                                                     |                 |                                                                                                                                                                                                              |                                                                                                                                                                                                              |              |              |
 | **Diagnoses**                                                       | **Report Type** | **Wave 14+**                                                                                                                                                                                                 | **Wave 16+**                                                                                                                                                                                                 | **Wave 18+** | **Wave 24+** |
 | Anorexia Nervosa (AN)                                               | Self-report     | 1.Underweight (body mass index [BMI]\<18.5)                                                                                                                                                                  | 1.Underweight (BMI\<18.5)                                                                                                                                                                                    |              |              |
@@ -96,29 +234,65 @@ Diagnoses were assessed at Waves14+, 16+, 18+, and 24+. Body mass index (BMI), w
 | Other Specified Feeding and Eating Disorder-other 1 (OSFED-other 1) | Self-Report     | monthly binge eating, purging, excessive exercising or fasting                                                                                                                                               | monthly binge eating, purging, excessive exercising or fasting                                                                                                                                               |              |              |
 | Other Specified Feeding and Eating Disorder-other 2 (OSFED-other 2) | Self-Report     | \< monthly binge eating, purging, excessive exercise or fasting                                                                                                                                              | \< monthly binge eating, purging, excessive exercise or fasting                                                                                                                                              |              |              |
 |                                                                     |                 | AND weight and shape concern                                                                                                                                                                                 |                                                                                                                                                                                                              |              |              |
-=======
-| **Table X. Diagnostic Criteria**                                    |                 |                                                                                                                                                                                                              |                                                                                                                                                                                                              |                                                                                                                                                                                                              |                                                                                    |
-|---------------------------------------------------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| **Diagnoses**                                                       | **Report Type** | **Wave 14+**                                                                                                                                                                                                 | **Wave 16+**                                                                                                                                                                                                 | **Wave 18+**                                                                                                                                                                                                 | **Wave 24+**                                                                       |
-| Anorexia Nervosa (AN)                                               | Self-report     | 1.Underweight (body mass index [BMI]\<18.5)                                                                                                                                                                  | 1.Underweight (BMI\<18.5)                                                                                                                                                                                    | 1\. engaged in fasting for weight loss or to avoid weight gain at least monthly                                                                                                                              | 1.Underweight (BMI\<18.5)                                                          |
-|                                                                     |                 | AND 2. self-reported weight and shape concern                                                                                                                                                                | AND 2. engaged in fasting for weight loss or to avoid weight gain at least monthly                                                                                                                           | OR engaged in excessive exercise                                                                                                                                                                             | AND 2. engaged in fasting for weight loss or to avoid weight gain at least monthly |
-|                                                                     |                 | OR engaged in fasting for weight loss or to avoid weight gain at least monthly                                                                                                                               | OR engaged in excessive exercise                                                                                                                                                                             |                                                                                                                                                                                                              | OR engaged in excessive exercise                                                   |
-|                                                                     |                 | OR engaged in excessive exercise                                                                                                                                                                             |                                                                                                                                                                                                              |                                                                                                                                                                                                              |                                                                                    |
-|                                                                     | Parental Report | 1\. Underweight (BMI\<18.5)                                                                                                                                                                                  | 1\. Underweight (BMI\<18.5)                                                                                                                                                                                  |                                                                                                                                                                                                              |                                                                                    |
-|                                                                     |                 | AND 2. Presence of fear of weight gain AND fat avoidance in the 3 months prior to assessment                                                                                                                 | 2\. Presence of fear of weight gain AND fat avoidance in the 3 months prior to assessment                                                                                                                    |                                                                                                                                                                                                              |                                                                                    |
-| Bulimia Nervosa (BN)                                                | Self-Report     | 1.Weekly binge eating                                                                                                                                                                                        | 1.Weekly binge eating                                                                                                                                                                                        | 1.Weekly binge eating                                                                                                                                                                                        | 1.Weekly binge eating                                                              |
-|                                                                     |                 | AND 2. weekly purging                                                                                                                                                                                        | AND 2. weekly purging                                                                                                                                                                                        | AND 2. weekly purging                                                                                                                                                                                        | AND 2. weekly purging                                                              |
-| Binge Eating Disorder (BED)                                         | Self-Report     | 1\. Weekly binge eating                                                                                                                                                                                      | 1.Weekly binge eating                                                                                                                                                                                        | 1.Weekly binge eating                                                                                                                                                                                        | 1\. Weekly binge eating                                                            |
-|                                                                     |                 | AND 2. At least 3 cognitive symptoms (eating fast or faster than normal; eating until stomach hurt or they felt sick, eating large amounts when not hungry, eating alone, feeling guilty about amount eaten) | AND 2. At least 3 cognitive symptoms (eating fast or faster than normal; eating until stomach hurt or they felt sick, eating large amounts when not hungry, eating alone, feeling guilty about amount eaten) | AND 2. At least 3 cognitive symptoms (eating fast or faster than normal; eating until stomach hurt or they felt sick, eating large amounts when not hungry, eating alone, feeling guilty about amount eaten) | AND 2. Absence of purging                                                          |
-|                                                                     |                 | AND 3. Absence of purging                                                                                                                                                                                    | AND 3. Absence of purging                                                                                                                                                                                    | AND 3. Absence of purging                                                                                                                                                                                    |                                                                                    |
-| Purging Disorder                                                    | Self-Report     | 1\. Purging at least weekly                                                                                                                                                                                  | 1\. Purging at least weekly                                                                                                                                                                                  | 1\. Purging at least weekly                                                                                                                                                                                  | 1\. Purging at least weekly                                                        |
-|                                                                     |                 | 1\. AND 2. Binge eating absent or \< monthly                                                                                                                                                                 | AND 2. Binge eating absent or \< monthly                                                                                                                                                                     | AND 2. Binge eating absent or \< monthly                                                                                                                                                                     | AND 2. Binge eating absent or \< monthly                                           |
-| Sub-threshold BN (Sub-BN)                                           | Self-Report     | 1\. monthly binge eating                                                                                                                                                                                     | 1\. monthly binge eating                                                                                                                                                                                     | 1\. monthly binge eating                                                                                                                                                                                     | 1\. monthly binge eating                                                           |
-|                                                                     |                 | AND 2. monthly purging                                                                                                                                                                                       | AND 2. monthly purging                                                                                                                                                                                       | AND 2. monthly purging                                                                                                                                                                                       | AND 2. monthly purging                                                             |
-| Sub-threshold BED (Sub-BED)                                         | Self-Report     | 1\. monthly binge eating                                                                                                                                                                                     | 1\. monthly binge eating                                                                                                                                                                                     | 1\. monthly binge eating                                                                                                                                                                                     | 1\. monthly binge eating                                                           |
-|                                                                     |                 | AND 2. At least 3 cognitive symptoms                                                                                                                                                                         | AND 2. At least 3 cognitive symptoms                                                                                                                                                                         | AND 2. At least 3 cognitive symptoms                                                                                                                                                                         | AND 2. Absence of purging                                                          |
-|                                                                     |                 | AND 3. Absence of purging                                                                                                                                                                                    | AND 3. Absence of purging                                                                                                                                                                                    | AND 3. Absence of purging                                                                                                                                                                                    |                                                                                    |
-| Other Specified Feeding and Eating Disorder-other 1 (OSFED-other 1) | Self-Report     | monthly binge eating, purging, excessive exercising or fasting                                                                                                                                               | monthly binge eating, purging, excessive exercising or fasting                                                                                                                                               | monthly binge eating, purging, excessive exercising or fasting                                                                                                                                               | monthly binge eating, purging, excessive exercising or fasting                     |
-| Other Specified Feeding and Eating Disorder-other 2 (OSFED-other 2) | Self-Report     | \< monthly binge eating, purging, excessive exercise or fasting                                                                                                                                              | \< monthly binge eating, purging, excessive exercise or fasting                                                                                                                                              | \< monthly binge eating, purging, excessive exercise or fasting                                                                                                                                              | \< monthly binge eating, purging, excessive exercise or fasting                    |
-|                                                                     |                 | AND weight and shape concern                                                                                                                                                                                 |                                                                                                                                                                                                              |                                                                                                                                                                                                              |                                                                                    |
->>>>>>> 9775013c04fdc3c35b69d97aa12c8dd0757c2676
+
+======= \| **Table X. Diagnostic Criteria** \| \| \| \| \| \|
+\|---------------------------------------------------------------------\|-----------------\|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\|------------------------------------------------------------------------------------\|
+\| **Diagnoses** \| **Report Type** \| **Wave 14+** \| **Wave 16+** \|
+**Wave 18+** \| **Wave 24+** \| \| Anorexia Nervosa (AN) \| Self-report
+\| 1.Underweight (body mass index [BMI]\<18.5) \| 1.Underweight
+(BMI\<18.5) \| 1. engaged in fasting for weight loss or to avoid weight
+gain at least monthly \| 1.Underweight (BMI\<18.5) \| \| \| \| AND 2.
+self-reported weight and shape concern \| AND 2. engaged in fasting for
+weight loss or to avoid weight gain at least monthly \| OR engaged in
+excessive exercise \| AND 2. engaged in fasting for weight loss or to
+avoid weight gain at least monthly \| \| \| \| OR engaged in fasting for
+weight loss or to avoid weight gain at least monthly \| OR engaged in
+excessive exercise \| \| OR engaged in excessive exercise \| \| \| \| OR
+engaged in excessive exercise \| \| \| \| \| \| Parental Report \| 1.
+Underweight (BMI\<18.5) \| 1. Underweight (BMI\<18.5) \| \| \| \| \| \|
+AND 2. Presence of fear of weight gain AND fat avoidance in the 3 months
+prior to assessment \| 2. Presence of fear of weight gain AND fat
+avoidance in the 3 months prior to assessment \| \| \| \| Bulimia
+Nervosa (BN) \| Self-Report \| 1.Weekly binge eating \| 1.Weekly binge
+eating \| 1.Weekly binge eating \| 1.Weekly binge eating \| \| \| \| AND
+2. weekly purging \| AND 2. weekly purging \| AND 2. weekly purging \|
+AND 2. weekly purging \| \| Binge Eating Disorder (BED) \| Self-Report
+\| 1. Weekly binge eating \| 1.Weekly binge eating \| 1.Weekly binge
+eating \| 1. Weekly binge eating \| \| \| \| AND 2. At least 3 cognitive
+symptoms (eating fast or faster than normal; eating until stomach hurt
+or they felt sick, eating large amounts when not hungry, eating alone,
+feeling guilty about amount eaten) \| AND 2. At least 3 cognitive
+symptoms (eating fast or faster than normal; eating until stomach hurt
+or they felt sick, eating large amounts when not hungry, eating alone,
+feeling guilty about amount eaten) \| AND 2. At least 3 cognitive
+symptoms (eating fast or faster than normal; eating until stomach hurt
+or they felt sick, eating large amounts when not hungry, eating alone,
+feeling guilty about amount eaten) \| AND 2. Absence of purging \| \| \|
+\| AND 3. Absence of purging \| AND 3. Absence of purging \| AND 3.
+Absence of purging \| \| \| Purging Disorder \| Self-Report \| 1.
+Purging at least weekly \| 1. Purging at least weekly \| 1. Purging at
+least weekly \| 1. Purging at least weekly \| \| \| \| 1. AND 2. Binge
+eating absent or \< monthly \| AND 2. Binge eating absent or \< monthly
+\| AND 2. Binge eating absent or \< monthly \| AND 2. Binge eating
+absent or \< monthly \| \| Sub-threshold BN (Sub-BN) \| Self-Report
+\| 1. monthly binge eating \| 1. monthly binge eating \| 1. monthly
+binge eating \| 1. monthly binge eating \| \| \| \| AND 2. monthly
+purging \| AND 2. monthly purging \| AND 2. monthly purging \| AND 2.
+monthly purging \| \| Sub-threshold BED (Sub-BED) \| Self-Report \| 1.
+monthly binge eating \| 1. monthly binge eating \| 1. monthly binge
+eating \| 1. monthly binge eating \| \| \| \| AND 2. At least 3
+cognitive symptoms \| AND 2. At least 3 cognitive symptoms \| AND 2. At
+least 3 cognitive symptoms \| AND 2. Absence of purging \| \| \| \| AND
+3. Absence of purging \| AND 3. Absence of purging \| AND 3. Absence of
+purging \| \| \| Other Specified Feeding and Eating Disorder-other 1
+(OSFED-other 1) \| Self-Report \| monthly binge eating, purging,
+excessive exercising or fasting \| monthly binge eating, purging,
+excessive exercising or fasting \| monthly binge eating, purging,
+excessive exercising or fasting \| monthly binge eating, purging,
+excessive exercising or fasting \| \| Other Specified Feeding and Eating
+Disorder-other 2 (OSFED-other 2) \| Self-Report \| \< monthly binge
+eating, purging, excessive exercise or fasting \| \< monthly binge
+eating, purging, excessive exercise or fasting \| \< monthly binge
+eating, purging, excessive exercise or fasting \| \< monthly binge
+eating, purging, excessive exercise or fasting \| \| \| \| AND weight
+and shape concern \| \| \| \|

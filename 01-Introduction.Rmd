@@ -1,10 +1,6 @@
 # Introduction
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
 max was here
 lauren was here <3
 Lauren's Intro:
@@ -23,8 +19,7 @@ Altogether, initial evidence suggests that engaging in exercise for weight loss 
 ## Current Study
 
 In the current study, we extend a longitudinal investigation of exercise for weight loss and maladaptive exercise across a developmental window from middle adolescence to young adulthood (ages 14-24). Specifically, we aim to examine the frequency of exercise states, based on the three categories of 'no exercise for weight loss', 'exercise for weight loss', and 'maladaptive exercise', amongst boys and girls at ages 14, 16, 18, and 24 years old. We examine rates of transitions between these exercise states over time, and identify preliminary predictors of these transitions. Further, we aim to characterize overall risk for engaging in maladaptive exercise across age, and identify potential demographic or early (age 14) eating disorder cognition variables that may enhance risk for maladaptive exercise throughout adolescence. Based on previous literature [@allenEatingDisorderSymptom2013; @schaumbergProspectiveAssociationsDriven2022; @davisDevelopmentalTrajectoriesCompensatory2016], we hypothesize that exercise for weight loss will be a common behaivor across adolescence, with maladaptive exercise being less common than exercise for weight loss, but will occur in a sizable minority of individuals. Further, we hypothesize that eating disorder cognitions assessed at age 14 will be associated with higher likelihood of exercise for weight loss and maladaptive exercise across adolescence. Specific aims are as follows:
-=======
->>>>>>> 1f12858c8ed6aba8d4212ffec775b79fc229a671
+
 
 Lauren's Intro:
 

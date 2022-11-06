@@ -6,7 +6,7 @@ Measures of parent occupation were obtained for both mother and partner during c
 
 ### Body Mass Index
 
-Objective body mass index (BMI) was collected at face-to-face assessment (median ages: xx, 13.8, 15.5, 17.8, and 24.0) and self- or parent-report (median ages xx, xxx, xx, xx, xx. ). To maximize accuracy and minimize missing data, data from objective and self-report were integrated at ages 10, 14, 16, and 18 reflecting BMI assessments in the prior year, such that objective BMIz was used, if available, and self- or parent-report BMIz was used if objective data was not available (see Table \@ref(tab:x) for available data across timepoints). BMIz at age 10 was used as an analytic covariate and BMI/BMIz at later ages was used as a diagnostic criteria for AN (see more information in Table \@ref(tab:y) below). At ages 14-18, an underweight assignment was determined using age and gender BMIz score of \< -2 using World Health Organization (WHO) reference data and corresponding to grade 1 thinness [@coleBodyMassIndex2007]; at Age 24 underweight was assigned as BMI \< 18.5.
+Objective body mass index (BMI) was collected at face-to-face assessment (median ages: xx, 13.8, 15.5, 17.8, and 24.0) and self- or parent-report (median ages xx, xxx, xx, xx, xx. ). To maximize accuracy and minimize missing data, data from objective and self-report were integrated at ages 10, 14, 16, and 18 reflecting BMI assessments in the prior year, such that objective BMIz was used, if available, and self- or parent-report BMIz was used if objective data was not available (see Table \@ref(tab:bmi) for available data across timepoints). BMIz at age 10 was used as an analytic covariate and BMI/BMIz at later ages was used as a diagnostic criteria for AN (see more information in Table \@ref(tab:y) below). At ages 14-18, an underweight assignment was determined using age and gender BMIz score of \< -2 using World Health Organization (WHO) reference data and corresponding to grade 1 thinness [@coleBodyMassIndex2007]; at Age 24 underweight was assigned as BMI \< 18.5.
 
 ```{r bmi, include = FALSE}
 # clinic <- sum(!is.na(demo_ed.f$bmi_clinic.13))
@@ -21,57 +21,44 @@ Objective body mass index (BMI) was collected at face-to-face assessment (median
 
 ```
 
-### Exercise Measures
+### Cognitive Eating Disorder Features
 
-Questions related to maladaptive exercise were self-reported at ages 14, 16, 18, and 24 years. Questions were adapted from the Youth Risk Behavior Survelliance System [@kannYouthRiskBehavior1995].
+Cognitive f
 
-#### Exercise for Weight Loss
+| Construct                   | Age        | Description                                                                                                                                                                                                                           |
+|:---------------|:---------------|:---------------------------------------|
+| Thin ideal internalization  | 14         | Measured via the Ideal Body Stereotype Scale-Revised. Adolescents responded to statements regarding appearance ideals rated on a 5-point Likert scale from 'strongly agree' to 'strongly disagree.'                                   |
+| Pressure to Lose Weight     | 14         | Assessed via the Perceived Sociocultural Pressure Scale. Pressure to lose weight from friends, family, romantic partners, and the media .                                                                                             |
+| Pressure to Increase Muscle | 14         | Assessed via the Perceived Sociocultural Pressure Scale. Pressure to gain muscle from friends, family, romantic partners, and the media.                                                                                              |
+| Weight-related Teasing      | .          | Adolescents reported weight related teasing from peers and family members with five possible responses ranging from "never" to "at least once a week."                                                                                |
+| External Eating             | 14         | Assessed via the Dutch Eating Behavior Questionnaire (DEBQ)                                                                                                                                                                           |
+| Restrained Eating           | 14         | Assessed via the Dutch Eating Behavior Questionnaire (DEBQ)                                                                                                                                                                           |
+| Emotional Eating            | 14         | Assessed via the Dutch Eating Behavior Questionnaire (DEBQ)                                                                                                                                                                           |
+| Weight/Shape Concern        | 14         | Weight and shape concern at age 14 was assessed using a 4 item questionnaire adapted from the McKnight Risk Factor Survey.                                                                                                            |
+| Body Dissatisfaction        | 14, 18, 24 | The Body (dis)Satisfaction Scale asked individuals to rate their satisfaction with body parts on a 5-point Likert scale, from 'extremely satisfied' to 'extremely dissatisfied' with higher values indicating higher dissatisfaction. |
+| Dieting                     | 14, 16, 18 | Participant dieting was measured at age 14, 16, and 18 and measured frequency during the past year YP went on a diet to lose weight/keep from gaining weight, length of diet, amount of weight lost, and amount of weight regained.   |
+| Fear of Weight Gain         | 14, 24     | Participants reported the degree they worried about gaining a little weight (two pounds) in the past year.                                                                                                                            |
+| Weight intentions           | 14, 18     | Participants reported what they are trying to do with their weight.                                                                                                                                                                   |
+| Weight Perception           | 14, 18     | Participants reported their perception of their weight.                                                                                                                                                                               |
+| Weight Valuation            | 18         | Participants reported the degree to which their weight has made a difference to how they feel about themselves.                                                                                                                       |
+| Feeling Fat                 | 24         | Participant reported the frequency that they have felt fat in the past year.                                                                                                                                                          |
 
-At ages 14, 16, and 18 years, participants were asked if they exercised to lose weight or avoid gaining weight, with response options of: No(0), Yes-Sometimes(1), and Yes-Frequently(2).
 
-At age 24, participants were asked the frequency with which they exercised to lose weight or avoid gaining weight, with response options of: Never, \<1x/mo, 1-3x/mo, 1-4x/wk, and 5 or more times per week. For the purposes of analysis, responses at age 24 were harmonized with age 14, 16, and 18. Responses of Never were binned as "No" (0); 1x/mo - \<1x/week were binned as 'Yes - Sometimes'(1), and 1x/wk or more as 'Yes - Frequently'(2). Once a week or more was chosen as the threshold for 'frequent' exercise for weight loss at age 24 to align with DSM-V diagnostic frequency thresholds for other eating disorder behaviors, such as binge eating and purging [@americanpsychiatricassociationDiagnosticStatisticalManual2013]. The primary derived outcome variable of analysis for exercise for weight loss is an ordinal variable, defined as 0 = No, 1 = Sometimes, and 2 = Frequently.
+### Eating Disorder Behaviors
+
+The measurement of eating disorder behaviors in adolescence captures a more complete range of behaviors beyond ED diagnosis. Eating disorder behaviors were assessed through questionnaires developed from the Youth Risk Behavior Surveillance System (YRBSS)[@kannYouthRiskBehavior1995] at Waves 14+, 16+, 18+, and 24+ years. Participants were asked to consider the past year in their responses. 
+
+### Maladaptive Exercise
+
+At ages 14, 16, and 18 years, participants were asked if they exercised to lose weight or avoid gaining weight, with response options of: No(0), Yes-Sometimes(1), and Yes-Frequently(2). At age 24, participants were asked the frequency with which they exercised to lose weight or avoid gaining weight, with response options of: Never, \<1x/mo, 1-3x/mo, 1-4x/wk, and 5 or more times per week. Responses at age 24 were harmonized with age 14, 16, and 18. Responses of Never were binned as "No" (0); 1x/mo - \<1x/week were binned as 'Yes - Sometimes'(1), and 1x/wk or more as 'Yes - Frequently'(2). Once a week or more was chosen as the threshold for 'frequent' exercise for weight loss at age 24 to align with DSM-5 diagnostic frequency thresholds for other eating disorder behaviors [@americanpsychiatricassociationDiagnosticStatisticalManual2013]. The primary outcome variable of analysis for exercise for weight loss is an ordinal variable, defined as 0 = No, 1 = Sometimes, and 2 = Frequently.
 
 #### Maladaptive Exercise
 
-Issues that are associated with exercise were also reported at ages 14,16, 18, and 24 years. At all assessment points, participants reported whether exercise interferes with work/school (14,16,18), or their daily routine (24). At ages 14 and 24, participants also reported whether they exercised to lose weight even when sick or injured. At ages 16 and 18 years, participants reported whether they felt guilty about missing an exercise session -- see Table \@ref(tab:tab2) . Responses options for exercise issues were 'No', 'yes - Sometimes', or 'Yes - Frequently'.
-
-```{r tab2, echo = FALSE}
-library(tibble)
-x <- tibble(age = c(14,16,18,24), Interferes = c('x','x','x','x'), `Sick or Injured` = c('x',' ',' ', 'x'), Guilt = c('' ,'x','x', '')) 
-
-knitr::kable(x, caption = 'Exercise Issues Assessed at Each Age')
-```
-
-Exercise issues are deemmed to be 'present' at each time point if an individual endorses: (1) exercise interfering with work/school sometimes or more OR frequent guilt when missing an exercise session at ages 16 and 18 years and (2) exercise interfering with work/school/daily routine sometimes or more OR exercising even when sick/injured sometimes or more at ages 14 and 24 years.
-
-The presence of maladaptive exercise in this study was defined as exercising for weight loss **sometimes or frequently** and at least one **exercise issue** defined as present at each time point. Frequency of exercise for weight loss as sometimes or more was chosen for this definition as (1) existing literature suggests that frequency of exercise may be less important than cognitive features in defining exercise risk in the context of eating disorders [@adkinsDoesExcessiveCompulsive2005; @mondUpdateDefinitionExcessive2006] and (2) the nature of the epidemiological sample and the concomitant goals of this paper are such that we are interested in identifying early risk indicators, which may be best captured via a broad (vs. narrow) definition of maladaptive exercise. The primary variable to define maladaptive exercise was derived as described, resulting in a dichotomous outcome (0 = Absent, 1 = Present).
+At all assessment points, participants reported whether exercise interferes with work/school (14,16,18), or their daily routine (24). At ages 14 and 24, participants also reported whether they exercised to lose weight even when sick or injured. At ages 16 and 18 years, participants also reported whether they felt guilty about missing an exercise session. Responses options for exercise issues were 'No', 'yes - Sometimes', or 'Yes - Frequently'. Maladaptive exercise is defined in accordance with scoring methods in @schaumbergPatternsMaladaptiveExercise2022, which includes exercising for weight loss **sometimes or frequently** and at least one **maladpative exercise indicator** defined as present at each time point. 
 
 #### Exercise Gropus
 
 Exericse groups over time are defined for descriptive analyses and transition states, replicating groups defined in @schaumbergProspectiveAssociationsDriven2022. Those who report no exericse for weight loss at each time point are placed in a 'No Exercise for Weight Loss' group, those who report exercise for weight loss at least sometimes, but do not meet criteria for maladaptive exercise are placed in an 'Exercise for Weight Loss' group, and those meeting maladaptive exercise criteria are placed in the 'Maladaptive Exercise' group.
-
-#### Eating Disorder Behaviors
-
-The measurement of eating disorder behaviors in adolescence captures a more complete range of behaviors beyond ED diagnosis. Eating disorder behaviors were assessed through questionnaires developed from the Youth Risk Behavior Surveillance System (YRBSS) at Waves 14+, 16+, 18+, and 24+ years. Participants were asked to consider the past year in their responses.
-
-| Construct \| Timepoint \| Description \| \| \|\|-------\|-------\|----------------------------------------------\|-------\|-------\|
-| Thin ideal internalization \| 14 \| Thin ideal internalization was measured at age 14 with the Ideal_Body Stereotype Scale_Revised (Stice, 1998). Adolescents responded to statements regarding appearance ideals rated on a five_point Likert scale from 'strongly agree' to 'strongly disagree.' \| \| \|
-| Body Satisfaction \| 14, 18, 24 \| The Body Satisfaction Scale was measured at 14, 18, and 24 and asked individuals to rate their satisfaction with their body parts on a 5-point Likert scale, from 'extremely satisfied' to 'extremely dissatisfied' with higher values indicating higher dissatisfaction. \| \| \|
-| Pressure to lose weight \| 14 \| Pressure to lose weight was measured at age 14 with an adapted version of the Perceived Sociocultural Pressure Scale. Pressure to lose weight from friends, family, romantic partners, and the media was recorded. \| \| \|
-| Pressure to increase muscle \| 14 \| Pressure to gain muscle was measured at age 14 with an adapted version of the Perceived Sociocultural Pressure Scale. Pressure to gain muscle from friends, family, romantic partners, and the media was recorded. \| \| \|
-| Weight-related teasing \| . \| Adolescents were asked to report weight related teasing from peers and family members with five possible responses ranging from "never" to "at least once a week." \| \| \|
-| Dieting \| 14, 16, 18 \| Participant dieting was measured at age 14, 16, and 18 and measured frequency during the past year YP went on a diet to lose weight/keep from gaining weight, length of diet, amount of weight lost, and amount of weight regained. \| \| \|
-| External Eating \| 14 \| Participants completed a variation of the Dutch Eating Behavior Questionnaire (DEBQ) at age 14. Dysfunctional eating patterns such as emotional eating, external eating, and restrained eating were assessed. \| \| \|
-| Restrained Eating \| 14 \| Participants completed a variation of the Dutch Eating Behavior Questionnaire (DEBQ) at age 14. Dysfunctional eating patterns such as emotional eating, external eating, and restrained eating were assessed. \| \| \|
-| Emotional Eating \| 14 \| Participants completed a variation of the Dutch Eating Behavior Questionnaire (DEBQ) at age 14. Dysfunctional eating patterns such as emotional eating, external eating, and restrained eating were assessed. \| \| \|
-| Fear of Weight gain \| 14, 24 \| Participants asked the degree they worried about gaining a little weight (two pounds) in the past year. \| \| \|
-| Maternal Dieting \| 14 \| Mothers were asked the frequency they tried to lose weight in the past year. \| \| \|
-| Craving \| 16 \| Participants were asked the frequency of occurrence of strong cravings for food that they find hard to resist. \| \| \|
-| Weight intentions \| 14, 18 \| Respondent asked about what they are trying to do with their weight. \| \| \|
-| Weight Perception \| 14, 18 \| Participant notes their perception of their weight. \| \| \|
-| Weight valuation \| 18 \| Participant notes the degree to which their weight has made a difference to how they feel about themselves. \| \| \|
-| Feeling fat \| 24 \| Participant notes the frequency that they have felt fat in the past year. \| \| \|
-| Weight/Shape concern \| 14 \| Weight and shape concern at age 14 was assessed using a 4 item questionnaire adapted from the McKnight Risk Factor Survey. \| \| \|
 
 ### Physical Activity
 

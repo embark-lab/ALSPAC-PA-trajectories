@@ -56,9 +56,6 @@ At ages 14, 16, and 18 years, participants were asked if they exercised to lose 
 
 At all assessment points, participants reported whether exercise interferes with work/school (14,16,18), or their daily routine (24). At ages 14 and 24, participants also reported whether they exercised to lose weight even when sick or injured. At ages 16 and 18 years, participants also reported whether they felt guilty about missing an exercise session. Responses options for exercise issues were 'No', 'yes - Sometimes', or 'Yes - Frequently'. Maladaptive exercise is defined in accordance with scoring methods in @schaumbergPatternsMaladaptiveExercise2022, which includes exercising for weight loss **sometimes or frequently** and at least one **maladpative exercise indicator** defined as present at each time point. 
 
-#### Exercise Gropus
-
-Exericse groups over time are defined for descriptive analyses and transition states, replicating groups defined in @schaumbergProspectiveAssociationsDriven2022. Those who report no exericse for weight loss at each time point are placed in a 'No Exercise for Weight Loss' group, those who report exercise for weight loss at least sometimes, but do not meet criteria for maladaptive exercise are placed in an 'Exercise for Weight Loss' group, and those meeting maladaptive exercise criteria are placed in the 'Maladaptive Exercise' group.
 
 ### Physical Activity
 

@@ -8,10 +8,5 @@ The ALSPAC Cohort [@boydCohortProfileChildren2013; @fraserCohortProfileAvon2013]
 
 A fully searchable ALSPAC data dictionary is available [here](http://www.bris.ac.uk/alspac/researchers/data-access/data-dictionary/).
 
-
-11,13,15 - PA
-
-14,16,18,24 - DEx
-
 Inclusion - have to have one of each PA and DEx
 

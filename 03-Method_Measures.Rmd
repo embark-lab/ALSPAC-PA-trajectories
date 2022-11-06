@@ -4,6 +4,18 @@
 
 Measures of parent occupation were obtained for both mother and partner during child gestation. Parental occupations were then classified as unskilled(0), partly skilled (1), skilled manual (2), skilled non-manual (3), manegerial and technical (4), or professional (5). Of reported parent occupations, the highest reported occupation was used as a proxy for parent SES, to be treated as a continuous (0-5) covariate in analyses.
 
+### Objective Physical Activity
+
+Objective physical activity data was captured using Actigraph^tm^ accelerometers at child ages 11.5, 13.5 and 15.5 years. Youth were instructed to wear accelerometers around the waist just above their right hip for the duration of a 7 day tracking period, beginning the day after clinic attendance [@mattocksUseAccelerometersLarge2008]. At age 24 participants were asked to wear accelerometers for four days after clinic attendance [@troianoPhysicalActivityUnited2008]. Valid Days are calculated using a cutoff of minutes per day that an accelerometer was worn. For ages 11.5-15.5 a cutoff of \>=600 minutes per day was used. At age 24 Valid Days were operationalised as a wear time of at least 500 minutes, after excluding intervals of \>60 minutes with zero counts.
+
+#### Activity Counts Per Minute (CPM)
+
+Total physical activity was measured as the total counts per minute (CPM) over the period of valid recording. Associations with total physical activity are usually calculated per 100 cpm as this difference is of a similar order to the differences observed between males and females in these data.
+
+#### Moderate-to-Vigorous Physical Activity (MVPA)
+
+MVPA measures the average amount of time spent above a CPM cutoff, which differs across age. At ages 11.5, 13.5 and 15.5 A value of \>= 3600 CPM was originally used to define MVPA at the time of the data collection [@mattocksUseAccelerometersLarge2008]. More recently, following Evenson et. al. [@evensonCalibrationTwoObjective2008], who calculated a lower cutpoint of \>=2296. Both sets of data were included in analysis. At age 24 MVPA cutoff was established at \>2020 cpm [@troianoPhysicalActivityUnited2008].
+
 ### Body Mass Index
 
 Objective body mass index (BMI) was collected at face-to-face assessment (median ages: xx, 13.8, 15.5, 17.8, and 24.0) and self- or parent-report (median ages xx, xxx, xx, xx, xx. ). To maximize accuracy and minimize missing data, data from objective and self-report were integrated at ages 10, 14, 16, and 18 reflecting BMI assessments in the prior year, such that objective BMIz was used, if available, and self- or parent-report BMIz was used if objective data was not available (see Table \@ref(tab:bmi) for available data across timepoints). BMIz at age 10 was used as an analytic covariate and BMI/BMIz at later ages was used as a diagnostic criteria for AN (see more information in Table \@ref(tab:y) below). At ages 14-18, an underweight assignment was determined using age and gender BMIz score of \< -2 using World Health Organization (WHO) reference data and corresponding to grade 1 thinness [@coleBodyMassIndex2007]; at Age 24 underweight was assigned as BMI \< 18.5.
@@ -47,29 +59,21 @@ Cognitive eating disorder features were assessed across age, with a robust
 
 The measurement of eating disorder behaviors in adolescence captures a more complete range of behaviors beyond ED diagnosis. Eating disorder behaviors were assessed through questionnaires developed from the Youth Risk Behavior Surveillance System (YRBSS)[@kannYouthRiskBehavior1995] at Waves 14+, 16+, 18+, and 24+ years. Participants were asked to consider the past year in their responses.
 
-### Maladaptive Exercise
+#### Binge Eating
 
-At ages 14, 16, and 18 years, participants were asked if they exercised to lose weight or avoid gaining weight, with response options of: No(0), Yes-Sometimes(1), and Yes-Frequently(2). At age 24, participants were asked the frequency with which they exercised to lose weight or avoid gaining weight, with response options of: Never, \<1x/mo, 1-3x/mo, 1-4x/wk, and 5 or more times per week. Responses at age 24 were harmonized with age 14, 16, and 18. Responses of Never were binned as "No" (0); 1x/mo - \<1x/week were binned as 'Yes - Sometimes'(1), and 1x/wk or more as 'Yes - Frequently'(2). Once a week or more was chosen as the threshold for 'frequent' exercise for weight loss at age 24 to align with DSM-5 diagnostic frequency thresholds for other eating disorder behaviors [@americanpsychiatricassociationDiagnosticStatisticalManual2013]. The primary outcome variable of analysis for exercise for weight loss is an ordinal variable, defined as 0 = No, 1 = Sometimes, and 2 = Frequently.
+Binge eating
+
+#### Purging 
+
+Purging
+
+#### Fasting
+
+Fasting
 
 #### Maladaptive Exercise
 
-At all assessment points, participants reported whether exercise interferes with work/school (14,16,18), or their daily routine (24). At ages 14 and 24, participants also reported whether they exercised to lose weight even when sick or injured. At ages 16 and 18 years, participants also reported whether they felt guilty about missing an exercise session. Responses options for exercise issues were 'No', 'yes - Sometimes', or 'Yes - Frequently'. Maladaptive exercise is defined in accordance with scoring methods outlined in @schaumbergPatternsMaladaptiveExercise2022, and includes exercising for weight loss **sometimes or frequently** and at least one **maladapative exercise indicator** defined as present at each time point.
-
-### Physical Activity
-
-Objective physical activity data was captured using Actigraph^tm^ accelerometers at child ages 11.5, 13.5 and 15.5 years. Youth were instructed to wear accelerometers around the waist just above their right hip for the duration of a 7 day tracking period, beginning the day after clinic attendance [@mattocksUseAccelerometersLarge2008]. At age 24 participants were asked to wear accelerometers for four days after clinic attendance [@troianoPhysicalActivityUnited2008].
-
-#### Activity Counts Per Minute (CPM)
-
-Accelerometer data was used to extract total physical activity which was measured as the total counts per minute (CPM) over the period of valid recording. Associations with total physical activity are usually calculated per 100 cpm as this difference is of a similar order to the differences observed between males and females in these data.
-
-#### Moderate-to-Vigorous Physical Activity (MVPA)
-
-MVPA measures the average amount of time spent above a CPM cutoff, these cutoff points differ by age groups. At ages 11.5, 13.5 and 15.5 A value of \>= 3600 CPM was originally used to define MVPA at the time of the data collection [@mattocksUseAccelerometersLarge2008]. More recently, following Evenson et. al. [@evensonCalibrationTwoObjective2008], who calculated a lower cutpoint of \>=2296. Both sets of data were included in analysis. At age 24 MVPA cutoff was established at \>2020 cpm [@troianoPhysicalActivityUnited2008].
-
-#### Valid Days
-
-Valid Days are calculated using a cutoff of minutes per day that an accelerometer was worn. For ages 11.5-15.5 a cutoff of \>=600 minutes per day was used. At age 24 Valid Days were operationalised as a wear time of at least 500 minutes, after excluding intervals of \>60 minutes with zero counts.
+At ages 14, 16, 18 years, and 24 years, participants were asked if they exercised to lose weight or avoid gaining weight (Exercise for Weight Loss). At all assessment points, participants reported whether exercise interferes with work/school (14,16,18), or their daily routine (24). At ages 14 and 24, participants also reported whether they exercised to lose weight even when sick or injured. At ages 16 and 18 years, participants also reported whether they felt guilty about missing an exercise session. Responses options for exercise issues were 'No', 'Yes - Sometimes', or 'Yes - Frequently'. Presence of maladaptive exercise was defined in accordance with scoring methods outlined in @schaumbergPatternsMaladaptiveExercise2022, and includes exercising for weight loss **sometimes or frequently** and at least one **maladapative exercise indicator** defined as present at each assessment point point.
 
 ### Eating Disorder Diagnoses
 
@@ -78,3 +82,5 @@ Eating disorder diagnoses (AN, BN,BED, BN-Spectrum [Purging disorder and subclin
 ```{r alspac_dx_table, fig.cap= 'Diagnostic Criteria Assessed Across Age'}
 knitr::include_graphics('figs/ALSPAC_Dx_Table.png')
 ```
+
+### 

@@ -23,10 +23,10 @@ Objective body mass index (BMI) was collected at face-to-face assessment (median
 
 ### Cognitive Eating Disorder Features
 
-Cognitive f
+Cognitive eating disorder features were assessed across age, with a robust
 
 | Construct                   | Age        | Description                                                                                                                                                                                                                           |
-|:---------------|:---------------|:---------------------------------------|
+|:----------------|:----------------|:-------------------------------------|
 | Thin ideal internalization  | 14         | Measured via the Ideal Body Stereotype Scale-Revised. Adolescents responded to statements regarding appearance ideals rated on a 5-point Likert scale from 'strongly agree' to 'strongly disagree.'                                   |
 | Pressure to Lose Weight     | 14         | Assessed via the Perceived Sociocultural Pressure Scale. Pressure to lose weight from friends, family, romantic partners, and the media .                                                                                             |
 | Pressure to Increase Muscle | 14         | Assessed via the Perceived Sociocultural Pressure Scale. Pressure to gain muscle from friends, family, romantic partners, and the media.                                                                                              |
@@ -43,10 +43,9 @@ Cognitive f
 | Weight Valuation            | 18         | Participants reported the degree to which their weight has made a difference to how they feel about themselves.                                                                                                                       |
 | Feeling Fat                 | 24         | Participant reported the frequency that they have felt fat in the past year.                                                                                                                                                          |
 
-
 ### Eating Disorder Behaviors
 
-The measurement of eating disorder behaviors in adolescence captures a more complete range of behaviors beyond ED diagnosis. Eating disorder behaviors were assessed through questionnaires developed from the Youth Risk Behavior Surveillance System (YRBSS)[@kannYouthRiskBehavior1995] at Waves 14+, 16+, 18+, and 24+ years. Participants were asked to consider the past year in their responses. 
+The measurement of eating disorder behaviors in adolescence captures a more complete range of behaviors beyond ED diagnosis. Eating disorder behaviors were assessed through questionnaires developed from the Youth Risk Behavior Surveillance System (YRBSS)[@kannYouthRiskBehavior1995] at Waves 14+, 16+, 18+, and 24+ years. Participants were asked to consider the past year in their responses.
 
 ### Maladaptive Exercise
 
@@ -54,22 +53,19 @@ At ages 14, 16, and 18 years, participants were asked if they exercised to lose 
 
 #### Maladaptive Exercise
 
-At all assessment points, participants reported whether exercise interferes with work/school (14,16,18), or their daily routine (24). At ages 14 and 24, participants also reported whether they exercised to lose weight even when sick or injured. At ages 16 and 18 years, participants also reported whether they felt guilty about missing an exercise session. Responses options for exercise issues were 'No', 'yes - Sometimes', or 'Yes - Frequently'. Maladaptive exercise is defined in accordance with scoring methods in @schaumbergPatternsMaladaptiveExercise2022, which includes exercising for weight loss **sometimes or frequently** and at least one **maladpative exercise indicator** defined as present at each time point. 
-
+At all assessment points, participants reported whether exercise interferes with work/school (14,16,18), or their daily routine (24). At ages 14 and 24, participants also reported whether they exercised to lose weight even when sick or injured. At ages 16 and 18 years, participants also reported whether they felt guilty about missing an exercise session. Responses options for exercise issues were 'No', 'yes - Sometimes', or 'Yes - Frequently'. Maladaptive exercise is defined in accordance with scoring methods outlined in @schaumbergPatternsMaladaptiveExercise2022, and includes exercising for weight loss **sometimes or frequently** and at least one **maladapative exercise indicator** defined as present at each time point.
 
 ### Physical Activity
 
-#### Accelerometers
+Objective physical activity data was captured using Actigraph^tm^ accelerometers at child ages 11.5, 13.5 and 15.5 years. Youth were instructed to wear accelerometers around the waist just above their right hip for the duration of a 7 day tracking period, beginning the day after clinic attendance [@mattocksUseAccelerometersLarge2008]. At age 24 participants were asked to wear accelerometers for four days after clinic attendance [@troianoPhysicalActivityUnited2008].
 
-Physical activity data was captured using the Actigraph^tm^ accelerometer, which is often used in child physical activity studies. Participants were instructed to wear accelerometers around the waist just above their right hip for the duration of the tracking period. Accelerometer data was collected at the following four time points. At ages 11.5, 13.5, and 15.5, during a clinic visit, young people were asked to wear the accelerometer for 7 days, beginning the day after clinic attendance [@mattocksUseAccelerometersLarge2008]. At age 24 participants were asked to wear accelerometers for four days beginning the day after clinic attendance [@troianoPhysicalActivityUnited2008].
-
-#### CPM
+#### Activity Counts Per Minute (CPM)
 
 Accelerometer data was used to extract total physical activity which was measured as the total counts per minute (CPM) over the period of valid recording. Associations with total physical activity are usually calculated per 100 cpm as this difference is of a similar order to the differences observed between males and females in these data.
 
-#### MVPA
+#### Moderate-to-Vigorous Physical Activity (MVPA)
 
-Moderate to Vigerous Physical Activity (MVPA) measures the average amount of time spent above a CPM cutoff, these cutoff points differ by age groups. At ages 11.5, 13.5 and 15.5 A value of \>= 3600 cpm was originally used to define MVPA at the time of the data collection [@mattocksUseAccelerometersLarge2008]. More recently, following Evenson et. al. [@evensonCalibrationTwoObjective2008], who calculated a lower cutpoint of \>=2296. Both sets of data were included in analysis. At age 24 MVPA cutoff was established at \>2020 cpm [@troianoPhysicalActivityUnited2008].
+MVPA measures the average amount of time spent above a CPM cutoff, these cutoff points differ by age groups. At ages 11.5, 13.5 and 15.5 A value of \>= 3600 CPM was originally used to define MVPA at the time of the data collection [@mattocksUseAccelerometersLarge2008]. More recently, following Evenson et. al. [@evensonCalibrationTwoObjective2008], who calculated a lower cutpoint of \>=2296. Both sets of data were included in analysis. At age 24 MVPA cutoff was established at \>2020 cpm [@troianoPhysicalActivityUnited2008].
 
 #### Valid Days
 
@@ -77,9 +73,7 @@ Valid Days are calculated using a cutoff of minutes per day that an acceleromete
 
 ### Eating Disorder Diagnoses
 
-Eating disorder diagnoses (AN, BN,BED, BN-Spectrum [Purging disorder and subclinical BN], BED-spectrum [subclinical BED], and Restrictive spectrum [ED cognitions and restrictive ED behaviors in the absence of regular binge eating, purging, or low weight]) were derived at each age using best available measures and following steps outlined in @micaliAdolescentEatingDisorders2015, with minor changes (low-weight was defined as BMIZ \< -1.0 at ages 14 and 16 years; additional cognitive measures added to criteria as available; subclinical and OSFED categories collapsed to reflect BN, BED, and Restrictive Spectrum ED pathology). Scoring algorithms reflect DSM-5 criteria aligned as well as possible with available data that can be harmonized across assessment points [@americanpsychiatricassociationDiagnosticStatisticalManual2013]. While the majority of ED cognitions and behaviors are self-reported, parent-report of restrictive eating was included as an indicator at ages 14 and 16 years as adolescents tend to under-report AN symptoms [@houseDiagnosingEatingDisorders2008]. Table X shows the full criteria used for each diagnosis.
-
-Diagnoses were assessed at Waves14+, 16+, 18+, and 24+. Excessive exercise, which is used as criteria for an AN and OSFED diagnoses, was assigned to the adolescent if they found themselves lacking time to do schoolwork due to engaging in exercise, exercising when sick or injured, and feeling guilt when unable to exercise.
+Eating disorder diagnoses (AN, BN,BED, BN-Spectrum [Purging disorder and subclinical BN], BED-spectrum [subclinical BED], and Restrictive spectrum [ED cognitions and restrictive ED behaviors in the absence of regular binge eating, purging, or low weight]) were derived at each age (14, 16, 18, and 24) using best available measures and following steps outlined in @micaliAdolescentEatingDisorders2015, with minor changes (cognitive measures added to criteria as available; subclinical and OSFED categories collapsed to reflect BN, BED, and Restrictive Spectrum ED pathology). Scoring algorithms reflect DSM-5 criteria aligned as well as possible with available data that can be harmonized across assessment points [@americanpsychiatricassociationDiagnosticStatisticalManual2013]. While the majority of cognitive and and behavioral ED features are self-reported, parent-report of restrictive eating was included as an indicator at ages 14 and 16 years as adolescents tend to under-report AN symptoms [@houseDiagnosingEatingDisorders2008]. Table X outlines full criteria used for each diagnosis in the current study.
 
 ```{r alspac_dx_table, fig.cap= 'Diagnostic Criteria Assessed Across Age'}
 knitr::include_graphics('figs/ALSPAC_Dx_Table.png')
